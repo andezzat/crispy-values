@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import cx from 'classnames';
 
-import Navbar from '../../lib/bootstrap/components/Navbar.jsx';
+import Navbar from '../../../lib/bootstrap/components/Navbar.jsx';
 
 export default class Header extends React.Component {
   render() {
@@ -22,9 +23,9 @@ export default class Header extends React.Component {
 
     const navItems = names.map((name) => {
       if (name === 'Home') {
-        return <li className="nav-item"><a className="nav-link active" href="#">{name}</a></li>;
+        return <li className="nav-item"><Link to={name} className="nav-link active" href="#">{name}</Link></li>;
       } else {
-        return <li className="nav-item"><a className="nav-link" href="#">{name}</a></li>;
+        return <li className="nav-item"><Link to={name} className="nav-link" href="#">{name}</Link></li>;
       }
     });
 

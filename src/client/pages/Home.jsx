@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Row from '../../lib/bootstrap/components/Row.jsx';
-import Card from '../../lib/bootstrap/components/Card.jsx';
+import Row from '../../../lib/bootstrap/components/Row.jsx';
+import Card from '../../../lib/bootstrap/components/Card.jsx';
 
 export default class Home extends React.Component {
   render() {
