@@ -21,11 +21,11 @@ export default class Header extends React.Component {
       'Contact',
     ];
 
-    const navItems = names.map((name) => {
+    const navItems = names.map((name, key) => {
       if (name === 'Home') {
-        return <li className="nav-item"><Link to={name} className="nav-link active" href="#">{name}</Link></li>;
+        return <li key={key} className="nav-item"><Link to={name} className="nav-link active" href="#">{name}</Link></li>;
       } else {
-        return <li className="nav-item"><Link to={name} className="nav-link" href="#">{name}</Link></li>;
+        return <li key={key} className="nav-item"><Link to={name} className="nav-link" href="#">{name}</Link></li>;
       }
     });
 
