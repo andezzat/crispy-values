@@ -58,4 +58,4 @@ typings/
 .env
 
 # Compiled Files
-dist/
+public/javascripts/app.js
