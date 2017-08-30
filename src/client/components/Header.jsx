@@ -23,10 +23,10 @@ export default class Header extends React.Component {
           <div className={navItemsClasses} id="navbar-collapse">
             <ul className="navbar-nav">
               <li key={1} className="nav-item">
-                <Link to="Home" className="nav-link">Home</Link>
+                <Link to="/Home" className="nav-link">Home</Link>
               </li>
               <li key={2} className="nav-item">
-                <Link to="Test" className={testButtonClasses}>Values Test</Link>
+                <Link to="/Test" className={testButtonClasses}>Values Test</Link>
               </li>
             </ul>
           </div>
