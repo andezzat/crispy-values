@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import routes from './routes';
-// import reducers from './modules';
+import reducers from './modules';
 
 const store = createStore(
   reducers, window.__INITIAL_STATE__, applyMiddleware(thunk)

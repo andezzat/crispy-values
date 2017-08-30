@@ -18,7 +18,7 @@ router.get('*', (req, res) => {
       {renderRoutes(routes)}
     </StaticRouter>
   );
-  res.render('index', {title: 'Express', data: false, content});
+  res.render('index', {title: 'Values Footprints', data: false, content});
 });
 
 module.exports = router;

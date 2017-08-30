@@ -2,41 +2,35 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
 
-import Navbar from '../../../lib/bootstrap/components/Navbar.jsx';
+import Navbar from '../../../lib/spacial/components/Navbar.jsx';
 
 export default class Header extends React.Component {
   render() {
-    const navbarProps = {};
-    navbarProps.colors = {};
-
-    const navPills = cx(
-      'nav',
-      'nav-pills',
-      'float-right',
+    const navItemsClasses = cx(
+      'collapse',
+      'navbar-collapse',
+      'justify-content-end',
     );
 
-    const names = [
-      'Home',
-      'About',
-      'Contact',
-    ];
-
-    const navItems = names.map((name, key) => {
-      if (name === 'Home') {
-        return <li key={key} className="nav-item"><Link to={name} className="nav-link active" href="#">{name}</Link></li>;
-      } else {
-        return <li key={key} className="nav-item"><Link to={name} className="nav-link" href="#">{name}</Link></li>;
-      }
-    });
+    const testButtonClasses = cx(
+      'nav-link',
+      'nav-link--rounded',
+    );
 
     return (
       <div className="header">
-        <nav>
-          <ul className={navPills}>
-            {navItems}
-          </ul>
-        </nav>
-        <h3 className="text-muted">Values Footprints</h3>
+        <Navbar>
+          <div className={navItemsClasses} id="navbar-collapse">
+            <ul className="navbar-nav">
+              <li key={1} className="nav-item">
+                <Link to="Home" className="nav-link">Home</Link>
+              </li>
+              <li key={2} className="nav-item">
+                <Link to="Test" className={testButtonClasses}>Values Test</Link>
+              </li>
+            </ul>
+          </div>
+        </Navbar>
       </div>
     );
   }
