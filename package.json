@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "dev": "nodemon --debug ./bin/www",
     "build:watch": "webpack --colors --watch",
-    "build": "webpack -p",
+    "build": "webpack -p"
   },
   "dependencies": {
     "babel-register": "^6.26.0",
