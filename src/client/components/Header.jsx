@@ -20,6 +20,9 @@ export default class Header extends React.Component {
     return (
       <div className="header">
         <Navbar>
+          <button className="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+            <span className="navbar-toggler-icon" />
+          </button>
           <div className={navItemsClasses} id="navbar-collapse">
             <ul className="navbar-nav">
               <li key={1} className="nav-item">
