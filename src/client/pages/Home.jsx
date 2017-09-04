@@ -4,9 +4,16 @@ import { Link } from 'react-router-dom';
 
 import AgencyHero from '../../../lib/spacial/components/AgencyHero.jsx';
 import AgencyIntro from '../../../lib/spacial/components/AgencyIntro.jsx';
+import PhotographyCTA from '../../../lib/spacial/components/PhotographyCTA.jsx';
 
 export default class Home extends React.Component {
   render() {
+    const photographyCTAClassnames = cx(
+      'btn-pill',
+      'btn-pill-lg',
+      'btn-pill-success',
+    );
+
     return (
       <div>
         <AgencyHero>
@@ -25,6 +32,16 @@ export default class Home extends React.Component {
             borrowed the term to describe our values navigation tool.
           </p>
         </AgencyIntro>
+        <PhotographyCTA>
+          <section className="container">
+            <h2>Not Convinced Yet?</h2>
+            <p>
+              We strongly believe that the path to self-actualization begins with
+              learning more about you. What better way to do that than to map your values?
+            </p>
+            <Link to="/test" className={photographyCTAClassnames}>Map My Values</Link>
+          </section>
+        </PhotographyCTA>
       </div>
     );
   }

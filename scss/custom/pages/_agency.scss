@@ -1,7 +1,7 @@
 .agency-hero {
   min-height: 100vh;
   position: relative;
-  background-image: url('#{$imagesPath}/graphics/hero-01.jpg');
+  background-image: url('#{$imagesPath}/backgrounds/road.jpg');
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -84,7 +84,7 @@
     border: 1px solid #fff;
     padding: 11px 22px;
     border-radius: 63px;
-    
+
     @include animationDelay(.4s);
 
     &:hover {
@@ -162,7 +162,7 @@
         }
 
         .btn-see-project {
-          @include transform(none); 
+          @include transform(none);
         }
       }
 
