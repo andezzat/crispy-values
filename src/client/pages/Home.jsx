@@ -16,7 +16,7 @@ export default class Home extends React.Component {
 
     return (
       <div>
-        <AgencyHero>
+        <AgencyHero id="homeHero">
           <h1 className="customFadeInUp">Ever wondered what your values profile looks like?</h1>
           <p className="customFadeInUp">It Starts With You</p>
           <Link to="/test" className="customFadeInUp">Take The Test</Link>
