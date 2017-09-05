@@ -39,7 +39,7 @@ export default class Home extends React.Component {
               We strongly believe that the path to self-actualization begins with
               learning more about you. What better way to do that than to map your values?
             </p>
-            <Link to="/test" className={photographyCTAClassnames}>Map My Values</Link>
+            <Link to="/test" className={photographyCTAClassnames} id="homePhotographyCTA">Map My Values</Link>
           </section>
         </PhotographyCTA>
       </div>
