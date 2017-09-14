@@ -59,6 +59,7 @@ typings/
 
 # Compiled Files
 public/javascripts/app.js
+public/stylesheets/styles.css
 
 # DS Store files
 **/.ds_store
