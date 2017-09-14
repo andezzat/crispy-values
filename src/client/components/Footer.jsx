@@ -21,7 +21,7 @@ export default class Footer extends React.Component {
       'fa-envelope'
     );
     return (
-      <SpacialFooter style="light">
+      <SpacialFooter style="light" id="footer">
         <Row>
           <div className="col-md-4">
             <div className="title">Values Footprints</div>

@@ -33,3 +33,31 @@
     @extend .btn-pill
   }
 }
+
+.img-intrinsic {
+  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+}
+.img-intrinsicself {
+  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+}
+.img-self {
+  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+}
+.img-selfinstrumental {
+  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+}
+.img-instrumental {
+  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+}
+.img-instrmentalother {
+  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+}
+.img-other {
+  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+}
+.img-otherintrinsic {
+  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+}
+.img-hybrid {
+  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+}

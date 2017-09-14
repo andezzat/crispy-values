@@ -11,7 +11,10 @@ export default class Header extends React.Component {
       'navbar-collapse',
       'justify-content-end',
     );
-
+    const contactClasses = cx(
+      'nav-link',
+      'scroll',
+    );
     const testButtonClasses = cx(
       'nav-link',
       'nav-link--rounded',
@@ -29,6 +32,9 @@ export default class Header extends React.Component {
                 <Link to="/Home" className="nav-link">Home</Link>
               </li>
               <li key={2} className="nav-item">
+                <Link to="#footer" className={contactClasses}>Contact</Link>
+              </li>
+              <li key={3} className="nav-item">
                 <Link to="/Test" className={testButtonClasses}>Values Test</Link>
               </li>
             </ul>
