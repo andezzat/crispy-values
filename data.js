@@ -40,7 +40,7 @@ module.exports = {
       id: 6,
       name: "Instrumental-Other",
       subtitle: "Empowering Others",
-      image: "img-instrmentalother",
+      image: "img-instrumentalother",
       description: ""
     },
     {

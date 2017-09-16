@@ -34,30 +34,35 @@
   }
 }
 
+#homeValues .values-avatar {
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+
 .img-intrinsic {
-  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+  background-image: url('#{$imagesPath}/avatars/intrinsic.png');
 }
 .img-intrinsicself {
-  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+  background-image: url('#{$imagesPath}/avatars/intrinsic-self.png');
 }
 .img-self {
-  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+  background-image: url('#{$imagesPath}/avatars/self.png');
 }
 .img-selfinstrumental {
-  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+  background-image: url('#{$imagesPath}/avatars/self-instrumental.png');
 }
 .img-instrumental {
-  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+  background-image: url('#{$imagesPath}/avatars/instrumental.png');
 }
-.img-instrmentalother {
-  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+.img-instrumentalother {
+  background-image: url('#{$imagesPath}/avatars/instrumental-other.png');
 }
 .img-other {
-  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+  background-image: url('#{$imagesPath}/avatars/other.png');
 }
 .img-otherintrinsic {
-  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+  background-image: url('#{$imagesPath}/avatars/other-intrinsic.png');
 }
 .img-hybrid {
-  background-image: url('#{$imagesPath}/profiles/diamond.jpg');
+  background-image: url('#{$imagesPath}/avatars/hybrid.png');
 }

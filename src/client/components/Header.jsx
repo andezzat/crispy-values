@@ -32,7 +32,7 @@ export default class Header extends React.Component {
                 <Link to="/Home" className="nav-link">Home</Link>
               </li>
               <li key={2} className="nav-item">
-                <Link to="#footer" className={contactClasses}>Contact</Link>
+                <a href="#footer" className={contactClasses}>Contact</a>
               </li>
               <li key={3} className="nav-item">
                 <Link to="/Test" className={testButtonClasses}>Values Test</Link>
