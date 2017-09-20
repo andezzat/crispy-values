@@ -8,7 +8,7 @@ module.exports = {
 
   output: {
     filename: 'app.js',
-    path: __dirname + '/public/javascripts'
+    path: __dirname + '/public/javascripts',
   },
 
   module: {
@@ -16,7 +16,8 @@ module.exports = {
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader']) },
-      { test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000&name=[name].[ext]&outputPath=../fonts/' },
+      { test: /\.(woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000&name=[name].[ext]&outputPath=../fonts/' },
+      { test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=100000' },
     ]
   },
   plugins: [

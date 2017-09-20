@@ -9,7 +9,7 @@ export default class Footer extends Component {
     });
 
     return (
-      <footer className={footerClasses}>
+      <footer className={footerClasses} id={this.props.id}>
         <div className="container">
           {this.props.children}
         </div>

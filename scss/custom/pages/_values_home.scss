@@ -1,0 +1,68 @@
+#homeHero {
+  background-image: url('#{$imagesPath}/backgrounds/road.jpg');
+}
+
+#homePhotographyCTA {
+  background: url('#{$imagesPath}/backgrounds/mountain.jpg') no-repeat center center;
+  padding-top: 90px;
+
+  h3 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 40px;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  p {
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    width: 65%;
+    margin: auto;
+    line-height: 29px;
+
+    @media(max-width: 767px) {
+      width: auto;
+    }
+  }
+
+  a {
+    @extend .btn-pill
+  }
+}
+
+#homeValues .values-avatar {
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+
+.img-intrinsic {
+  background-image: url('#{$imagesPath}/avatars/intrinsic.png');
+}
+.img-intrinsicself {
+  background-image: url('#{$imagesPath}/avatars/intrinsic-self.png');
+}
+.img-self {
+  background-image: url('#{$imagesPath}/avatars/self.png');
+}
+.img-selfinstrumental {
+  background-image: url('#{$imagesPath}/avatars/self-instrumental.png');
+}
+.img-instrumental {
+  background-image: url('#{$imagesPath}/avatars/instrumental.png');
+}
+.img-instrumentalother {
+  background-image: url('#{$imagesPath}/avatars/instrumental-other.png');
+}
+.img-other {
+  background-image: url('#{$imagesPath}/avatars/other.png');
+}
+.img-otherintrinsic {
+  background-image: url('#{$imagesPath}/avatars/other-intrinsic.png');
+}
+.img-hybrid {
+  background-image: url('#{$imagesPath}/avatars/hybrid.png');
+}
