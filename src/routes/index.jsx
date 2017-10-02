@@ -5,13 +5,17 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 
 import StaticRouter from 'react-router-dom/StaticRouter';
-import { renderRoutes } from 'react-router-config';
+import { matchRoutes, renderRoutes } from 'react-router-config';
 
 import routes from '../client/routes';
 
 const router = express.Router();
 
 router.get('*', (req, res) => {
+  const branch = matchRoutes(routes, req.url);
+
+  console.log(branch);
+
   let context = {};
   const content = renderToString(
     <StaticRouter locations={req.url} context={context}>
