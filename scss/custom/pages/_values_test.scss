@@ -1,5 +1,7 @@
-.agency-start-project-form .form-group {
-  input[type="text"] .validation .is-valid {
-    border-color: green;
+#testForm {
+  .form-group .has-success {
+    input[type="text"] {
+      border-color: green;
+    }
   }
 }
