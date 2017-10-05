@@ -1,8 +1,9 @@
 import React from 'react';
 
 import Formsy from 'formsy-react';
+import cx from 'classnames';
 
-import Email from '../components/Survey/Form/Email.jsx';
+import Text from '../components/Survey/Form/Text.jsx';
 
 import Row from '../../../lib/bootstrap/components/Row.jsx';
 
@@ -32,6 +33,12 @@ export default class Test extends React.Component {
   };
 
   render() {
+    const submitCx = cx(
+      'btn',
+      'btn-sm',
+      'btn-outline-primary',
+    );
+
     return (
       <div>
         <div className="agency-start-project-intro">
@@ -43,21 +50,19 @@ export default class Test extends React.Component {
             </p>
           </div>
         </div>
-        <div className="agency-start-project-form" id="testForm">
-          <div className="container">
-            <Row>
-              <div className="col-md-9">
-                <div className="panel">
-                  <div className="panel-body">
-                    <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
-                      <Email name="Email" validations="isEmail" validationError="This is not a valid email." value="" required />
-                      <button type="submit" disabled={!this.state.canSubmit}>Submit</button>
-                    </Formsy.Form>
-                  </div>
+        <div className="container">
+          <Row>
+            <div className="col-md-9">
+              <div className="panel">
+                <div className="panel-body">
+                  <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
+                    <Text name="Email" labelFor="Email" labelText="Email Address" validations="isEmail" validationError="Please enter a valid Email Address." required />
+                    <button className={submitCx} type="submit" disabled={!this.state.canSubmit}>Submit</button>
+                  </Formsy.Form>
                 </div>
               </div>
-            </Row>
-          </div>
+            </div>
+          </Row>
         </div>
       </div>
     );
