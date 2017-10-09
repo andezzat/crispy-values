@@ -26,9 +26,9 @@ class Text extends React.Component {
         if (this.props.isValid()) {
           this.props.setValue(event.target.value);
         };
-        this.props.setstate({
-          _value: event.currenttarget.value,
-          _ispristine: false,d
+        this.props.setState({
+          _value: event.currentTarget.value,
+          _ispristine: false,
         });
       }
     }
