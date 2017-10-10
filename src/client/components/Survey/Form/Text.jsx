@@ -17,21 +17,7 @@ class Text extends React.Component {
   mixins: [Formsy.Mixin];
 
   changeValue(event) {
-    if (this.props.getErrorMessage() != null) {
-      this.props.setValue(event.currentTarget.value);
-    } else {
-      if (this.props.isValidValue(event.target.value)) {
-        this.props.setValue(event.target.value);
-      } else {
-        if (this.props.isValid()) {
-          this.props.setValue(event.target.value);
-        };
-        this.props.setState({
-          _value: event.currentTarget.value,
-          _ispristine: false,
-        });
-      }
-    }
+    this.props.setValue(event.currentTarget.value);
   };
 
   blurValue(event) {

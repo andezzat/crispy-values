@@ -12,11 +12,9 @@ const routes = [
         component: Home
       },
       { path: '/home',
-        exact: true,
         component: Home
       },
       { path: '/test',
-        exact: true,
         component: Test
       },
       {

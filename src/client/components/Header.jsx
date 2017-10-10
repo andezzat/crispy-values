@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import cx from 'classnames';
 
 import Navbar from '../../../lib/spacial/components/Navbar.jsx';
 
-export default class Header extends React.Component {
+// const routerComponent = withRouter(props => <Header {...props} />);
+
+class Header extends React.Component {
   render() {
     const navItemsClasses = cx(
       'collapse',
@@ -20,9 +22,19 @@ export default class Header extends React.Component {
       'nav-link--rounded',
     );
 
+    const route = this.props.location.pathname.toLowerCase();
+
+    const navbarCx = cx({
+      'navbar': true,
+      'navbar-expand-lg': true,
+      'navbar-dark': route === '/' || route === '/home',
+      'navbar-light': route !== '/' && route !== '/home',
+      'bg-transparent': true,
+    });
+
     return (
       <div className="header">
-        <Navbar>
+        <Navbar navbarCx={navbarCx}>
           <button className="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
             <span className="navbar-toggler-icon" />
           </button>
@@ -44,3 +56,6 @@ export default class Header extends React.Component {
     );
   }
 }
+
+const headerWithRouter = withRouter(Header);
+export default headerWithRouter;

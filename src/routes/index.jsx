@@ -12,13 +12,9 @@ import routes from '../client/routes';
 const router = express.Router();
 
 router.get('*', (req, res) => {
-  const branch = matchRoutes(routes, req.url);
-
-  console.log(branch);
-
   let context = {};
   const content = renderToString(
-    <StaticRouter locations={req.url} context={context}>
+    <StaticRouter location={req.url} context={context}>
       {renderRoutes(routes)}
     </StaticRouter>
   );
