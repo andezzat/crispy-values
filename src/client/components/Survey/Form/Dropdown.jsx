@@ -5,7 +5,7 @@ import {HOC} from 'formsy-react';
 
 import cx from 'classnames';
 
-class Text extends React.Component {
+class Dropdown extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -55,11 +55,15 @@ class Text extends React.Component {
     return (
       <div className={fieldCx}>
         <label htmlFor={this.props.labelFor}>{this.props.labelText}</label>
-        <input className={inputCx} type="text" onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.getValue() || ''} />
+        <select className={inputCx} onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.getValue() || ''}>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
         <div className="invalid-feedback">{errorMessage}</div>
       </div>
     );
   };
 }
 
-export default HOC(Text);
+export default HOC(Dropdown);

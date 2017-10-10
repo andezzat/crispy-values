@@ -16,6 +16,7 @@ import { profiles } from '../../../data';
 
 export default class Home extends React.Component {
   componentDidMount() {
+    // JQuery initialisation for Hero Parallax
     const hero = findDOMNode(this.refs.hero)
     const text = findDOMNode(this.refs.hero.refs.text);
 
