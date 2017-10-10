@@ -1,4 +1,6 @@
 import React from 'react';
+import { findDOMNode } from 'react-dom';
+import $ from 'jquery';
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
@@ -13,8 +15,25 @@ import PhotographyCTA from '../../../lib/spacial/components/PhotographyCTA.jsx';
 import { profiles } from '../../../data';
 
 export default class Home extends React.Component {
+  componentDidMount() {
+    const hero = findDOMNode(this.refs.hero)
+    const text = findDOMNode(this.refs.hero.refs.text);
+
+    if (!window.utils.isMobile()) {
+      $(window).scroll(() => {
+        const scroll = $(window).scrollTop(),
+        slowScroll = scroll/4,
+        slowBg = 50 + slowScroll;
+
+        $(hero).css('background-position', 'center ' + slowBg + '%');
+      });
+
+      utils.parallax_text($(text), $(text).position().top);
+    }
+  };
+
   render() {
-    const CTAButtonClasses = cx(
+    const CTAButtonCx = cx(
       'btn-pill-sm',
       'btn-pill-success',
     );
@@ -24,7 +43,7 @@ export default class Home extends React.Component {
     );
 
     const profileItems = profiles.map((p, key) => {
-      var picClasses = cx(
+      var picCx = cx(
         'pic',
         'values-avatar',
         p.image,
@@ -41,7 +60,7 @@ export default class Home extends React.Component {
               </span>
               <span className="btn-see-project">Learn More</span>
             </span>
-            <span className={picClasses} />
+            <span className={picCx} />
           </Link>
         </div>
       );
@@ -49,15 +68,10 @@ export default class Home extends React.Component {
 
     return (
       <div>
-        <AgencyHero id="homeHero">
+        <AgencyHero id="homeHero" ref="hero" textRef="text">
           <h1>Ever wondered what your values profile looks like?</h1>
-          {/* <h1 data-animate="fadeInDown" data-animate-delay="0.1">Ever wondered what your values profile looks like?</h1> */}
           <p>
             It Starts With You
-            {/* <span data-animate="fadeIn" data-animate-delay="0.9">It </span>
-            <span data-animate="fadeIn" data-animate-delay="1.1">Starts </span>
-            <span data-animate="fadeIn" data-animate-delay="1.3">With </span>
-            <span data-animate="fadeIn" data-animate-delay="1.5">You</span> */}
           </p>
           <Link to="/test">Take The Test</Link>
         </AgencyHero>
@@ -99,7 +113,7 @@ export default class Home extends React.Component {
               We strongly believe that the path to self-actualization begins with
               learning more about you. What better way to do that than to map your values?
             </p>
-            <Link to="/test" className={CTAButtonClasses}>Map My Values</Link>
+            <Link to="/test" className={CTAButtonCx}>Map My Values</Link>
           </section>
         </PhotographyCTA>
       </div>

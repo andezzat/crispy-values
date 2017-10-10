@@ -57,5 +57,4 @@ class Header extends React.Component {
   }
 }
 
-const headerWithRouter = withRouter(Header);
-export default headerWithRouter;
+export default withRouter(Header);

@@ -14,19 +14,3 @@ html(lang="en")
     script(src="/javascripts/popper.min.js")
     script(src="/javascripts/theme.min.js")
     script(src="/javascripts/app.js")
-
-    //- Script to intialise Parallex on homepage
-    script.
-      $(function () {
-        if (!window.utils.isMobile()) {
-          $(window).scroll(function() {
-            var scroll = $(window).scrollTop(), 
-            slowScroll = scroll/4,
-            slowBg = 50 + slowScroll;
-
-            $('.agency-hero').css("background-position", "center " + slowBg + "%");
-          });
-
-          utils.parallax_text($(".agency-hero .hero-text"), $(".hero-text").position().top);
-        }
-      });
