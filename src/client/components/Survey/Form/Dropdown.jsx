@@ -22,6 +22,10 @@ class Dropdown extends React.Component {
 
   changeValue(event) {
     this.props.setValue(event.currentTarget.value);
+    this.props.onValidationUpdate(
+      this.props.group,
+      { name: this.props.name, valid: this.props.isValidValue(event.currentTarget.value) }
+    );
   };
 
   handleBlur() {
@@ -37,6 +41,12 @@ class Dropdown extends React.Component {
   }
 
   render() {
+    const options = this.props.options.map((opt, key) => {
+      return (
+        <option key={key}>{opt}</option>
+      );
+    });
+
     const fieldCx = cx({
       'form-group': true,
       'required': this.props.showRequired(),
@@ -56,9 +66,7 @@ class Dropdown extends React.Component {
       <div className={fieldCx}>
         <label htmlFor={this.props.labelFor}>{this.props.labelText}</label>
         <select className={inputCx} onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.getValue() || ''}>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
+          {options}
         </select>
         <div className="invalid-feedback">{errorMessage}</div>
       </div>

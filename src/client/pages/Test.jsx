@@ -14,17 +14,35 @@ export default class Test extends React.Component {
 
     this.enableButton = this.enableButton.bind(this);
     this.disableButton = this.disableButton.bind(this);
+    this.updateFieldGroups = this.updateFieldGroups.bind(this);
+    this.isFieldGroupValid = this.isFieldGroupValid.bind(this);
+    this.goToStep = this.goToStep.bind(this);
 
     this.state = {
+      fieldGroups: [
+        { valid: false,
+          fields: [
+            { name: 'Email', valid: false, required: false },
+            { name: 'DateOfBirth', valid: false, required: true },
+            { name: 'Gender', valid: false, required: true },
+            { name: 'Industry', valid: false, required: false },
+          ]
+        },
+      ],
       canSubmit: false,
+      step: 1,
     };
 
-    Formsy.addValidationRule('isDOB', (values, value) => {
+    Formsy.addValidationRule('isDate', (values, value) => {
       const today = new Date();
 
       var DOB = '';
       if (value !== undefined && value !== null && value !== '') {
         DOB = value;
+      }
+
+      if (DOB.length !== 10) {
+        return false;
       }
 
       const day = DOB.slice(0, 2);
@@ -42,17 +60,65 @@ export default class Test extends React.Component {
       }
       return true;
     });
+    Formsy.addValidationRule('isIn', (values, value, array) => {
+      return array.indexOf(value) >= 0;
+    });
   };
+
+  isFieldGroupValid(group) {
+    const fieldGroup = this.state.fieldGroups[group - 1];
+
+    const fieldValidation = fieldGroup.fields.map((field) => {
+      if (field.required) {
+        return field.valid;
+      } else {
+        return true;
+      }
+    });
+
+    console.log(fieldValidation);
+
+    const valid = fieldValidation.every((value) => { return value });
+    return valid;
+  };
+
+  updateFieldGroups(group, fieldObj) {
+    const newFieldGroups = this.state.fieldGroups.slice();
+
+    const newFieldGroup = newFieldGroups[group - 1];
+    const newFieldObj = newFieldGroup.fields.find((field) => {
+      return field.name === fieldObj.name;
+    });
+
+    newFieldObj.valid = fieldObj.valid;
+    newFieldGroup.valid = this.isFieldGroupValid(group);
+
+    this.setState({
+      ...this.state,
+      fieldGroups: newFieldGroups,
+    });
+  };
+
+  goToStep(step) {
+    this.setState({
+      ...this.state,
+      step: step,
+    });
+  };
+
   enableButton() {
     this.setState({
+      ...this.state,
       canSubmit: true
     });
   };
   disableButton() {
     this.setState({
+      ...this.state,
       canSubmit: false
     });
   };
+
   submit(model) {
     // Do something
   };
@@ -60,8 +126,19 @@ export default class Test extends React.Component {
   render() {
     const submitCx = cx({
       'btn': true,
-      'btn-primary': true,
+      'btn-success': true,
       'disabled': !this.state.canSubmit,
+    });
+
+    const step1NextBtnCx = cx({
+      'btn': true,
+      'btn-primary': true,
+      'disabled': !this.state.fieldGroups[0].valid,
+    });
+
+    const step2BackBtnCx = cx({
+      'btn': true,
+      'btn-secondary': true,
     });
 
     const surveyContainerCx = cx(
@@ -86,10 +163,18 @@ export default class Test extends React.Component {
               <div className="card">
                 <div className="card-body">
                   <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
-                    <Text name="Email" labelFor="Email" labelText="Email Address" validations="isEmail" validationError="Please enter a valid Email Address." />
-                    <Text name="DateOfBirth" labelFor="DateOfBirth" labelText="Date of Birth" validations="isDOB" validationError="Please enter your DOB in the format dd/mm/yyyy" />
-                    <Dropdown name="Gender" labelFor="Gender" labelText="Gender" />
-                    <button className={submitCx} type="submit" disabled={!this.state.canSubmit}>Submit</button>
+                    { this.state.step === 1 && <div className="step1">
+                      <Text group={1} onValidationUpdate={this.updateFieldGroups} name="Email" labelFor="Email" labelText="Email Address" validations="isEmail" validationError="Please enter a valid Email Address." />
+                      <Text group={1} onValidationUpdate={this.updateFieldGroups} name="DateOfBirth" labelFor="DateOfBirth" labelText="Date of Birth" validations="isDate" validationError="Please enter your DOB in the format dd/mm/yyyy" required />
+                      <Dropdown group={1} onValidationUpdate={this.updateFieldGroups} name="Gender" labelFor="Gender" labelText="Gender" validations="isIn:['Male', 'Female', 'Other']" options={['', 'Male', 'Female', 'Other']} required />
+                      <Text group={1} onValidationUpdate={this.updateFieldGroups} name="Industry" labelFor="Industry" labelText="Industry" />
+                      <button className={step1NextBtnCx} onClick={() => { this.goToStep(2) }} type="button" disabled={!this.state.fieldGroups[0].valid}>Next</button>
+                      <button className={submitCx} type="submit" disabled={!this.state.canSubmit}>Submit</button>
+                    </div> }
+                    { this.state.step === 2 && <div className="step2">
+                      <Text group={2} onValidationUpdate={this.updateFieldGroups} name="Thing" labelFor="Thing" labelText="Thing" />
+                      <button className={step2BackBtnCx} onClick={() => { this.goToStep(1) }} type="button" >Back</button>
+                    </div> }
                   </Formsy.Form>
                 </div>
               </div>

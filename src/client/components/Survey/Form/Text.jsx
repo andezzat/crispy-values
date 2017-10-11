@@ -22,16 +22,22 @@ class Text extends React.Component {
 
   changeValue(event) {
     this.props.setValue(event.currentTarget.value);
+    this.props.onValidationUpdate(
+      this.props.group,
+      { name: this.props.name, valid: this.props.isValidValue(event.currentTarget.value) }
+    );
   };
 
   handleBlur() {
     this.setState({
+      ...this.state,
       blurred: true,
     });
   };
 
   handleFocus() {
     this.setState({
+      ...this.state,
       blurred: false,
     });
   }
@@ -41,12 +47,12 @@ class Text extends React.Component {
       'form-group': true,
       'required': this.props.showRequired(),
       'error': this.props.showError() && this.state.blurred,
-      'has-success': !this.props.showError() && this.props.getValue(),
+      'has-success': !this.props.showError() && this.props.getValue() && this.state.blurred,
     });
 
     const inputCx = cx({
       'form-control': true,
-      'is-valid': !this.props.showError() && this.props.getValue(),
+      'is-valid': !this.props.showError() && this.props.getValue() && this.state.blurred,
       'is-invalid': this.props.showError() && this.state.blurred,
     });
 
