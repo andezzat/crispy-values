@@ -15,16 +15,31 @@ class Dropdown extends React.Component {
 
     this.state = {
       blurred: false,
+      value: '',
     }
   };
 
   mixins: [Formsy.Mixin];
 
+  componentDidMount() {
+    const value = this.props.value;
+
+    this.props.setValue(value);
+    this.setState({
+      value,
+    });
+  };
+
   changeValue(event) {
-    this.props.setValue(event.currentTarget.value);
+    const { group, name, isValidValue } = this.props;
+
+    const value = event.currentTarget.value;
+    const valid = isValidValue(event.currentTarget.value);
+
+    this.props.setValue(value);
     this.props.onValidationUpdate(
-      this.props.group,
-      { name: this.props.name, valid: this.props.isValidValue(event.currentTarget.value) }
+      group,
+      { name, value, valid }
     );
   };
 
@@ -65,7 +80,7 @@ class Dropdown extends React.Component {
     return (
       <div className={fieldCx}>
         <label htmlFor={this.props.labelFor}>{this.props.labelText}</label>
-        <select className={inputCx} onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.getValue() || ''}>
+        <select className={inputCx} onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.value}>
           {options}
         </select>
         <div className="invalid-feedback">{errorMessage}</div>

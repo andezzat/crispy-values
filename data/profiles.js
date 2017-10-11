@@ -1,5 +1,4 @@
-module.exports = {
-  profiles: [
+module.exports = [
     {
       id: 1,
       name: "Intrinsic",
@@ -64,5 +63,4 @@ module.exports = {
       image: "img-hybrid",
       description: ""
     },
-  ]
-}
+  ];

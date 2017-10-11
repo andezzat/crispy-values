@@ -1,10 +1,12 @@
 import React from 'react';
-
 import Formsy from 'formsy-react';
 import cx from 'classnames';
 
+import { survey } from '../../../data/';
+
 import Text from '../components/Survey/Form/Text.jsx';
 import Dropdown from '../components/Survey/Form/Dropdown.jsx';
+import Radio from '../components/Survey/Form/Radio.jsx'
 
 import Row from '../../../lib/bootstrap/components/Row.jsx';
 
@@ -22,15 +24,26 @@ export default class Test extends React.Component {
       fieldGroups: [
         { valid: false,
           fields: [
-            { name: 'Email', valid: false, required: false },
-            { name: 'DateOfBirth', valid: false, required: true },
-            { name: 'Gender', valid: false, required: true },
-            { name: 'Industry', valid: false, required: false },
+            { name: 'Email', value: '', valid: false, required: false },
+            { name: 'DateOfBirth', value: '', value: '', valid: false, required: true },
+            { name: 'Gender', value: '', valid: false, required: true },
+            { name: 'Industry', value: '', valid: false, required: false },
           ]
+        },
+        {
+          valid: false,
+          fields: [
+            { name: 0, value: '', valid: false, required: true },
+            { name: 1, value: '', valid: false, required: true },
+            { name: 2, value: '', valid: false, required: true },
+            { name: 3, value: '', valid: false, required: true },
+            { name: 4, value: '', valid: false, required: true },
+            { name: 5, value: '', valid: false, required: true },
+          ],
         },
       ],
       canSubmit: false,
-      step: 1,
+      step: 2,
     };
 
     Formsy.addValidationRule('isDate', (values, value) => {
@@ -91,6 +104,7 @@ export default class Test extends React.Component {
     });
 
     newFieldObj.valid = fieldObj.valid;
+    newFieldObj.value = fieldObj.value;
     newFieldGroup.valid = this.isFieldGroupValid(group);
 
     this.setState({
@@ -124,6 +138,8 @@ export default class Test extends React.Component {
   };
 
   render() {
+    console.log(this.state.fieldGroups[0].fields);
+
     const submitCx = cx({
       'btn': true,
       'btn-success': true,
@@ -136,9 +152,21 @@ export default class Test extends React.Component {
       'disabled': !this.state.fieldGroups[0].valid,
     });
 
-    const step2BackBtnCx = cx({
+    const step2NextBtnCx = cx({
+      'btn': true,
+      'btn-primary': true,
+      'disabled': !this.state.fieldGroups[1].valid,
+    });
+
+    const backBtnCx = cx({
       'btn': true,
       'btn-secondary': true,
+    });
+
+    const step3NextBtnCx = cx({
+      'btn': true,
+      'btn-primary': true,
+      // 'disabled': !this.state.fieldGroups[1].valid,
     });
 
     const surveyContainerCx = cx(
@@ -164,16 +192,31 @@ export default class Test extends React.Component {
                 <div className="card-body">
                   <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
                     { this.state.step === 1 && <div className="step1">
-                      <Text group={1} onValidationUpdate={this.updateFieldGroups} name="Email" labelFor="Email" labelText="Email Address" validations="isEmail" validationError="Please enter a valid Email Address." />
-                      <Text group={1} onValidationUpdate={this.updateFieldGroups} name="DateOfBirth" labelFor="DateOfBirth" labelText="Date of Birth" validations="isDate" validationError="Please enter your DOB in the format dd/mm/yyyy" required />
-                      <Dropdown group={1} onValidationUpdate={this.updateFieldGroups} name="Gender" labelFor="Gender" labelText="Gender" validations="isIn:['Male', 'Female', 'Other']" options={['', 'Male', 'Female', 'Other']} required />
-                      <Text group={1} onValidationUpdate={this.updateFieldGroups} name="Industry" labelFor="Industry" labelText="Industry" />
+                      <Text group={1} onValidationUpdate={this.updateFieldGroups} value={this.state.fieldGroups[0].fields[0].value} name="Email" labelFor="Email" labelText="Email Address" validations="isEmail" validationError="Please enter a valid Email Address." />
+                      <Text group={1} onValidationUpdate={this.updateFieldGroups} value={this.state.fieldGroups[0].fields[0].value} name="DateOfBirth" labelFor="DateOfBirth" labelText="Date of Birth" validations="isDate" validationError="Please enter your DOB in the format dd/mm/yyyy" required />
+                      <Dropdown group={1} onValidationUpdate={this.updateFieldGroups} value={this.state.fieldGroups[0].fields[0].value} name="Gender" labelFor="Gender" labelText="Gender" validations="isIn:['Male', 'Female', 'Other']" options={['', 'Male', 'Female', 'Other']} required />
+                      <Text group={1} onValidationUpdate={this.updateFieldGroups} value={this.state.fieldGroups[0].fields[0].value} name="Industry" labelFor="Industry" labelText="Industry" />
                       <button className={step1NextBtnCx} onClick={() => { this.goToStep(2) }} type="button" disabled={!this.state.fieldGroups[0].valid}>Next</button>
                       <button className={submitCx} type="submit" disabled={!this.state.canSubmit}>Submit</button>
                     </div> }
                     { this.state.step === 2 && <div className="step2">
-                      <Text group={2} onValidationUpdate={this.updateFieldGroups} name="Thing" labelFor="Thing" labelText="Thing" />
-                      <button className={step2BackBtnCx} onClick={() => { this.goToStep(1) }} type="button" >Back</button>
+                      <legend>{survey.questionSets[0].name}</legend>
+                      {survey.questionSets[0].set.map((set, i) => (
+                        <Radio group={2} onValidationUpdate={this.updateFieldGroups} value={this.state.fieldGroups[1].fields[i].value} name={'set' + i.toString()} key={i} options={set} number={i} validations="isIn:['intrinsic', 'instrumental']" validationError="Please choose an option." required />
+                      ))}
+                      <Row justifyContent="around">
+                        <button className={backBtnCx} onClick={() => { this.goToStep(1) }} type="button">Back</button>
+                        <button className={step2NextBtnCx} onClick={() => { this.goToStep(3) }} type="button" disabled={!this.state.fieldGroups[1].valid}>Next</button>
+                      </Row>
+                    </div> }
+                    { this.state.step === 3 && <div className="step3">
+                      <div>
+                        Things
+                      </div>
+                      <Row justifyContent="around">
+                        <button className={backBtnCx} onClick={() => { this.goToStep(2) }} type="button">Back</button>
+                        <button className={step3NextBtnCx} onClick={() => { this.goToStep(4) }} type="button">Next</button>
+                      </Row>
                     </div> }
                   </Formsy.Form>
                 </div>

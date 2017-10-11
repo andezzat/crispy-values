@@ -20,11 +20,26 @@ class Text extends React.Component {
 
   mixins: [Formsy.Mixin];
 
+  componentDidMount() {
+    const value = this.props.value;
+
+    this.props.setValue(value);
+    this.setState({
+      ...this.state,
+      value,
+    });
+  };
+
   changeValue(event) {
-    this.props.setValue(event.currentTarget.value);
+    const { group, name, isValidValue } = this.props;
+
+    const value = event.currentTarget.value;
+    const valid = isValidValue(event.currentTarget.value);
+
+    this.props.setValue(value);
     this.props.onValidationUpdate(
-      this.props.group,
-      { name: this.props.name, valid: this.props.isValidValue(event.currentTarget.value) }
+      group,
+      { name, value, valid }
     );
   };
 
@@ -61,7 +76,7 @@ class Text extends React.Component {
     return (
       <div className={fieldCx}>
         <label htmlFor={this.props.labelFor}>{this.props.labelText}</label>
-        <input className={inputCx} type="text" onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.getValue() || ''} />
+        <input className={inputCx} type="text" onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.getValue()} />
         <div className="invalid-feedback">{errorMessage}</div>
       </div>
     );

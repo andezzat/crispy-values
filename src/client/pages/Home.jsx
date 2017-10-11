@@ -12,7 +12,7 @@ import AgencyPortfolio from '../../../lib/spacial/components/AgencyPortfolio.jsx
 import AgencyTestimonial from '../../../lib/spacial/components/AgencyTestimonial.jsx';
 import PhotographyCTA from '../../../lib/spacial/components/PhotographyCTA.jsx';
 
-import { profiles } from '../../../data';
+import { profiles } from '../../../data/';
 
 export default class Home extends React.Component {
   componentDidMount() {
