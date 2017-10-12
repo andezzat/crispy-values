@@ -80,7 +80,7 @@ class Dropdown extends React.Component {
     return (
       <div className={fieldCx}>
         <label htmlFor={this.props.labelFor}>{this.props.labelText}</label>
-        <select className={inputCx} onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.value}>
+        <select className={inputCx} onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.getValue()}>
           {options}
         </select>
         <div className="invalid-feedback">{errorMessage}</div>

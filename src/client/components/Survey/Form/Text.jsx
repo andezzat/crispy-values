@@ -22,10 +22,16 @@ class Text extends React.Component {
 
   componentDidMount() {
     const value = this.props.value;
+    var blurred = false;
+
+    if (value !== '') {
+      blurred = true;
+    }
 
     this.props.setValue(value);
     this.setState({
       ...this.state,
+      blurred,
       value,
     });
   };
