@@ -37,15 +37,15 @@ class Text extends React.Component {
   };
 
   changeValue(event) {
-    const { group, name, isValidValue } = this.props;
+    const { stepNumber, id } = this.props;
 
     const value = event.currentTarget.value;
-    const valid = isValidValue(event.currentTarget.value);
+    const valid = this.props.isValidValue(value);
 
     this.props.setValue(value);
-    this.props.onValidationUpdate(
-      group,
-      { name, value, valid }
+    this.props.onUpdate(
+      stepNumber,
+      { id, value, valid }
     );
   };
 

@@ -26,13 +26,16 @@ class Radio extends React.Component {
   };
 
   changeValue(value) {
+    const { stepNumber, id } = this.props;
+    const valid = this.props.isValidValue(value);
+
     this.props.setValue(value);
     this.setState({
       value,
     });
-    this.props.onValidationUpdate(
-      this.props.group,
-      { name: this.props.number, value, valid: this.props.isValidValue(value) }
+    this.props.onUpdate(
+      stepNumber,
+      { id, value, valid }
     );
   };
 
@@ -41,15 +44,15 @@ class Radio extends React.Component {
       <fieldset className="form-group">
         {this.props.options.map((opt, i) => (
           <div key={i} className="form-check">
-            <label htmlFor={opt.value + this.props.number} className="form-check-label">
+            <label htmlFor={opt.value + this.props.id} className="form-check-label">
             <input
                 className="form-check-input"
                 type="radio"
-                name={opt.value + this.props.number}
+                name={opt.value + this.props.id}
                 onChange={this.changeValue.bind(this, opt.value)}
                 checked={this.state.value === opt.value}
               />
-              {' ' + opt.name}
+              {' ' + opt.description}
             </label>
           </div>
         ))}

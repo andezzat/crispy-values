@@ -16,35 +16,36 @@ export default class Test extends React.Component {
 
     this.enableButton = this.enableButton.bind(this);
     this.disableButton = this.disableButton.bind(this);
-    this.updateFieldGroups = this.updateFieldGroups.bind(this);
-    this.isFieldGroupValid = this.isFieldGroupValid.bind(this);
+    this.updateSteps = this.updateSteps.bind(this);
+    this.isStepValid = this.isStepValid.bind(this);
     this.goToStep = this.goToStep.bind(this);
 
-    this.state = {
-      fieldGroups: [
-        { valid: false,
-          fields: [
-            { name: 'Email', value: '', valid: false, required: false },
-            { name: 'DateOfBirth', value: '', valid: false, required: true },
-            { name: 'Gender', value: '', valid: false, required: true },
-            { name: 'Industry', value: '', valid: false, required: false },
-          ]
-        },
-        {
-          valid: false,
-          fields: [
-            { name: 0, value: '', valid: false, required: true },
-            { name: 1, value: '', valid: false, required: true },
-            { name: 2, value: '', valid: false, required: true },
-            { name: 3, value: '', valid: false, required: true },
-            { name: 4, value: '', valid: false, required: true },
-            { name: 5, value: '', valid: false, required: true },
-          ],
-        },
-      ],
+    const initialState = {
+      steps: [],
       canSubmit: false,
-      step: 1,
+      currentStep: 1,
     };
+
+    var stepNumber = 0;
+    survey.formCollections.forEach((collection, i) => {
+      collection.steps.forEach((step, j) => {
+        initialState.steps.push({
+          valid: false,
+          fields: [],
+        });
+        step.fields.forEach((field, k) => {
+          initialState.steps[stepNumber].fields.push({
+            id: k,
+            value: '',
+            valid: false,
+            required: field.required,
+          });
+        });
+      });
+      stepNumber++;
+    });
+
+    this.state = initialState;
 
     Formsy.addValidationRule('isDate', (values, value) => {
       const today = new Date();
@@ -55,6 +56,9 @@ export default class Test extends React.Component {
       }
 
       if (DOB.length !== 10) {
+        return false;
+      }
+      if (DOB.slice(2, 3) !== '/' || DOB.slice(5, 6) !== '/') {
         return false;
       }
 
@@ -78,10 +82,10 @@ export default class Test extends React.Component {
     });
   };
 
-  isFieldGroupValid(group) {
-    const fieldGroup = this.state.fieldGroups[group - 1];
+  isStepValid(stepNumber) {
+    const step = this.state.steps[stepNumber - 1];
 
-    const fieldValidation = fieldGroup.fields.map((field) => {
+    const stepValidation = step.fields.map((field) => {
       if (field.required || field.value) {
         return field.valid;
       } else {
@@ -89,32 +93,32 @@ export default class Test extends React.Component {
       }
     });
 
-    const valid = fieldValidation.every((value) => { return value });
+    const valid = stepValidation.every((value) => { return value });
     return valid;
   };
 
-  updateFieldGroups(group, fieldObj) {
-    const newFieldGroups = this.state.fieldGroups.slice();
+  updateSteps(stepNumber, updatedField) {
+    const newSteps = this.state.steps.slice();
 
-    const newFieldGroup = newFieldGroups[group - 1];
-    const newFieldObj = newFieldGroup.fields.find((field) => {
-      return field.name === fieldObj.name;
+    const newStep = newSteps[stepNumber - 1];
+    const newField = newStep.fields.find((field) => {
+      return field.id === updatedField.id;
     });
 
-    newFieldObj.valid = fieldObj.valid;
-    newFieldObj.value = fieldObj.value;
-    newFieldGroup.valid = this.isFieldGroupValid(group);
+    newField.valid = updatedField.valid;
+    newField.value = updatedField.value;
+    newStep.valid = this.isStepValid(stepNumber);
 
     this.setState({
       ...this.state,
-      fieldGroups: newFieldGroups,
+      steps: newSteps,
     });
   };
 
-  goToStep(step) {
+  goToStep(stepNumber) {
     this.setState({
       ...this.state,
-      step: step,
+      currentStep: stepNumber,
     });
   };
 
@@ -136,24 +140,10 @@ export default class Test extends React.Component {
   };
 
   render() {
-    console.log(this.state.fieldGroups[0].fields);
-
-    const submitCx = cx({
+    const submitBtnCx = cx({
       'btn': true,
       'btn-success': true,
       'disabled': !this.state.canSubmit,
-    });
-
-    const step1NextBtnCx = cx({
-      'btn': true,
-      'btn-primary': true,
-      'disabled': !this.state.fieldGroups[0].valid,
-    });
-
-    const step2NextBtnCx = cx({
-      'btn': true,
-      'btn-primary': true,
-      'disabled': !this.state.fieldGroups[1].valid,
     });
 
     const backBtnCx = cx({
@@ -161,27 +151,49 @@ export default class Test extends React.Component {
       'btn-secondary': true,
     });
 
-    const step3NextBtnCx = cx({
-      'btn': true,
-      'btn-primary': true,
-      // 'disabled': !this.state.fieldGroups[1].valid,
-    });
-
     const surveyContainerCx = cx(
       'container',
       'survey',
     );
 
+    const collectionDetails = [];
+    survey.formCollections.forEach((collection, i) => {
+      var firstStep;
+      if (i === 0) {
+        firstStep = 1;
+      } else {
+        firstStep = collectionDetails[i - 1].lastStep + 1;
+      }
+
+      collectionDetails.push({
+        name: collection.name,
+        description: collection.description,
+        firstStep,
+        lastStep: firstStep + collection.steps.length - 1,
+      });
+    });
+
+    const stepDetails = [];
+    survey.formCollections.forEach((collection, i) => {
+      collection.steps.forEach((step, j) => {
+        stepDetails.push(step);
+      });
+    });
+
+    console.log(this.state.currentStep);
+
     return (
       <div>
         <div className="agency-start-project-intro">
-          <div className="container">
-            <h3>Your Details</h3>
-            <p>
-              We need to collect some personal information about you before we begin.
-              We promise we won't divulge any of your details for any marketing purposes.
-            </p>
-          </div>
+        {collectionDetails.map((collection, i) => {
+          return (
+            this.state.currentStep >= collection.firstStep && this.state.currentStep <= collection.lastStep &&
+            <div key={i} className="container">
+              <h3>{collection.name}</h3>
+              <p>{collection.description}</p>
+            </div>
+          );
+        })}
         </div>
         <div className={surveyContainerCx}>
           <Row>
@@ -189,33 +201,87 @@ export default class Test extends React.Component {
               <div className="card">
                 <div className="card-body">
                   <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
-                    { this.state.step === 1 && <div className="step1">
-                      <Text group={1} onValidationUpdate={this.updateFieldGroups} value={this.state.fieldGroups[0].fields[0].value} name="Email" labelFor="Email" labelText="Email Address" validations="isEmail" validationError="Please enter a valid Email Address." />
-                      <Text group={1} onValidationUpdate={this.updateFieldGroups} value={this.state.fieldGroups[0].fields[1].value} name="DateOfBirth" labelFor="DateOfBirth" labelText="Date of Birth" validations="isDate" validationError="Please enter your DOB in the format dd/mm/yyyy" required />
-                      <Dropdown group={1} onValidationUpdate={this.updateFieldGroups} value={this.state.fieldGroups[0].fields[2].value} name="Gender" labelFor="Gender" labelText="Gender" validations="isIn:['Male', 'Female', 'Other']" options={['', 'Male', 'Female', 'Other']} required />
-                      <Text group={1} onValidationUpdate={this.updateFieldGroups} value={this.state.fieldGroups[0].fields[3].value} name="Industry" labelFor="Industry" labelText="Industry" />
-                      <button className={step1NextBtnCx} onClick={() => { this.goToStep(2) }} type="button" disabled={!this.state.fieldGroups[0].valid}>Next</button>
-                      <button className={submitCx} type="submit" disabled={!this.state.canSubmit}>Submit</button>
-                    </div> }
-                    { this.state.step === 2 && <div className="step2">
-                      <legend>{survey.questionSets[0].name}</legend>
-                      {survey.questionSets[0].set.map((set, i) => (
-                        <Radio group={2} onValidationUpdate={this.updateFieldGroups} value={this.state.fieldGroups[1].fields[i].value} name={'set' + i.toString()} key={i} options={set} number={i} validations="isIn:['intrinsic', 'instrumental']" validationError="Please choose an option." required />
-                      ))}
-                      <Row justifyContent="around">
-                        <button className={backBtnCx} onClick={() => { this.goToStep(1) }} type="button">Back</button>
-                        <button className={step2NextBtnCx} onClick={() => { this.goToStep(3) }} type="button" disabled={!this.state.fieldGroups[1].valid}>Next</button>
-                      </Row>
-                    </div> }
-                    { this.state.step === 3 && <div className="step3">
-                      <div>
-                        Things
-                      </div>
-                      <Row justifyContent="around">
-                        <button className={backBtnCx} onClick={() => { this.goToStep(2) }} type="button">Back</button>
-                        <button className={step3NextBtnCx} onClick={() => { this.goToStep(4) }} type="button">Next</button>
-                      </Row>
-                    </div> }
+                    {stepDetails.map((step, i) => {
+                      const stepNumber = i + 1;
+                      return (
+                        this.state.currentStep === stepNumber &&
+                        <div key={i} className={'step' + stepNumber}>
+                          {step.fields.map((field, j) => {
+                            if (field.type === 'text') {
+                              return (
+                                <Text
+                                  key={j}
+                                  id={j}
+                                  stepNumber={stepNumber}
+                                  onUpdate={this.updateSteps}
+                                  name={field.name}
+                                  labelFor={field.name}
+                                  labelText={field.label}
+                                  value={this.state.steps[i].fields[j].value}
+                                  validations={field.validations}
+                                  validationError={field.validationError}
+                                  required={field.required}
+                                />
+                              )
+                            } else if (field.type === 'dropdown') {
+                              const options = field.options.slice();
+                              options.unshift('');
+                              return (
+                                <Dropdown
+                                  key={j}
+                                  id={j}
+                                  stepNumber={stepNumber}
+                                  onUpdate={this.updateSteps}
+                                  name={field.name}
+                                  labelFor={field.name}
+                                  labelText={field.label}
+                                  value={this.state.steps[i].fields[j].value}
+                                  validations={field.validations + ':' + JSON.stringify(field.options)}
+                                  validationError={field.validationError}
+                                  options={options}
+                                />
+                              )
+                            } else if (field.type === 'radio') {
+                              const validValues = field.options.map((opt) => opt.value);
+                              return (
+                                <Radio
+                                  key={j}
+                                  id={j}
+                                  stepNumber={stepNumber}
+                                  onUpdate={this.updateSteps}
+                                  name={j.toString()}
+                                  value={this.state.steps[i].fields[j].value}
+                                  options={field.options}
+                                  validations={field.validations + ':' + JSON.stringify(validValues)}
+                                  validationError={field.validationError}
+                                  required={field.required}
+                                />
+                              )
+                            }
+                          })}
+                          <Row justifyContent="around">
+                            {stepNumber !== 1 &&
+                              <button
+                                className={backBtnCx}
+                                onClick={() => { this.goToStep(stepNumber - 1) }}
+                                type="button">Back</button>}
+                            {stepNumber === stepDetails.length
+                            ? <button
+                                className={submitBtnCx}
+                                type="submit"
+                                disabled={!this.state.canSubmit}>Submit</button>
+                            : <button
+                                className={cx({
+                                  'btn': true,
+                                  'btn-primary': true,
+                                  'disabled': !this.state.steps[stepNumber - 1].valid})}
+                                type="button"
+                                disabled={!this.state.steps[stepNumber - 1].valid}
+                                onClick={() => { this.goToStep(stepNumber + 1) }}>Next</button>}
+                          </Row>
+                        </div>
+                      );
+                    })}
                   </Formsy.Form>
                 </div>
               </div>
