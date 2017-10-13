@@ -32,12 +32,15 @@ export default class Test extends React.Component {
       collection.steps.forEach((step, j) => {
         initialState.steps.push({
           valid: false,
+          collectionType: collection.type,
           fields: [],
         });
         step.fields.forEach((field, k) => {
           initialState.steps[stepNumber].fields.push({
             id: k,
             type: field.type,
+            indexes: [ i, j, k ],
+            stepNumber,
             value: '',
             values: {},
             valid: false,
@@ -110,8 +113,19 @@ export default class Test extends React.Component {
 
     newField.valid = updatedField.valid;
     newField.value = updatedField.value;
-    // If statement to check if type is 'questionnaire'
-    // if so, then take the values object that corresponds to the current value returned 
+    if (newStep.collectionType === 'questionnaire') {
+      if (newField.type === 'radio') {
+        const collectionIndex = newField.indexes[0];
+        const stepIndex = newField.indexes[1];
+        const fieldIndex = newField.indexes[2];
+
+        console.log(survey.formCollections[collectionIndex].steps[stepIndex].fields[fieldIndex]);
+
+        const option = survey.formCollections[collectionIndex].steps[stepIndex].fields[fieldIndex].options
+          .find((option) => { option.value === newField.value });
+        newField.values = option.values;
+      }
+    }
     newStep.valid = this.isStepValid(stepNumber);
 
     this.setState({
