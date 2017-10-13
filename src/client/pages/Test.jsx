@@ -19,6 +19,7 @@ export default class Test extends React.Component {
     this.updateSteps = this.updateSteps.bind(this);
     this.isStepValid = this.isStepValid.bind(this);
     this.goToStep = this.goToStep.bind(this);
+    this.submit = this.submit.bind(this);
 
     const initialState = {
       steps: [],
@@ -36,7 +37,9 @@ export default class Test extends React.Component {
         step.fields.forEach((field, k) => {
           initialState.steps[stepNumber].fields.push({
             id: k,
+            type: field.type,
             value: '',
+            values: {},
             valid: false,
             required: field.required,
           });
@@ -107,6 +110,8 @@ export default class Test extends React.Component {
 
     newField.valid = updatedField.valid;
     newField.value = updatedField.value;
+    // If statement to check if type is 'questionnaire'
+    // if so, then take the values object that corresponds to the current value returned 
     newStep.valid = this.isStepValid(stepNumber);
 
     this.setState({
@@ -135,7 +140,7 @@ export default class Test extends React.Component {
     });
   };
 
-  submit(model) {
+  submit() {
     // Do something
   };
 
@@ -179,8 +184,6 @@ export default class Test extends React.Component {
         stepDetails.push(step);
       });
     });
-
-    console.log(this.state.currentStep);
 
     return (
       <div>

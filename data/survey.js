@@ -3,6 +3,7 @@ module.exports = {
     {
       name: 'Your Details',
       description: 'We need to collect some personal information about you before we begin. We promise we won\'t divulge any of your details for any marketing purposes.',
+      type: 'details',
       steps: [
         {
           randomize: false,
@@ -48,6 +49,7 @@ module.exports = {
     {
       name: 'Which is more true?',
       description: 'Pick the option that best describes you.',
+      type: 'questionnaire',
       steps: [
         {
           randomize: false,
@@ -60,11 +62,23 @@ module.exports = {
               options: [
                 {
                   description: 'I see the environment as having intrinsic worth, nature for nature\'s sake',
-                  value: 'intrinsic'
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
                 },
                 {
                   description: 'I see the environment as a place in which things happen to me and people I know',
-                  value: 'instrumental'
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
                 },
               ],
             },
@@ -76,11 +90,23 @@ module.exports = {
               options: [
                 {
                   description: 'I see the environment as an ecosystem that needs to be respected, preserved, and protected',
-                  value: 'intrinsic'
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
                 },
                 {
                   description: 'I see the environment as a source of natural resources (i.e. wood, coal, minerals) that can be developed',
-                  value: 'instrumental'
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
                 },
               ],
             },
@@ -92,11 +118,23 @@ module.exports = {
               options: [
                 {
                   description: 'I see money as financial wealth',
-                  value: 'intrinsic'
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
                 },
                 {
                   description: 'I see money as financial resources (a means to an end)',
-                  value: 'instrumental'
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
                 },
               ],
             },
@@ -108,11 +146,23 @@ module.exports = {
               options: [
                 {
                   description: 'I see money as financial resources (a means to an end)',
-                  value: 'intrinsic'
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
                 },
                 {
                   description: 'I see money as a source for benevolence (altruism)',
-                  value: 'instrumental'
+                  value: 'instrumental-other',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 1,
+                  },
                 },
               ],
             },
@@ -124,11 +174,23 @@ module.exports = {
               options: [
                 {
                   description: 'People are useful because they are human beings and have inherent worth',
-                  value: 'intrinsic'
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
                 },
                 {
                   description: 'People are useful because of what they do or what they produce',
-                  value: 'instrumental'
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
                 },
               ],
             },
@@ -140,11 +202,23 @@ module.exports = {
               options: [
                 {
                   description: 'When I think of helping people, I think of my personal relationships or helping people I know',
-                  value: 'intrinsic'
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
                 },
                 {
                   description: 'When I think of helping people, I think of helping vulnerable people I don\'t know',
-                  value: 'instrumental'
+                  value: 'other',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
                 },
               ],
             },
