@@ -51,6 +51,7 @@ class Radio extends React.Component {
                 name={opt.value + this.props.id}
                 onChange={this.changeValue.bind(this, opt.value)}
                 checked={this.state.value === opt.value}
+                id={opt.value + this.props.id}
               />
               {' ' + opt.description}
             </label>

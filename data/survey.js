@@ -226,5 +226,131 @@ module.exports = {
         },
       ],
     },
+    {
+      name: 'What do you value?',
+      description: 'Choose the option that best reflects how much you esteem each personal attribute or value below.',
+      type: 'questionnaire',
+      steps: [
+        {
+          randomize: false,
+          fields: [
+            {
+              type: 'dropdown',
+              label: 'A comfortable life (a prosperous life)',
+              name: 'comfortableLife',
+              required: true,
+              validations: 'isIn',
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                intrumental: 0,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'An exciting life (a stimulating, active life)',
+              name: 'excitingLife',
+              required: true,
+              validations: 'isIn',
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                intrumental: 0,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'A sense of accomplishment (lasting contribution)',
+              name: 'accomplishment',
+              required: true,
+              validations: 'isIn',
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                intrumental: 0,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'A world at peace (free of war and conflict)',
+              name: 'worldPeace',
+              required: true,
+              validations: 'isIn',
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                intrumental: 0,
+                self: 1,
+                other: 2
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'A world of beauty (beauty of nature and the arts)',
+              name: 'wordlBeauty',
+              required: true,
+              validations: 'isIn',
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                intrumental: 0,
+                self: 1,
+                other: 2
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Equality (brotherhood, equal opportunity for all)',
+              name: 'equality',
+              required: true,
+              validations: 'isIn',
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                intrumental: 0,
+                self: 0,
+                other: 1
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            }
+          ]
+        }
+      ]
+    }
   ],
 };

@@ -42,7 +42,7 @@ export default class Test extends React.Component {
             indexes: [ i, j, k ],
             stepNumber,
             value: '',
-            values: {},
+            values: collection.type === 'questionnaire' && field.type === 'dropdown' ? field.values : {},
             valid: false,
             required: field.required,
           });
@@ -61,10 +61,7 @@ export default class Test extends React.Component {
         DOB = value;
       }
 
-      if (DOB.length !== 10) {
-        return false;
-      }
-      if (DOB.slice(2, 3) !== '/' || DOB.slice(5, 6) !== '/') {
+      if (DOB.length !== 10 || DOB.slice(2, 3) !== '/' || DOB.slice(5, 6) !== '/') {
         return false;
       }
 
@@ -119,10 +116,8 @@ export default class Test extends React.Component {
         const stepIndex = newField.indexes[1];
         const fieldIndex = newField.indexes[2];
 
-        console.log(survey.formCollections[collectionIndex].steps[stepIndex].fields[fieldIndex]);
-
         const option = survey.formCollections[collectionIndex].steps[stepIndex].fields[fieldIndex].options
-          .find((option) => { option.value === newField.value });
+          .find((opt) => { return opt.value === newField.value });
         newField.values = option.values;
       }
     }
@@ -156,6 +151,36 @@ export default class Test extends React.Component {
 
   submit() {
     // Do something
+    const collections = survey.formCollections
+      .filter((col) => col.type === 'questionnaire')
+
+    var allValues = [];
+
+    collections.forEach((col) => {
+      col.steps.forEach((step) => {
+        const dropdownFields = step.fields.filter((field) => field.type === 'dropdown');
+        const radioFields = step.fields.filter((field) => field.type === 'radio');
+        dropdownFields.forEach((field) => allValues.push(field.values));
+        radioFields.forEach((field) => {
+          field.options.forEach((opt) => allValues.push(opt.values));
+        });
+      });
+    });
+
+    // console.log(allValues.reduce((acc, val) => acc + val.intrinsic));
+
+    // const maxIntrinsic = allValues.reduce((acc, val) => {
+    //   acc + val.intrinsic
+    // }, 0);
+    //
+    // const maxValues = {
+    //   intrinsic: allValues.reduce((acc, val) => acc + val.intrinsic),
+    //   instrumental: allValues.reduce((acc, val) => acc + val.instrumental),
+    //   self: allValues.reduce((acc, val) => acc + val.self),
+    //   other: allValues.reduce((acc, val) => acc + val.other),
+    // };
+
+    console.log(maxIntrinsic);
   };
 
   render() {
