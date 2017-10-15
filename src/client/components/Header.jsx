@@ -4,6 +4,8 @@ import cx from 'classnames';
 
 import Navbar from '../../../lib/spacial/components/Navbar.jsx';
 
+import { nav as content } from '../../../data/';
+
 // const routerComponent = withRouter(props => <Header {...props} />);
 
 class Header extends React.Component {
@@ -13,15 +15,8 @@ class Header extends React.Component {
       'navbar-collapse',
       'justify-content-end',
     );
-    const contactClasses = cx(
-      'nav-link',
-      'scroll',
-    );
-    const testButtonClasses = cx(
-      'nav-link',
-      'nav-link--rounded',
-    );
 
+    // Only exists when withRouter is used (as shown at EOF)
     const route = this.props.location.pathname.toLowerCase();
 
     const navbarCx = cx({
@@ -32,6 +27,29 @@ class Header extends React.Component {
       'bg-transparent': true,
     });
 
+    const navLinks = content.links.map((link, i) => {
+      link.classes.unshift('nav-link');
+      return (
+        <li
+          key={i}
+          className="nav-item">
+          {
+            link.type === 'link'
+            ? <Link
+                to={link.href}
+                className={cx(link.classes)}>
+                {link.text}
+              </Link>
+            : <a
+                href={link.href}
+                className={cx(link.classes)}>
+                {link.text}
+              </a>
+          }
+        </li>
+      )
+    });
+
     return (
       <div className="header">
         <Navbar navbarCx={navbarCx}>
@@ -40,15 +58,7 @@ class Header extends React.Component {
           </button>
           <div className={navItemsClasses} id="navbar-collapse">
             <ul className="navbar-nav">
-              <li key={1} className="nav-item">
-                <Link to="/Home" className="nav-link">Home</Link>
-              </li>
-              <li key={2} className="nav-item">
-                <a href="#footer" className={contactClasses}>Contact</a>
-              </li>
-              <li key={3} className="nav-item">
-                <Link to="/Test" className={testButtonClasses}>Values Test</Link>
-              </li>
+              {navLinks}
             </ul>
           </div>
         </Navbar>
@@ -57,4 +67,5 @@ class Header extends React.Component {
   }
 }
 
+// withRouter allows Header to contain router information such as current route
 export default withRouter(Header);
