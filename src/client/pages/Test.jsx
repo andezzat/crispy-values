@@ -150,11 +150,10 @@ export default class Test extends React.Component {
   };
 
   submit() {
-    // Do something
     const collections = survey.formCollections
       .filter((col) => col.type === 'questionnaire')
 
-    var allValues = [];
+    const allValues = [];
 
     collections.forEach((col) => {
       col.steps.forEach((step) => {
@@ -167,20 +166,96 @@ export default class Test extends React.Component {
       });
     });
 
-    // console.log(allValues.reduce((acc, val) => acc + val.intrinsic));
+    const maxValues = {};
 
-    // const maxIntrinsic = allValues.reduce((acc, val) => {
-    //   acc + val.intrinsic
-    // }, 0);
-    //
-    // const maxValues = {
-    //   intrinsic: allValues.reduce((acc, val) => acc + val.intrinsic),
-    //   instrumental: allValues.reduce((acc, val) => acc + val.instrumental),
-    //   self: allValues.reduce((acc, val) => acc + val.self),
-    //   other: allValues.reduce((acc, val) => acc + val.other),
-    // };
+    // Calculates max score possible for a user to get for each value
+    for (var property in allValues[0]) {
+      if (allValues[0].hasOwnProperty(property)) {
+        maxValues[property] = allValues.reduce((acc, val) => {
+          return acc + (val[property] * 2)
+        }, 0);
+      }
+    }
 
-    console.log(maxIntrinsic);
+    const valueMappings = {};
+
+    // Calculates boundary for each value based on max score
+    // also checks if the max is valid
+    for (var property in maxValues) {
+      if (maxValues.hasOwnProperty(property)) {
+        const value = maxValues[property];
+        if (value === NaN || value === null || value === 0) {
+          // Got a problem with one of the maxValues
+          console.log('We\'ve got a problem chief...');
+          valueMappings[property] = {
+            max: maxValues[property],
+            valid: false
+          };
+        } else {
+          // All good, proceed!
+          valueMappings[property] = {
+            max: maxValues[property],
+            boundary: maxValues[property] / 3,
+            valid: true,
+          };
+        }
+      }
+    }
+
+    for (var property in valueMappings) {
+      if (valueMappings.hasOwnProperty(property)) {
+        if (valueMappings[property].valid === false) {
+          // fail
+        }
+      }
+    }
+
+    const result = {
+      intrinsic: 0,
+      instrumental: 0,
+      self: 0,
+      other: 0
+    };
+
+    const dropdownMappings = [
+      { value: 'Not at all', multiplier: 0 },
+      { value: 'A little', multiplier: 1 },
+      { value: 'A lot', multiplier: 2 }
+    ];
+
+    // Calculates final score based on form from this.state.steps
+    this.state.steps.forEach((step) => {
+      if (step.collectionType === 'questionnaire') {
+        step.fields.forEach((field) => {
+          if (field.type === 'radio') {
+            for (var property in field.values) {
+              if (field.values.hasOwnProperty(property) && result.hasOwnProperty(property)) {
+                const scoreToAdd = field.values[property] * 2
+                result[property] += scoreToAdd;
+              }
+            }
+          } else if (field.type === 'dropdown') {
+            console.log('dropdown: ', field);
+            for (var property in field.values) {
+              if (field.values.hasOwnProperty(property) && result.hasOwnProperty(property)) {
+                const multiplier = dropdownMappings.find((mapping) => mapping.value === field.value).multiplier;
+                const scoreToAdd = field.values[property] * multiplier;
+                result[property] += scoreToAdd;
+              }
+            }
+          }
+        });
+      }
+    });
+
+    console.log(result);
+
+    const netValues = [];
+
+    netValues.push({
+      value: result.intrinsic > result.instrumental ? 'intrinsic' : 'instrumental',
+      score: Math.abs(result.intrinsic - result.instrumental)
+    });
   };
 
   render() {

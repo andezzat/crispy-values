@@ -28,7 +28,8 @@ class Header extends React.Component {
     });
 
     const navLinks = content.links.map((link, i) => {
-      link.classes.unshift('nav-link');
+      const linkClasses = link.classes.slice();
+      linkClasses.unshift('nav-link');
       return (
         <li
           key={i}
@@ -37,12 +38,12 @@ class Header extends React.Component {
             link.type === 'link'
             ? <Link
                 to={link.href}
-                className={cx(link.classes)}>
+                className={cx(linkClasses)}>
                 {link.text}
               </Link>
             : <a
                 href={link.href}
-                className={cx(link.classes)}>
+                className={cx(linkClasses)}>
                 {link.text}
               </a>
           }

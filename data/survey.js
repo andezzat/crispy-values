@@ -39,7 +39,7 @@ module.exports = {
               type: 'dropdown',
               validations: 'isIn',
               validationError: 'Please choose from the options above.',
-              required: false,
+              required: true,
               options: [ 'Advertising', 'Creative Industries', 'Education', 'Farming', 'Fashion', 'Finance', 'Information Technology', 'Infrastructure', 'Manufacturing', 'Media', 'Retail', 'Robotics', 'Space', 'Telecom', 'Student', 'Other' ]
             },
           ],
@@ -243,7 +243,7 @@ module.exports = {
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
-                intrumental: 0,
+                instrumental: 0,
                 self: 1,
                 other: 0
               },
@@ -262,7 +262,7 @@ module.exports = {
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
-                intrumental: 0,
+                instrumental: 0,
                 self: 1,
                 other: 0
               },
@@ -281,7 +281,7 @@ module.exports = {
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
-                intrumental: 0,
+                instrumental: 0,
                 self: 1,
                 other: 0
               },
@@ -300,7 +300,7 @@ module.exports = {
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
-                intrumental: 0,
+                instrumental: 0,
                 self: 1,
                 other: 2
               },
@@ -319,7 +319,7 @@ module.exports = {
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
-                intrumental: 0,
+                instrumental: 0,
                 self: 1,
                 other: 2
               },
@@ -338,7 +338,7 @@ module.exports = {
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
-                intrumental: 0,
+                instrumental: 0,
                 self: 0,
                 other: 1
               },
