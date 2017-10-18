@@ -40,7 +40,7 @@ module.exports = {
               validations: 'isIn',
               validationError: 'Please choose from the options above.',
               required: true,
-              options: [ 'Advertising', 'Creative Industries', 'Education', 'Farming', 'Fashion', 'Finance', 'Information Technology', 'Infrastructure', 'Manufacturing', 'Media', 'Retail', 'Robotics', 'Space', 'Telecom', 'Student', 'Other' ]
+              options: [ 'Agriculture, Forestry and Fishing', 'Mining', 'Manufacturing', 'Electricity, Gas and Water Supply', 'Construction', 'Wholesale Trade', 'Retail Trade', 'Accomodation, Cafes and Restaurants', 'Transport and Storage', 'Communication Services', 'Finance and Insurance', 'Property and Business Services', 'Government Administration and Defence', 'Education', 'Health and Community Services', 'Cultural and Recreational Services', 'Personal and Other Services' ]
             },
           ],
         },
