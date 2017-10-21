@@ -2,7 +2,7 @@ import React from 'react';
 import Formsy from 'formsy-react';
 import cx from 'classnames';
 
-import { survey } from '../../../data/';
+import { survey, postcodes } from '../../../data/';
 
 import Text from '../components/Survey/Form/Text.jsx';
 import Dropdown from '../components/Survey/Form/Dropdown.jsx';
@@ -38,6 +38,7 @@ export default class Test extends React.Component {
         step.fields.forEach((field, k) => {
           initialState.steps[stepNumber].fields.push({
             id: k,
+            name: field.name,
             type: field.type,
             indexes: [ i, j, k ],
             stepNumber,
@@ -53,35 +54,23 @@ export default class Test extends React.Component {
 
     this.state = initialState;
 
-    Formsy.addValidationRule('isDate', (values, value) => {
-      const today = new Date();
-
-      var DOB = '';
-      if (value !== undefined && value !== null && value !== '') {
-        DOB = value;
-      }
-
-      if (DOB.length !== 10 || DOB.slice(2, 3) !== '/' || DOB.slice(5, 6) !== '/') {
-        return false;
-      }
-
-      const day = DOB.slice(0, 2);
-      const month = DOB.slice(3, 5);
-      const year = DOB.slice(6, 11);
-
-      if (day < 1 || day > 31) {
-        return false;
-      }
-      if (month < 1 || month > 12) {
-        return false;
-      }
-      if (year > today.getFullYear() || year < 1900) {
-        return false;
-      }
-      return true;
+    // Add validation rules to Formsy
+    Formsy.addValidationRule('isBetween', (values, value, array) => {
+      return value >= array[0] && value <= array[1];
     });
     Formsy.addValidationRule('isIn', (values, value, array) => {
       return array.indexOf(value) >= 0;
+    });
+    Formsy.addValidationRule('isPostcode', (values, value, array) => {
+      var isValid = false;
+      if (this.state.steps[0].fields.find((field) => field.name === 'Country').value === 'Australia') {
+        postcodes.forEach((range) => {
+          isValid = value >= range.from && value <= range.to;
+        });
+      } else {
+        isValid = true;
+      }
+      return isValid;
     });
   };
 
@@ -168,7 +157,7 @@ export default class Test extends React.Component {
 
     const maxValues = {};
 
-    // Calculates max score possible for a user to get for each value
+    // Calculates max score possible for a user to obtain for each value
     for (var property in allValues[0]) {
       if (allValues[0].hasOwnProperty(property)) {
         maxValues[property] = allValues.reduce((acc, val) => {
@@ -223,19 +212,18 @@ export default class Test extends React.Component {
       { value: 'A lot', multiplier: 2 }
     ];
 
-    // Calculates final score based on form from this.state.steps
+    // Calculates final score for each value based on form from this.state.steps
     this.state.steps.forEach((step) => {
       if (step.collectionType === 'questionnaire') {
         step.fields.forEach((field) => {
           if (field.type === 'radio') {
             for (var property in field.values) {
               if (field.values.hasOwnProperty(property) && result.hasOwnProperty(property)) {
-                const scoreToAdd = field.values[property] * 2
+                const scoreToAdd = field.values[property] * 2; // Radio questions are always * 2
                 result[property] += scoreToAdd;
               }
             }
           } else if (field.type === 'dropdown') {
-            console.log('dropdown: ', field);
             for (var property in field.values) {
               if (field.values.hasOwnProperty(property) && result.hasOwnProperty(property)) {
                 const multiplier = dropdownMappings.find((mapping) => mapping.value === field.value).multiplier;
@@ -248,14 +236,43 @@ export default class Test extends React.Component {
       }
     });
 
-    console.log(result);
-
     const netValues = [];
 
+    // Caclulates net result for each value pair
     netValues.push({
       value: result.intrinsic > result.instrumental ? 'intrinsic' : 'instrumental',
       score: Math.abs(result.intrinsic - result.instrumental)
     });
+    netValues.push({
+      value: result.self > result.other ? 'self' : 'other',
+      score: Math.abs(result.self - result.other)
+    });
+
+    // Checks if net values are within boundaries or not
+    const valuesAttributes = netValues.map((net) => {
+      if (net.score > valueMappings[net.value].boundary) {
+        return net.value;
+      } else {
+        return 'none';
+      }
+    });
+
+    const profile = {};
+
+    // Works out profile name based on values attributes
+    if (valuesAttributes.every((value) => value === 'none')) {
+      profile.name = 'hybrid';
+    } else {
+      if (valuesAttributes.every((value) => value !== 'none')) {
+        profile.name = valuesAttributes[0] + '-' + valuesAttributes[1];
+      } else {
+        profile.name = valuesAttributes.find((value) => value !== 'none');
+      }
+    }
+
+    profile.result = result;
+
+    console.log(profile);
   };
 
   render() {
@@ -335,7 +352,7 @@ export default class Test extends React.Component {
                                   labelFor={field.name}
                                   labelText={field.label}
                                   value={this.state.steps[i].fields[j].value}
-                                  validations={field.validations}
+                                  validations={field.validations.values ? field.validations.name + ':' + JSON.stringify(field.validations.values) : field.validations.name}
                                   validationError={field.validationError}
                                   required={field.required}
                                 />
@@ -353,7 +370,7 @@ export default class Test extends React.Component {
                                   labelFor={field.name}
                                   labelText={field.label}
                                   value={this.state.steps[i].fields[j].value}
-                                  validations={field.validations + ':' + JSON.stringify(field.options)}
+                                  validations={field.validations.name + ':' + JSON.stringify(field.options)}
                                   validationError={field.validationError}
                                   options={options}
                                 />
@@ -369,7 +386,7 @@ export default class Test extends React.Component {
                                   name={j.toString()}
                                   value={this.state.steps[i].fields[j].value}
                                   options={field.options}
-                                  validations={field.validations + ':' + JSON.stringify(validValues)}
+                                  validations={field.validations.name + ':' + JSON.stringify(validValues)}
                                   validationError={field.validationError}
                                   required={field.required}
                                 />

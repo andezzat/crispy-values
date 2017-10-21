@@ -1,3 +1,7 @@
+import countries from './countries';
+
+const countryNames = countries.map((country) => country.name);
+
 module.exports = {
   formCollections: [
     {
@@ -12,23 +16,51 @@ module.exports = {
               name: 'Email',
               label: 'Email',
               type: 'text',
-              validations: 'isEmail',
+              validations: {
+                name: 'isEmail'
+              },
               validationError: 'Please enter a valid Email Address.',
               required: false
             },
             {
-              name: 'DateOfBirth',
-              label: 'Date of Birth',
+              name: 'Age',
+              label: 'Age',
               type: 'text',
-              validations: 'isDate',
-              validationError: 'Please enter your DOB in the format dd/mm/yyyy',
+              validations: {
+                name: 'isBetween',
+                values: [ 16, 99 ]
+              },
+              validationError: 'Please enter an Ahe between 16 and 99.',
               required: true
+            },
+            {
+              name: 'Postcode',
+              label: 'Postcode',
+              type: 'text',
+              validations: {
+                name: 'isPostcode'
+              },
+              validationError: 'Please enter a valid Postcode.',
+              required: true
+            },
+            {
+              name: 'Country',
+              label: 'Country',
+              type: 'dropdown',
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please select a country.',
+              required: true,
+              options: countryNames
             },
             {
               name: 'Gender',
               label: 'Gender',
               type: 'dropdown',
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose from the options above.',
               required: true,
               options: [ 'Male', 'Female', 'Other' ]
@@ -37,7 +69,9 @@ module.exports = {
               name: 'Industry',
               label: 'Industry',
               type: 'dropdown',
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose from the options above.',
               required: true,
               options: [ 'Agriculture, Forestry and Fishing', 'Mining', 'Manufacturing', 'Electricity, Gas and Water Supply', 'Construction', 'Wholesale Trade', 'Retail Trade', 'Accomodation, Cafes and Restaurants', 'Transport and Storage', 'Communication Services', 'Finance and Insurance', 'Property and Business Services', 'Government Administration and Defence', 'Education', 'Health and Community Services', 'Cultural and Recreational Services', 'Personal and Other Services' ]
@@ -57,7 +91,9 @@ module.exports = {
             {
               type: 'radio',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               options: [
                 {
@@ -85,7 +121,9 @@ module.exports = {
             {
               type: 'radio',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               options: [
                 {
@@ -113,7 +151,9 @@ module.exports = {
             {
               type: 'radio',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               options: [
                 {
@@ -141,7 +181,9 @@ module.exports = {
             {
               type: 'radio',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               options: [
                 {
@@ -169,7 +211,9 @@ module.exports = {
             {
               type: 'radio',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               options: [
                 {
@@ -197,7 +241,9 @@ module.exports = {
             {
               type: 'radio',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               options: [
                 {
@@ -239,7 +285,9 @@ module.exports = {
               label: 'A comfortable life (a prosperous life)',
               name: 'comfortableLife',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
@@ -258,7 +306,9 @@ module.exports = {
               label: 'An exciting life (a stimulating, active life)',
               name: 'excitingLife',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
@@ -277,7 +327,9 @@ module.exports = {
               label: 'A sense of accomplishment (lasting contribution)',
               name: 'accomplishment',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
@@ -296,7 +348,9 @@ module.exports = {
               label: 'A world at peace (free of war and conflict)',
               name: 'worldPeace',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
@@ -315,7 +369,9 @@ module.exports = {
               label: 'A world of beauty (beauty of nature and the arts)',
               name: 'wordlBeauty',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,
@@ -334,7 +390,9 @@ module.exports = {
               label: 'Equality (brotherhood, equal opportunity for all)',
               name: 'equality',
               required: true,
-              validations: 'isIn',
+              validations: {
+                name: 'isIn'
+              },
               validationError: 'Please choose one of the options.',
               values: {
                 intrinsic: 1,

@@ -3,6 +3,7 @@ import survey from './survey';
 import home from './home';
 import footer from './footer';
 import nav from './nav';
+import postcodes from './postcodes';
 
 module.exports = {
   profiles,
@@ -10,4 +11,5 @@ module.exports = {
   home,
   footer,
   nav,
+  postcodes,
 };
