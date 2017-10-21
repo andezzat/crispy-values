@@ -58,6 +58,7 @@ class Radio extends React.Component {
           </div>
         ))}
         {!this.props.required && this.props.getValue() !== '' && <small className={cx('form-text', 'text-muted')}>Optional</small>}
+        <hr />
       </fieldset>
     );
   };
