@@ -81,6 +81,7 @@ class Dropdown extends React.Component {
             );
           })}
         </select>
+        {!this.props.required && <small className={cx('form-text', 'text-muted')}>Optional</small>}
         <div className="invalid-feedback">{errorMessage}</div>
       </div>
     );

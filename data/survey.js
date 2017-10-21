@@ -30,7 +30,7 @@ module.exports = {
                 name: 'isBetween',
                 values: [ 16, 99 ]
               },
-              validationError: 'Please enter an Ahe between 16 and 99.',
+              validationError: 'Please enter an Age between 16 and 99.',
               required: true
             },
             {

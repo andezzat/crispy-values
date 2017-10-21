@@ -84,6 +84,7 @@ class Text extends React.Component {
         <label htmlFor={this.props.labelFor}>{this.props.labelText}</label>
         <input className={inputCx} type="text" onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.getValue()} />
         <div className="invalid-feedback">{errorMessage}</div>
+        {!this.props.required && <small className={cx('form-text', 'text-muted')}>Optional</small>}
       </div>
     );
   };

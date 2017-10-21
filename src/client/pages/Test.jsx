@@ -373,6 +373,7 @@ export default class Test extends React.Component {
                                   validations={field.validations.name + ':' + JSON.stringify(field.options)}
                                   validationError={field.validationError}
                                   options={options}
+                                  required={field.required}
                                 />
                               )
                             } else if (field.type === 'radio') {
