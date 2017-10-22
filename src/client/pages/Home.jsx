@@ -1,6 +1,5 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import $ from 'jquery';
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 

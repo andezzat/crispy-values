@@ -7,8 +7,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
 
+var Connection = require('tedious').Connection;
+var Request = require('tedious').Request;
+var TYPES = require('tedious').TYPES;
+
 var index = require('./routes/index');
 var users = require('./routes/users');
+var dbconfig = require('../config/').database.config.production;
 
 var app = express();
 
@@ -29,6 +34,77 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
+// Creating DB Connection
+var connection = new Connection(dbconfig);
+
+// DB Insert function
+// Takes a callback that returns error or if successful, inserted row ID
+const Insert = (data, callback) => {
+  var ID;
+
+  request = new Request(
+    'INSERT results (intAge, vchGender, vchIndustry, vchCountry, intPostcode, vchEmail, vchResultProfile, vchResultJSON) OUTPUT INSERTED.intResultID VALUES (@Age, @Gender, @Industry, @Country, @Postcode, @Email, @Profile, @Result)',
+    function (err, rowCount) {
+      if (err) {
+        callback(err);
+      } else {
+        console.log(rowCount + ' row(s) updated');
+        callback(null, rowCount, ID);
+      }
+  });
+  request.addParameter('Age', TYPES.Int, data.age);
+  request.addParameter('Gender', TYPES.VarChar, data.gender);
+  request.addParameter('Industry', TYPES.VarChar, data.industry);
+  request.addParameter('Country', TYPES.VarChar, data.country);
+  request.addParameter('Postcode', TYPES.Int, data.postcode);
+  request.addParameter('Email', TYPES.VarChar, data.email);
+  request.addParameter('Profile', TYPES.VarChar, data.profile);
+  request.addParameter('Result', TYPES.VarChar, JSON.stringify(data.result));
+  request.on('row', function (columns) {
+    columns.forEach(function (column) {
+      if (column.value !== null) {
+        ID = column.value;
+      }
+    });
+  });
+  connection.execSql(request);
+};
+
+connection.on('connect', (err) => {
+  console.log('Connecting...');
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Connected');
+  }
+});
+connection.on('error', (err) => {
+  console.log(err);
+  connection.close();
+});
+connection.on('end', () => {
+  console.log('Connection closed.');
+});
+
+app.post('/results', function(req, res) {
+  var data = req.body;
+  console.log('POST received');
+  Insert(data, (err, rowCount, insertedID) => {
+    if (err) {
+      res.status(500).send({
+          succes: false,
+          error: err
+        });
+    } else {
+      res.send({
+        success: true,
+        rowCount,
+      });
+    }
+  });
+});
+
 
 app.use('/', index);
 app.use('/users', users);

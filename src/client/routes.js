@@ -2,20 +2,28 @@ import App from './components/App.jsx';
 
 import Home from './pages/Home.jsx';
 import Test from './pages/Test.jsx';
+import Profile from './pages/Profile.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 const routes = [
   { component: App,
     routes: [
-      { path: '/',
+      {
+        path: '/',
         exact: true,
         component: Home
       },
-      { path: '/home',
+      {
+        path: '/home',
         component: Home
       },
-      { path: '/test',
+      {
+        path: '/test',
         component: Test
+      },
+      {
+        path: '/profile',
+        component: Profile
       },
       {
         path: '*',

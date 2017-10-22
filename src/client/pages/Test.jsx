@@ -1,6 +1,9 @@
 import React from 'react';
+import { findDOMNode } from 'react-dom';
+import { withRouter } from 'react-router-dom';
 import Formsy from 'formsy-react';
 import cx from 'classnames';
+import fetch from 'node-fetch';
 
 import { survey, postcodes } from '../../../data/';
 
@@ -10,7 +13,7 @@ import Radio from '../components/Survey/Form/Radio.jsx'
 
 import Row from '../../../lib/bootstrap/components/Row.jsx';
 
-export default class Test extends React.Component {
+class Test extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -144,8 +147,12 @@ export default class Test extends React.Component {
   };
 
   submit() {
+    this.disableButton();
+    const modal = findDOMNode(this.refs.modal);
+    $(modal).modal('show');
+
     const collections = survey.formCollections
-      .filter((col) => col.type === 'questionnaire')
+      .filter((col) => col.type === 'questionnaire');
 
     const allValues = [];
 
@@ -262,22 +269,48 @@ export default class Test extends React.Component {
       }
     });
 
-    const profile = {};
-
+    var profile;
     // Works out profile name based on values attributes
     if (valuesAttributes.every((value) => value === 'none')) {
-      profile.name = 'hybrid';
+      profile = 'hybrid';
     } else {
       if (valuesAttributes.every((value) => value !== 'none')) {
-        profile.name = valuesAttributes[0] + '-' + valuesAttributes[1];
+        profile = valuesAttributes[0] + '-' + valuesAttributes[1];
       } else {
-        profile.name = valuesAttributes.find((value) => value !== 'none');
+        profile = valuesAttributes.find((value) => value !== 'none');
       }
     }
 
-    profile.result = result;
+    const data = {};
 
-    console.log(profile);
+    // Chucks all user information fields from first step into data object;
+    this.state.steps[0].fields.forEach((field) => {
+      data[field.name.toLowerCase()] = field.value;
+    });
+    data.result = result;
+    data.profile = profile;
+
+    console.log(data);
+
+    fetch('http://localhost:3000/results', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json())
+    .then((json) => {
+      console.log(json);
+      if (json.success) {
+        this.props.history.push({
+          pathname: '/profile',
+          state: { result, profile }
+        });
+      } else {
+        // @TODO: Implement something to handle errors
+        console.log('We gots a problem!');
+        console.log(json.error);
+      }
+    });
   };
 
   render() {
@@ -323,6 +356,15 @@ export default class Test extends React.Component {
 
     return (
       <div>
+        <div id="loadingModal" ref="modal" className="modal" tabIndex="-1" role="dialog">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-body">
+                <p>Loading...</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="agency-start-project-intro">
         {this.state.currentStep === 0 &&
         <div className="container">
@@ -453,3 +495,5 @@ export default class Test extends React.Component {
     );
   };
 }
+
+export default withRouter(Test);
