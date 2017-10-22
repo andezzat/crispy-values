@@ -63,9 +63,14 @@ export default class Test extends React.Component {
     });
     Formsy.addValidationRule('isPostcode', (values, value, array) => {
       var isValid = false;
-      if (this.state.steps[0].fields.find((field) => field.name === 'Country').value === 'Australia') {
+      const countryField = this.state.steps[0].fields.find((field) => field.name === 'Country');
+
+      if (countryField.value === 'Australia') {
         postcodes.forEach((range) => {
-          isValid = value >= range.from && value <= range.to;
+          if (value >= range.from && value <= range.to) {
+            isValid = true;
+            return false; // Breaks out of loop
+          }
         });
       } else {
         isValid = true;
@@ -334,7 +339,7 @@ export default class Test extends React.Component {
           );
         })}
         </div>
-        <div className={surveyContainerCx}>
+        <div className={surveyContainerCx} id="survey">
           <Row>
             <div className="col-md-12">
               <div className="card">
