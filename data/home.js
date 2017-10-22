@@ -9,13 +9,11 @@ module.exports = {
   },
   intro: {
     title: 'Map Your Values',
-    text: `The values footprint tool gives you a personalized profile of what your values say about you in 5 minutes.
-    Similar to personality profiles, your values footprint can reveal something about who you are and how you see the world.
+    text: `Similar to personality profiles, your values footprint can reveal something about who you are and how you see the world.
     It can be a fun building block to help you think about how your values align with others as you go about your daily life.
-    It may help you think about whether a new job opportunity is a good fit.
-    Or your values footprint might get you reflecting on what others care about and help you frame your kickstarter campaign or partnership in a new light.
-    In fact, this is the first of many values tools we are developing. This one will get you started in getting a quick snap shot of what matters most to you.
-    Check back in the future to see our suite of values tools, where we hope to help you find interesting personal and professional matches based on what you care most about.`,
+    It may help you think about whether a new job opportunity is a good fit,
+    or your values footprint might get you reflecting on what others care about and help you frame your kickstarter campaign or partnership in a new light.
+    Take the free 5 minute test now.`,
   },
   portfolio: {
     title: 'The Values Profiles'

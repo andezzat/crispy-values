@@ -24,7 +24,7 @@ export default class Test extends React.Component {
     const initialState = {
       steps: [],
       canSubmit: false,
-      currentStep: 1,
+      currentStep: 0,
     };
 
     var stepNumber = 0;
@@ -319,6 +319,11 @@ export default class Test extends React.Component {
     return (
       <div>
         <div className="agency-start-project-intro">
+        {this.state.currentStep === 0 &&
+        <div className="container">
+          <h3>{survey.preStep.name}</h3>
+          <p>{survey.preStep.description}</p>
+        </div>}
         {collectionDetails.map((collection, i) => {
           return (
             this.state.currentStep >= collection.firstStep && this.state.currentStep <= collection.lastStep &&
@@ -334,6 +339,22 @@ export default class Test extends React.Component {
             <div className="col-md-12">
               <div className="card">
                 <div className="card-body">
+                  {this.state.currentStep === 0 &&
+                  <div className="step0">
+                    <p className="card-text">
+                      {survey.preStep.text}
+                    </p>
+                    <hr />
+                    <Row justifyContent="around">
+                      <button
+                        href={survey.preStep.buttons.privacy.href}
+                        className={cx(survey.preStep.buttons.privacy.classes)}>{survey.preStep.buttons.privacy.name}</button>
+                      <button
+                        onClick={() => { this.goToStep(survey.preStep.buttons.start.goToStep) }}
+                        className={cx(survey.preStep.buttons.start.classes)}>{survey.preStep.buttons.start.name}</button>
+                    </Row>
+                  </div>
+                  }
                   <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
                     {stepDetails.map((step, i) => {
                       const stepNumber = i + 1;
