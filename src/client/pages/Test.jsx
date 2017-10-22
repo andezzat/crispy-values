@@ -148,8 +148,7 @@ class Test extends React.Component {
 
   submit() {
     this.disableButton();
-    const modal = findDOMNode(this.refs.modal);
-    $(modal).modal('show');
+    $(findDOMNode(this.refs.modal)).modal('show');
 
     const collections = survey.formCollections
       .filter((col) => col.type === 'questionnaire');
@@ -301,8 +300,10 @@ class Test extends React.Component {
     .then((json) => {
       console.log(json);
       if (json.success) {
+        $(findDOMNode(this.refs.modal)).modal('hide');
         this.props.history.push({
           pathname: '/profile',
+          search: '?name=' + profile.replace('-', ''),
           state: { result, profile }
         });
       } else {

@@ -46,11 +46,11 @@ export default class Home extends React.Component {
         'values-avatar',
         p.image,
       );
-      var linkTo = `/profiles/${p.id}`;
+
       var animationDelay = p.id * 0.2
       return (
         <div key={key} className={portfolioCol}>
-          <Link to={linkTo} className="project">
+          <Link to={{ pathname: '/profile', search: '?name=' + p.name.toLowerCase() }} className="project">
             <span className="mask">
               <span className="info">
                 <h3>{p.name}</h3>
