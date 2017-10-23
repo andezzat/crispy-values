@@ -53,7 +53,7 @@ export default class Home extends React.Component {
           <Link to={{ pathname: '/profile', search: '?name=' + p.name.toLowerCase() }} className="project">
             <span className="mask">
               <span className="info">
-                <h3>{p.name}</h3>
+                <h3>{p.title}</h3>
                 <p>{p.subtitle}</p>
               </span>
               <span className="btn-see-project">Learn More</span>

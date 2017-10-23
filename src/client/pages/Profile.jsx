@@ -15,7 +15,8 @@ class Profile extends React.Component {
     this.redirect = this.redirect.bind(this);
 
     this.state = {
-      content: {}
+      content: {},
+      result: {}
     };
   }
 
@@ -26,6 +27,7 @@ class Profile extends React.Component {
   componentWillMount() {
     const params = queryString.parse(this.props.location.search);
     var content;
+    var result;
 
     if (params.name) {
       content = profiles.find((profile) => {
@@ -33,14 +35,19 @@ class Profile extends React.Component {
       });
     }
 
+    {/* result = this.props.location.state.result ? this.props.location.state.result : {}; */}
+
     this.setState({
       ...this.state,
       content,
+      result,
     });
   }
 
   render() {
     const content = this.state.content;
+    {/* const result = this.state.result; */}
+
     if (!content) {
       return null;
       this.redirect();
@@ -60,7 +67,6 @@ class Profile extends React.Component {
               <div className="customer-story-body">
                 <h2>Description</h2>
                 <p>{content.description}</p>
-                <h2>Report</h2>
                 <p>{content.report}</p>
                 <h2>Professional Matches</h2>
                 <p>{content.professionalMatch}</p>
