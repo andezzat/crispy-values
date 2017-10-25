@@ -17,7 +17,7 @@ module.exports = {
     links: [
       {
         text: 'Facebook',
-        href: 'www.facebook.com/valuesfootprint',
+        href: 'http://www.facebook.com/valuesfootprint',
         FAClasses: [
           'fa',
           'fa-facebook'
@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         text: 'Twitter',
-        href: 'www.twitter.com/valuesfootprint',
+        href: 'http://www.twitter.com/valuesfootprint',
         FAClasses: [
           'fa',
           'fa-twitter'
@@ -38,7 +38,7 @@ module.exports = {
     text: 'Got some feedback, an idea or more? Why not shoot us an email and we\'ll get back to you as soon as possible!',
     link: {
       text: 'Mail',
-      href: 'mailto:ecastellas@swin.edu.au',
+      href: 'mailto:valuesfootprint@gmail.com',
       FAClasses: [
         'fa',
         'fa-envelope'
