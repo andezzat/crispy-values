@@ -30,6 +30,15 @@ module.exports = {
           randomize: false,
           fields: [
             {
+              name: 'Reference',
+              label: 'Reference Code',
+              type: 'text',
+              validations: {
+              },
+              validationError: '',
+              required: false
+            },
+            {
               name: 'Email',
               label: 'Email',
               type: 'text',

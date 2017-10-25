@@ -286,12 +286,18 @@ class Test extends React.Component {
     this.state.steps[0].fields.forEach((field) => {
       data[field.name.toLowerCase()] = field.value;
     });
-    data.result = result;
+    data.valueMappings = valueMappings;
     data.profile = profile;
 
-    console.log(data);
+    for (var property in result) {
+      if (result.hasOwnProperty(property)) {
+        data[property] = result[property];
+      }
+    }
 
-    fetch('http://localhost:3000/results', {
+    const POSTURL = process.env.NODE_ENV === 'production' ? 'https://www.valuesfootprint.com/results' : 'http://localhost:3000/results';
+
+    fetch(POSTURL, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }

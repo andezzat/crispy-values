@@ -44,7 +44,7 @@ const Insert = (data, callback) => {
   var ID;
 
   request = new Request(
-    'INSERT results (intAge, vchGender, vchIndustry, vchCountry, intPostcode, vchEmail, vchResultProfile, vchResultJSON) OUTPUT INSERTED.intResultID VALUES (@Age, @Gender, @Industry, @Country, @Postcode, @Email, @Profile, @Result)',
+    'INSERT results (intAge, vchGender, vchIndustry, vchCountry, intPostcode, vchEmail, vchResultProfile, vchResultJSON, intResultIntrinsic, intResultInstrumental, intResultSelf, intResultOther, vchRefCode) OUTPUT INSERTED.intResultID VALUES (@Age, @Gender, @Industry, @Country, @Postcode, @Email, @Profile, @Result, @Intrinsic, @Instrumental, @Self, @Other, @Reference)',
     function (err, rowCount) {
       if (err) {
         callback(err);
@@ -60,7 +60,12 @@ const Insert = (data, callback) => {
   request.addParameter('Postcode', TYPES.Int, data.postcode);
   request.addParameter('Email', TYPES.VarChar, data.email);
   request.addParameter('Profile', TYPES.VarChar, data.profile);
-  request.addParameter('Result', TYPES.VarChar, JSON.stringify(data.result));
+  request.addParameter('Result', TYPES.VarChar, JSON.stringify(data.valueMappings));
+  request.addParameter('Intrinsic', TYPES.Int, data.intrinsic);
+  request.addParameter('Instrumental', TYPES.Int, data.instrumental);
+  request.addParameter('Self', TYPES.Int, data.self);
+  request.addParameter('Other', TYPES.Int, data.other);
+  request.addParameter('Reference', TYPES.VarChar, data.reference);
   request.on('row', function (columns) {
     columns.forEach(function (column) {
       if (column.value !== null) {
