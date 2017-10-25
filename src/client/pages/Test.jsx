@@ -3,7 +3,7 @@ import { findDOMNode } from 'react-dom';
 import { withRouter } from 'react-router-dom';
 import Formsy from 'formsy-react';
 import cx from 'classnames';
-import fetch from 'node-fetch';
+import 'whatwg-fetch';
 
 import { survey, postcodes } from '../../../data/';
 

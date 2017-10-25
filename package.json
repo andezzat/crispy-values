@@ -5,8 +5,8 @@
   "scripts": {
     "start": "webpack -p && node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "build:watch": "webpack --colors --progress --watch",
-    "build": "webpack -p"
+    "build:watch": "webpack --config webpack.dev.js --colors --progress --watch",
+    "build": "webpack -p --config webpack.prod.js"
   },
   "dependencies": {
     "babel-register": "^6.26.0",
@@ -21,7 +21,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.2.1",
     "morgan": "~1.8.1",
-    "node-fetch": "^1.7.3",
+    "node-sass": "^4.5.3",
     "node-sass-middleware": "0.9.8",
     "nodemon": "^1.11.0",
     "pug": "~2.0.0-beta11",
@@ -36,7 +36,8 @@
     "sass-loader": "^6.0.6",
     "serve-favicon": "~2.4.2",
     "tedious": "^2.0.0",
-    "url-loader": "^0.5.9"
+    "url-loader": "^0.5.9",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -46,6 +47,9 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "extract-text-webpack-plugin": "^3.0.0",
-    "webpack": "^3.5.5"
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "uglifyjs-webpack-plugin": "^1.0.1",
+    "webpack": "^3.8.1",
+    "webpack-merge": "^4.1.0"
   }
 }
