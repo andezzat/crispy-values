@@ -20,7 +20,7 @@ module.exports = [
       id: 2,
       name: 'Intrinsic-Self',
       title: 'The Sun',
-      subtitle: 'The Philosophy of Care',
+      subtitle: 'Philosophy of Care',
       image: 'img-intrinsicself',
       description: `You see the inherent worth in things as well as the relationship of those things to you.
       You believe that beings have value simply because they exist.
@@ -37,7 +37,7 @@ module.exports = [
       id: 3,
       name: 'Self',
       title: 'The Venn',
-      subtitle: 'The Philosophy of Connection',
+      subtitle: 'Philosophy of Connection',
       image: 'img-self',
       description: `You see the world in the way that it relates and connects to you and your experiences.
       You believe that places have meaning because of the people in them.
@@ -55,7 +55,7 @@ module.exports = [
       id: 4,
       name: 'Instrumental-Self',
       title: 'The Exchange',
-      subtitle: 'The Philosophy of Reward',
+      subtitle: 'Philosophy of Reward',
       image: 'img-instrumentalself',
       description: `You see the practical utility and purpose in things.
       You believe that something holds value because of the benefits it creates for yourself and others.
@@ -72,7 +72,7 @@ module.exports = [
       id: 5,
       name: 'Instrumental',
       title: 'The Diamond',
-      subtitle: 'The Philosophy of Utility',
+      subtitle: 'Philosophy of Utility',
       image: 'img-instrumental',
       description: `You see the value in things based on their benefit to you or others.
       You believe that something has worth because of its use or purpose. For example, you believe in hard work because of the rewards it can deliver.
@@ -87,7 +87,7 @@ module.exports = [
       id: 6,
       name: 'Instrumental-Other',
       title: 'The Partnership',
-      subtitle: 'The Philosophy of Empowerment',
+      subtitle: 'Philosophy of Empowerment',
       image: 'img-instrumentalother',
       description: `You see the goodness in others. You believe that you have a responsibility to help others.
       For example, if you see someone in need, and you are able to help, you will feel you have a meaningful role to play.
@@ -103,7 +103,7 @@ module.exports = [
       id: 7,
       name: 'Other',
       title: 'The Altruist',
-      subtitle: 'The Philosophy of Benevolence',
+      subtitle: 'Philosophy of Benevolence',
       image: 'img-other',
       description: `You see the world in terms of justice, love, and altruism.
       You believe deeply in helping people, particularly the most vulnerable.
