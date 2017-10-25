@@ -5,6 +5,8 @@ import Formsy from 'formsy-react';
 import cx from 'classnames';
 import 'whatwg-fetch';
 
+import { Line } from 'react-progressbar.js'
+
 import { survey, postcodes } from '../../../data/';
 
 import Text from '../components/Survey/Form/Text.jsx';
@@ -28,6 +30,7 @@ class Test extends React.Component {
       steps: [],
       canSubmit: false,
       currentStep: 0,
+      progress: 0
     };
 
     var stepNumber = 0;
@@ -130,6 +133,7 @@ class Test extends React.Component {
     this.setState({
       ...this.state,
       currentStep: stepNumber,
+      progress: stepNumber / this.state.steps.length
     });
   };
 
@@ -387,6 +391,13 @@ class Test extends React.Component {
             </div>
           );
         })}
+        </div>
+        <div className={cx('container', 'progress')}>
+          <Line
+            progress={this.state.progress}
+            options={{ strokeWidth: 2, color: '#28a745' }}
+            containerClassName={'.progressBar'}
+            />
         </div>
         <div className={surveyContainerCx} id="survey">
           <Row>

@@ -39,6 +39,10 @@
   background-size: 70%;
 }
 
+#homeValues .mask {
+  background: rgba(68, 144, 105, 0.8)
+}
+
 .img-intrinsic {
   background-image: url('#{$imagesPath}/avatars/intrinsic_avatar.png');
 }
