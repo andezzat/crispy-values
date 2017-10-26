@@ -27,6 +27,7 @@
     "pug": "~2.0.0-beta11",
     "query-string": "^5.0.0",
     "react": "^15.6.1",
+    "react-cookie": "^2.1.1",
     "react-dom": "^15.6.1",
     "react-progressbar.js": "^0.2.0",
     "react-redux": "^5.0.6",
@@ -37,6 +38,7 @@
     "sass-loader": "^6.0.6",
     "serve-favicon": "~2.4.2",
     "tedious": "^2.0.0",
+    "universal-cookie-express": "^2.1.0",
     "url-loader": "^0.5.9",
     "whatwg-fetch": "^2.0.3"
   },

@@ -1,9 +1,11 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import { withRouter } from 'react-router-dom';
+import { instanceOf } from 'prop-types';
 import Formsy from 'formsy-react';
 import cx from 'classnames';
 import 'whatwg-fetch';
+import { withCookies, Cookies } from 'react-cookie';
 
 import { Line } from 'react-progressbar.js'
 
@@ -16,6 +18,10 @@ import Radio from '../components/Survey/Form/Radio.jsx'
 import Row from '../../../lib/bootstrap/components/Row.jsx';
 
 class Test extends React.Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
   constructor(props, context) {
     super(props, context);
 
@@ -272,26 +278,27 @@ class Test extends React.Component {
       }
     });
 
-    var profile;
+    var profileName;
     // Works out profile name based on values attributes
     if (valuesAttributes.every((value) => value === 'none')) {
-      profile = 'hybrid';
+      profileName = 'hybrid';
     } else {
       if (valuesAttributes.every((value) => value !== 'none')) {
-        profile = valuesAttributes[0] + '-' + valuesAttributes[1];
+        profileName = valuesAttributes[0] + '-' + valuesAttributes[1];
       } else {
-        profile = valuesAttributes.find((value) => value !== 'none');
+        profileName = valuesAttributes.find((value) => value !== 'none');
       }
     }
 
-    const data = {};
+    const data = {
+      valueMappings,
+      profileName,
+    };
 
     // Chucks all user information fields from first step into data object;
     this.state.steps[0].fields.forEach((field) => {
       data[field.name.toLowerCase()] = field.value;
     });
-    data.valueMappings = valueMappings;
-    data.profile = profile;
 
     for (var property in result) {
       if (result.hasOwnProperty(property)) {
@@ -301,6 +308,8 @@ class Test extends React.Component {
 
     const POSTURL = process.env.NODE_ENV === 'production' ? 'https://www.valuesfootprint.com/results' : 'http://localhost:3000/results';
 
+    const { cookies } = this.props;
+
     fetch(POSTURL, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -308,19 +317,39 @@ class Test extends React.Component {
     })
     .then(res => res.json())
     .then((json) => {
-      console.log(json);
-      if (json.success) {
-        $(findDOMNode(this.refs.modal)).modal('hide');
-        this.props.history.push({
-          pathname: '/profile',
-          search: '?name=' + profile.replace('-', ''),
-          state: { result, profile }
-        });
-      } else {
-        // @TODO: Implement something to handle errors
+      if (json.error) {
         console.log('We gots a problem!');
         console.log(json.error);
       }
+    });
+
+    // Insert each value's name and its score inside an object into values array
+    // This makes it easy to map into React Markup
+    const values = [];
+    for (var property in result) {
+      values.push({
+        name: property[0].toUpperCase() + property.slice(1),
+        score: result[property]
+      });
+    }
+
+    // Store profile data in cookies
+    const resultCookie = JSON.stringify({
+      profileName,
+      values,
+      valueMappings
+    });
+    console.log('Result Cookie will be set to: ', JSON.parse(resultCookie));
+    cookies.set('result', resultCookie, { path: '/' });
+    console.log('Result Cookie is: ', cookies.get('result'));
+
+    // Hide modal
+    $(findDOMNode(this.refs.modal)).modal('hide');
+
+    // Redirect user to their profile
+    this.props.history.push({
+      pathname: '/profile',
+      search: '?name=' + profileName.replace('-', ''),
     });
   };
 
@@ -514,4 +543,4 @@ class Test extends React.Component {
   };
 }
 
-export default withRouter(Test);
+export default withRouter(withCookies(Test));

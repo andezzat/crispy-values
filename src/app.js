@@ -5,6 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var cookiesMiddleware = require('universal-cookie-express');
 var sassMiddleware = require('node-sass-middleware');
 
 var Connection = require('tedious').Connection;
@@ -27,6 +28,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cookiesMiddleware());
 app.use(sassMiddleware({
   src: path.join(__dirname, '..', 'public'),
   dest: path.join(__dirname, '..', 'public'),
@@ -59,7 +61,7 @@ const Insert = (data, callback) => {
   request.addParameter('Country', TYPES.VarChar, data.country);
   request.addParameter('Postcode', TYPES.Int, data.postcode);
   request.addParameter('Email', TYPES.VarChar, data.email);
-  request.addParameter('Profile', TYPES.VarChar, data.profile);
+  request.addParameter('Profile', TYPES.VarChar, data.profileName);
   request.addParameter('Result', TYPES.VarChar, JSON.stringify(data.valueMappings));
   request.addParameter('Intrinsic', TYPES.Int, data.intrinsic);
   request.addParameter('Instrumental', TYPES.Int, data.instrumental);
@@ -92,6 +94,9 @@ connection.on('end', () => {
   console.log('Connection closed.');
 });
 
+// Listen to POST requests on /results
+// These are form submission requests from React
+// We use Tedious (SQL Server Driver) to perform DB inserts
 app.post('/results', function(req, res) {
   var data = req.body;
   console.log('POST received');
@@ -112,7 +117,7 @@ app.post('/results', function(req, res) {
 
 
 app.use('/', index);
-app.use('/users', users);
+// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -14,7 +14,8 @@ module.exports = [
       They can easily appreciate different perspectives and empathize with others. They value experiences and enjoy getting lost in the moment.
       They tend to enjoy simplicity, beauty, calm, peace and comfort.`,
       professionalMatch: `You may feel more satisfied and engaged working at a company that prioritizes protecting the environment, fighting for human rights or animal rights, or working for justice causes.
-      You will also appreciate companies that respect you as an individual and allow you degrees of autonomy and freedom, and use systems such as results-only-work-environments, flexibile working hours, and remote working.`
+      You will also appreciate companies that respect you as an individual and allow you degrees of autonomy and freedom, and use systems such as results-only-work-environments, flexibile working hours, and remote working.`,
+      possibleJobs: ["Sustainability consultant","Advocacy campaigner","Social worker","Human rights/Environmental lawyer","Social impact consultant","Purpose-driven entrepreneur","Doctor","Educator/Teacher","Writer"]
     },
     {
       id: 2,
@@ -31,7 +32,8 @@ module.exports = [
       They tend to enjoy nurturing the people and places that feel closest to them.`,
       professionalMatch: `You may feel more satisfied and engaged working at a company that prioritizes protecting the environment, fighting for human rights or animal rights, or working for justice causes.
       You will also appreciate companies that respect you as an individual and allow you degrees of autonomy and freedom, and use systems such as results-only-work-environments.
-      However, you will also need the balance of working in teams and social settings to feel connected to others.`
+      However, you will also need the balance of working in teams and social settings to feel connected to others.`,
+      possibleJobs: ["Nurse or Nurse Practitioner","Sustainability consultant","Advocacy campainer","Social worker","Human rights/Environmental lawyer","Purpose-driven entrepreneur","Doctor","Educator/Teacher","Environmental or Civil Engineer"]
     },
     {
       id: 3,
@@ -49,7 +51,8 @@ module.exports = [
       professionalMatch: `You may feel more satisfied and engaged working at a company that benefits people you know and people in your community.
       For example, you may find that you appreciate the model of cooperatively owned companies that provides benefits to members.
       Or you may enjoy a company that serves its local community.
-      You will also appreciate companies that create balanced opportunities for individual and team-oriented work.`
+      You will also appreciate companies that create balanced opportunities for individual and team-oriented work.`,
+      possibleJobs: ["Nurse or Nurse Practitioner","General Practitioner","Social worker"," Educator/Teacher","Environmental or Civil Engineer","Financial Advisor","Community Outreach Manager","Community Organizer","Investor Relations Manager","Event Coordinator"]
     },
     {
       id: 4,
@@ -66,7 +69,8 @@ module.exports = [
       They value intellect, logic, reason and ambition.They tend to enjoy hard work and the associated rewards.`,
       professionalMatch: `You may feel more satisfied and engaged working at a company that prioritizes financial growth and offers you opportunities to work hard and make more money.
       This will be especially true if you are given leadership opportunities and the ability to take risks in your role.
-      You will also appreciate companies that are ambitious and aim to achieve global scale, such as multinational companies and companies with recognizable brand value.`
+      You will also appreciate companies that are ambitious and aim to achieve global scale, such as multinational companies and companies with recognizable brand value.`,
+      possibleJobs: ["Sales Manager","Business Development Manager","Corporate Lawyer","Manager","Business Executive","Business Associate","Investment Banker","Engineer","Software Developer","Anaesthetist","Entrepreneur","Accountant","Economist"]
     },
     {
       id: 5,
@@ -81,7 +85,8 @@ module.exports = [
       They value the rewards of hard work, including financial as well as non-financial wealth.
       They tend to enjoy recognition from others and knowing they have done something useful.`,
       professionalMatch: `You may feel more satisfied and engaged working at a company that prioritizes financial growth and financial rewards.
-      You will also appreciate companies that acknowledge and value you and your contributions, incentivize good performance, such as companies with performance-based pay structures and employee recognition programs.`
+      You will also appreciate companies that acknowledge and value you and your contributions, incentivize good performance, such as companies with performance-based pay structures and employee recognition programs.`,
+      possibleJobs: ["Doctor/Surgeon","Anaesthetist","Corporate Lawyer","Business Executive","Business Associate","Investment Banker","Engineer","Software Developer","Entrepreneur","Accountant","Operations Manager","Research and Development Manager"]
     },
     {
       id: 6,
@@ -97,7 +102,8 @@ module.exports = [
       They value respect, honesty, and love.
       They tend to enjoy knowing that their work has helped another person or being.`,
       professionalMatch: `You may feel more satisfied and engaged working at a company that prioritizes helping people through health, education, well-being, or philanthropic offerings.
-      You will also appreciate companies that create an opportunity for travel, connection with others, and are not afraid to tackle hard problems. `
+      You will also appreciate companies that create an opportunity for travel, connection with others, and are not afraid to tackle hard problems. `,
+      possibleJobs: ["Sustainability consultant","Advocacy campainer","International development worker","Human rights/Environmental lawyer","Social impact consultant","Purpose-driven entrepreneur","Doctor","Educator/Teacher","Nurse/Nurse Practitioner","Fundraiser","Grant-maker"]
     },
     {
       id: 7,
@@ -114,7 +120,8 @@ module.exports = [
       They value things of beauty, peace, and love.They tend to enjoy the feeling of helping others.`,
       professionalMatch: `You may feel more satisfied and engaged working at a company that prioritizes protecting the environment, fighting for human rights or animal rights, or working for justice causes.
       You will also appreciate companies that allow you to connect one-on-one with others.
-      You may also appreciate working in a smaller organisation or team that feels more intimate.`
+      You may also appreciate working in a smaller organisation or team that feels more intimate.`,
+      possibleJobs: ["Sustainability consultant","Advocacy campainer","International development worker","Human rights/Environmental lawyer","Purpose-driven entrepreneur","Doctor","Educator/Teacher","Nurse/Nurse Practitioner","Fundraiser","Grant-maker","Psychologist"]
     },
     {
       id: 8,
@@ -129,8 +136,9 @@ module.exports = [
       They can easily appreciate what feels like the right thing to do.
       They value justice, equality, and security.They tend to enjoy quieter environments and helping others.`,
       professionalMatch: `You may feel more satisfied and engaged working at a company that prioritizes protecting the environment, fighting for human rights or animal rights, or working for justice causes.
-      You will also appreciate companies that respect you as an individual and allow you degrees of autonomy and freedom, and use systems such as results-only-work-environments, flexibile working hours, and remote working.`
-    },
+      You will also appreciate companies that respect you as an individual and allow you degrees of autonomy and freedom, and use systems such as results-only-work-environments, flexibile working hours, and remote working.`,
+      possibleJobs: ["Sustainability consultant","Advocacy campainer","International development worker","Human rights/Environmental lawyer","Purpose-driven entrepreneur"," Educator/Teacher","Nurse/Nurse Practitioner","Researcher","Fundraiser Psychologist","Writer","Film-maker"]
+  },
     {
       id: 9,
       name: 'Hybrid',
@@ -145,6 +153,7 @@ module.exports = [
       They value intellect as well as emotion, independence as well as connections with others.
       They tend to enjoy learning and a balanced approach to life.`,
       professionalMatch: `You may feel more satisfied and engaged working at a company that works across industries, projects, or issues.
-      You will also appreciate companies that allow you to learn different things and try on different roles.`
+      You will also appreciate companies that allow you to learn different things and try on different roles.`,
+      possibleJobs: ["Consultant","Researcher","Educator/Teacher","Engineer","Software Developer","Project Manager","Business Manager/Executive","Strategist","Research and Development Manager"]
     },
   ];
