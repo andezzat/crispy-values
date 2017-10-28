@@ -324,7 +324,7 @@ class Test extends React.Component {
     });
 
     // Insert each value's name and its score inside an object into values array
-    // This makes it easy to map into React Markup
+    // This makes it easy to map into React markup
     const values = [];
     for (var property in result) {
       values.push({
@@ -339,9 +339,6 @@ class Test extends React.Component {
       values,
       valueMappings
     });
-    console.log('Result Cookie will be set to: ', JSON.parse(resultCookie));
-    cookies.set('result', resultCookie, { path: '/' });
-    console.log('Result Cookie is: ', cookies.get('result'));
 
     // Hide modal
     $(findDOMNode(this.refs.modal)).modal('hide');
