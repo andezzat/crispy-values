@@ -13,7 +13,7 @@ module.exports = {
     It can be a fun building block to help you think about how your values align with others as you go about your daily life.
     It may help you think about whether a new job opportunity is a good fit,
     or your values footprint might get you reflecting on what others care about and help you frame your kickstarter campaign or partnership in a new light.
-    Take the free 5 minute test now.`,
+    Take the free test now.`,
   },
   portfolio: {
     title: 'The Values Profiles'

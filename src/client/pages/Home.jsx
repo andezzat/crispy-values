@@ -14,6 +14,7 @@ import PhotographyCTA from '../../../lib/spacial/components/PhotographyCTA.jsx';
 import { profiles } from '../../../data/';
 import { home as content } from '../../../data/';
 
+
 export default class Home extends React.Component {
   componentDidMount() {
     // JQuery initialisation for Hero Parallax

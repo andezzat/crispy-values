@@ -11,11 +11,20 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.scss$/, loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader']) },
-      { test: /\.(woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000&name=[name].[ext]&outputPath=../fonts/' },
-      { test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=100000' },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+      }
     ]
   },
   plugins: [

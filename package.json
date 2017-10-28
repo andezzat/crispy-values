@@ -16,7 +16,6 @@
     "css-loader": "^0.28.5",
     "debug": "~2.6.3",
     "express": "~4.15.2",
-    "file-loader": "^0.11.2",
     "formsy-react": "^0.19.5",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.2.1",
@@ -39,7 +38,6 @@
     "serve-favicon": "~2.4.2",
     "tedious": "^2.0.0",
     "universal-cookie-express": "^2.1.0",
-    "url-loader": "^0.5.9",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
