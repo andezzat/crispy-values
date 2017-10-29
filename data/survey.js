@@ -304,7 +304,7 @@ module.exports = {
       type: 'questionnaire',
       steps: [
         {
-          randomize: false,
+          randomize: true,
           fields: [
             {
               type: 'dropdown',
@@ -381,8 +381,8 @@ module.exports = {
               values: {
                 intrinsic: 1,
                 instrumental: 0,
-                self: 1,
-                other: 2
+                self: 0,
+                other: 1
               },
               options: [
                 'Not at all',
@@ -402,8 +402,8 @@ module.exports = {
               values: {
                 intrinsic: 1,
                 instrumental: 0,
-                self: 1,
-                other: 2
+                self: 0,
+                other: 1
               },
               options: [
                 'Not at all',
@@ -425,6 +425,651 @@ module.exports = {
                 instrumental: 0,
                 self: 0,
                 other: 1
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Family security (taking care of loved ones)',
+              name: 'familySecurity',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 0,
+                other: 1
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Freedom (independence, free choice)',
+              name: 'freedom',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Happiness (contentedness)',
+              name: 'happiness',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            }
+          ]
+        },
+        {
+          randomize: true,
+          fields: [
+            {
+              type: 'dropdown',
+              label: 'Inner harmony (freedom from inner conflict)',
+              name: 'innerHarmony',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Mature love (sexual and spiritual intimacy)',
+              name: 'matureLove',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 0,
+                other: 1
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'National security (protection from attack)',
+              name: 'nationalSecurity',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 0,
+                other: 1
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Pleasure (an enjoyable, leisurely life)',
+              name: 'equality',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Saved (eternal life)',
+              name: 'saved',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Self-respect (self-esteem)',
+              name: 'self-respect',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Social recognition (respect, admiration)',
+              name: 'socialRecognition',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 0,
+                other: 1
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'True friendship (close companionship)',
+              name: 'trueFriendship',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 0,
+                other: 1
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Wisdom (a mature understanding of life)',
+              name: 'wisdom',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 1,
+                instrumental: 0,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            }
+          ]
+        },
+        {
+          randomize: true,
+          fields: [
+            {
+              type: 'dropdown',
+              label: 'Ambitious (hard-working, aspiring)',
+              name: 'ambitious',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Broadminded (open-minded)',
+              name: 'broadminded',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 0,
+                other: 1
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Capable (competent, effective)',
+              name: 'capable',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Cheerful (lighthearted, joyful)',
+              name: 'cheerful',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Clean (neat, tidy)',
+              name: 'clean',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Courageous (standing up for your beliefs)',
+              name: 'courageous',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Forgiving (wiling to pardon others)',
+              name: 'forgiving',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 0,
+                other: 2
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Helpful (working for the welfare of others)',
+              name: 'helpful',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 0,
+                other: 2
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Honest (sincere, truthful)',
+              name: 'honest',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 0,
+                other: 1
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            }
+          ]
+        },
+        {
+          randomize: true,
+          fields: [
+            {
+              type: 'dropdown',
+              label: 'Imaginative (daring, creative)',
+              name: 'imaginative',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Independent (self-reliant, self-sufficient)',
+              name: 'independent',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 2,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Intellectual (intelligent, reflective)',
+              name: 'intellectual',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Logical (consistent, rational)',
+              name: 'logical',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 1,
+                other: 0
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Loving (affectionate, tender)',
+              name: 'loving',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 0,
+                other: 1
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Obedient (dutiful, respectful)',
+              name: 'obedient',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 0,
+                other: 2
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Polite (courteous, well-mannered)',
+              name: 'polite',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 0,
+                other: 2
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Responsible (dependable, reliable)',
+              name: 'responsible',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 0,
+                other: 2
+              },
+              options: [
+                'Not at all',
+                'A little',
+                'A lot'
+              ]
+            },
+            {
+              type: 'dropdown',
+              label: 'Self-controlled (restrained, self-disciplined)',
+              name: 'self-controlled',
+              required: true,
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose one of the options.',
+              values: {
+                intrinsic: 0,
+                instrumental: 1,
+                self: 1,
+                other: 0
               },
               options: [
                 'Not at all',
