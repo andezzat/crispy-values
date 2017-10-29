@@ -60,8 +60,8 @@ class Test extends React.Component {
             required: field.required,
           });
         });
+        stepNumber++;
       });
-      stepNumber++;
     });
 
     this.state = initialState;
@@ -339,6 +339,7 @@ class Test extends React.Component {
       values,
       valueMappings
     });
+    cookies.set('result', resultCookie);
 
     // Hide modal
     $(findDOMNode(this.refs.modal)).modal('hide');
