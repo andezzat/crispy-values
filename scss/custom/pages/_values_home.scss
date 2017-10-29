@@ -43,6 +43,15 @@
   background: rgba(68, 144, 105, 0.8)
 }
 
+#homeTestimonial {
+  .quote-mark {
+    color: #a5c59e;
+  }
+  .quote {
+    color: #499c7e;
+  }
+}
+
 .img-intrinsic {
   background-image: url('#{$imagesPath}/avatars/intrinsic_avatar.png');
 }

@@ -85,7 +85,7 @@ export default class Home extends React.Component {
             {profileItems}
           </Row>
         </AgencyPortfolio>
-        <AgencyTestimonial>
+        <AgencyTestimonial id="homeTestimonial">
           <div className="quote">
             <span className="quote-mark">“</span>
             {content.testimonial.text}
