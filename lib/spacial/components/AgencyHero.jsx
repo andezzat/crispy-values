@@ -6,7 +6,7 @@ export default class AgencyHero extends Component {
     return (
       <div className="agency-hero" id={this.props.id}>
         <section className="container">
-          <div className="hero-text">
+          <div className="hero-text" ref={this.props.textRef}>
             {this.props.children}
           </div>
         </section>

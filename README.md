@@ -10,7 +10,10 @@
 This project is basically a React front-end with server-side rendering. It leverages React Router and it's run on Express.js. Webpack is used to bundle the application into a JS file for the front end, and to also bundle SASS (`.scss`) files into one styles file in CSS.
 
 ### Webpack
-Webpack is the bundler of choice, its configuration file can be found in the root directory as `webpack.config.js`.
+Webpack is the bundler of choice; it bundles up all `.scss` files into one `.css` file and does the same with `.jsx` & `.js` files; bundling them into the one `app.js` file for the client-side.
+
+#### Configuration
+Webpack has three (3) configuration files, all starting with 'webpack' and located in the root directory of the project. `webpack.common.js` contains build definition for both development and produciton. `webpack.dev.js` contains development-only build configuration. `webpack.prod.js` contains production-only configuration attributes, such as setting the `NODE_ENV` to 'production', minifying the outputted CSS file and uglifying the JS file.
 
 #### React App
 The entry point for the front-end app is `/src/client/app.js`, by using other components within the project, Webpack will know what to bundle in order to make a self-contained file that is required in the Pug view statically. This file is found in `/public/javascripts/`.
@@ -24,7 +27,7 @@ The `www` entry file requires the app with all its configuration from `/src/app.
 
 #### App.js
 `/src/app.js` is the bread and butter of the Express.js server. It tells it what middleware to use and sets the static assets folder to `/public/`.
-It also imports the routes from `/src/routes/`.
+It imports the routes from `/src/routes/`.
 It also tells Express to use Pug as its view engine, and to find the static view files in `/views/`.
 
 ### Routing
@@ -32,7 +35,7 @@ When the user sends a request to the server for the first time they will be deal
 
 #### Routes.js
 This file found in `/src/client/` contains all possible routes that the React Router needs to know about, and tells it what React component it should render.
-The App component is always rendered as this is the parent component which houses the whole React application and inside it all other pages rendered.
+The App component is always rendered as this is the parent component which houses the whole React application and inside it all other pages are rendered according to the route the user has chosen.
 
 #### App.jsx
 Found in `/src/client/`, this file is what renders the whole app to the `#app` HTML div element that is defined in the static Pug view.
@@ -56,4 +59,13 @@ The HTML body has a block named content, `index.pug` replaces the content block 
 The `layout.pug` view also imports the bundled `app.js` file which contains all React components and React Router, which are required for the user to navigate and traverse the React App once the page has loaded initially.
 
 #### Data
-Data used throughout the front-end can currently be found in `/data.js`. It only holds values profiles data for now.
+Data used throughout the front-end can currently be found in the `/data` folder. This folder houses a few different data files that are plugged into a few React pages/components for content purposes.
+
+#### Forms & Validation
+This project utilises `Formsy-React` which is a great library for building React forms with built-in tools to make validation and form management easy. All form fields are located in `/src/client/components/Survey/`.
+
+### Database
+This project uses `Tedious`, Microsoft's SQL Server driver for Node.js environments.
+
+#### Form Submission
+Forms submitted via the Test are sent through a POST request made to the web server (Express), which processes this request by using Tedious to insert a new row into the SQL Server database according to the `database.js` config file in `/config/`.

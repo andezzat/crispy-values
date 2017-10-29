@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "webpack -p --config webpack.prod.js && cross-env NODE_ENV=production node ./bin/www ",
     "dev": "nodemon ./bin/www",
-    "build:watch": "webpack --colors --progress --watch",
-    "build": "webpack -p"
+    "build:watch": "webpack --config webpack.dev.js --colors --progress --watch",
+    "build": "webpack -p --config webpack.prod.js"
   },
   "dependencies": {
     "babel-register": "^6.26.0",
@@ -16,14 +16,19 @@
     "css-loader": "^0.28.5",
     "debug": "~2.6.3",
     "express": "~4.15.2",
-    "file-loader": "^0.11.2",
+    "formsy-react": "^0.19.5",
     "isomorphic-fetch": "^2.2.1",
+    "jquery": "^3.2.1",
     "morgan": "~1.8.1",
+    "node-sass": "^4.5.3",
     "node-sass-middleware": "0.9.8",
     "nodemon": "^1.11.0",
     "pug": "~2.0.0-beta11",
+    "query-string": "^5.0.0",
     "react": "^15.6.1",
+    "react-cookie": "^2.1.1",
     "react-dom": "^15.6.1",
+    "react-progressbar.js": "^0.2.0",
     "react-redux": "^5.0.6",
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
@@ -31,7 +36,9 @@
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
     "serve-favicon": "~2.4.2",
-    "url-loader": "^0.5.9"
+    "tedious": "^2.0.0",
+    "universal-cookie-express": "^2.1.0",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -40,7 +47,11 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.1.0",
     "extract-text-webpack-plugin": "^3.0.0",
-    "webpack": "^3.5.5"
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "uglifyjs-webpack-plugin": "^1.0.1",
+    "webpack": "^3.8.1",
+    "webpack-merge": "^4.1.0"
   }
 }

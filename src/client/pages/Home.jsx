@@ -1,4 +1,5 @@
 import React from 'react';
+import { findDOMNode } from 'react-dom';
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
@@ -10,38 +11,55 @@ import AgencyPortfolio from '../../../lib/spacial/components/AgencyPortfolio.jsx
 import AgencyTestimonial from '../../../lib/spacial/components/AgencyTestimonial.jsx';
 import PhotographyCTA from '../../../lib/spacial/components/PhotographyCTA.jsx';
 
-import { profiles } from '../../../data';
+import { profiles } from '../../../data/';
+import { home as content } from '../../../data/';
+
 
 export default class Home extends React.Component {
+  componentDidMount() {
+    // JQuery initialisation for Hero Parallax
+    const hero = findDOMNode(this.refs.hero)
+    const text = findDOMNode(this.refs.hero.refs.text);
+
+    if (!window.utils.isMobile()) {
+      $(window).scroll(() => {
+        const scroll = $(window).scrollTop(),
+        slowScroll = scroll/4,
+        slowBg = 50 + slowScroll;
+
+        $(hero).css('background-position', 'center ' + slowBg + '%');
+      });
+
+      utils.parallax_text($(text), $(text).position().top);
+    }
+  };
+
   render() {
-    const CTAButtonClasses = cx(
-      'btn-pill-sm',
-      'btn-pill-success',
-    );
+    const CTAButtonCx = cx(content.CTA.link.classes);
     const portfolioCol = cx(
       'col-lg-4',
       'col-md-6',
     );
 
     const profileItems = profiles.map((p, key) => {
-      var picClasses = cx(
+      var picCx = cx(
         'pic',
         'values-avatar',
         p.image,
       );
-      var linkTo = `/profiles/${p.id}`;
+
       var animationDelay = p.id * 0.2
       return (
         <div key={key} className={portfolioCol}>
-          <Link to={linkTo} className="project">
+          <Link to={{ pathname: '/profile', search: '?name=' + p.name.toLowerCase() }} className="project">
             <span className="mask">
               <span className="info">
-                <h3>{p.name}</h3>
+                <h3>{p.title}</h3>
                 <p>{p.subtitle}</p>
               </span>
               <span className="btn-see-project">Learn More</span>
             </span>
-            <span className={picClasses} />
+            <span className={picCx} />
           </Link>
         </div>
       );
@@ -49,31 +67,20 @@ export default class Home extends React.Component {
 
     return (
       <div>
-        <AgencyHero id="homeHero">
-          <h1>Ever wondered what your values profile looks like?</h1>
-          {/* <h1 data-animate="fadeInDown" data-animate-delay="0.1">Ever wondered what your values profile looks like?</h1> */}
+        <AgencyHero id="homeHero" ref="hero" textRef="text">
+          <h1>{content.hero.title}</h1>
           <p>
-            It Starts With You
-            {/* <span data-animate="fadeIn" data-animate-delay="0.9">It </span>
-            <span data-animate="fadeIn" data-animate-delay="1.1">Starts </span>
-            <span data-animate="fadeIn" data-animate-delay="1.3">With </span>
-            <span data-animate="fadeIn" data-animate-delay="1.5">You</span> */}
+            {content.hero.text}
           </p>
-          <Link to="/test">Take The Test</Link>
+          <Link to={content.hero.link.href}>{content.hero.link.text}</Link>
         </AgencyHero>
         <AgencyIntro>
-          <h3>Map Your Values</h3>
+          <h3>{content.intro.title}</h3>
           <hr />
-          <p>
-            The work 'etak' refers to a navigation system used by Pacific Islanders
-            who followed star path patterns and imaginary islands to arrive at
-            undiscovered new land in the middle of the ocean. We love the idea
-            of setting sail for something possible on the horizon, so we have
-            borrowed the term to describe our values navigation tool.
-          </p>
+          <p>{content.intro.text}</p>
         </AgencyIntro>
         <AgencyPortfolio id="homeValues">
-          <h2>The Values Profiles</h2>
+          <h2>{content.portfolio.title}</h2>
           <Row>
             {profileItems}
           </Row>
@@ -81,25 +88,21 @@ export default class Home extends React.Component {
         <AgencyTestimonial>
           <div className="quote">
             <span className="quote-mark">“</span>
-            The Values Footprints test has provided some insight into what I value most in both my personal and work lives.
-            It's a great tool to jumpstart the process of self-discovery and another step towards finding my true calling.
+            {content.testimonial.text}
           </div>
           <div className="author">
-            <img src="images/uifaces/9.jpg" />
+            <img src={content.testimonial.image} />
             <span className="name">
-              Andrew Salib
-              <span className="company">Swinburne</span>
+              {content.testimonial.author.name}
+              <span className="company">{content.testimonial.author.company}</span>
             </span>
           </div>
         </AgencyTestimonial>
         <PhotographyCTA id="homePhotographyCTA">
           <section className="container">
-            <h3>Not Convinced Yet?</h3>
-            <p>
-              We strongly believe that the path to self-actualization begins with
-              learning more about you. What better way to do that than to map your values?
-            </p>
-            <Link to="/test" className={CTAButtonClasses}>Map My Values</Link>
+            <h3>{content.CTA.title}</h3>
+            <p>{content.CTA.text}</p>
+            <Link to={content.CTA.link.href} className={CTAButtonCx}>{content.CTA.link.text}</Link>
           </section>
         </PhotographyCTA>
       </div>

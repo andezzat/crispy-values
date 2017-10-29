@@ -6,48 +6,43 @@ import Row from '../../../lib/bootstrap/components/Row.jsx';
 
 import SpacialFooter from '../../../lib/spacial/components/Footer.jsx';
 
+import { footer as content } from '../../../data/';
+
 export default class Footer extends React.Component {
   render() {
-    const facebookFA = cx(
-      'fa',
-      'fa-facebook'
-    );
-    const twitterFA = cx(
-      'fa',
-      'fa-twitter'
-    );
-    const mailFA = cx(
-      'fa',
-      'fa-envelope'
-    );
+    const links = content.siteMap.links.map((link, i) => (
+      <li key={i}><Link to={link.href}>{link.text}</Link></li>
+    ));
+    const socialLinks = content.social.links.map((link, i) => (
+      <li key={i}><a href={link.href}><i className={cx(link.FAClasses)} />{link.text}</a></li>
+    ));
+
     return (
       <SpacialFooter style="light" id="footer">
         <Row>
           <div className="col-md-4">
-            <div className="title">Values Footprints</div>
+            <div className="title">{content.siteMap.title}</div>
             <ul className="menu">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/test">Values Test</Link></li>
+              {links}
             </ul>
           </div>
           <div className="col-md-4">
-            <div className="title">Social Media</div>
+            <div className="title">{content.social.title}</div>
             <ul className="menu">
-              <li><a href="http://www.facebook.com/values-footprints"><i className={facebookFA}></i>Facebook</a></li>
-              <li><a href="http://www.twitter.com/values-footprints"><i className={twitterFA}></i>Twitter</a></li>
+              {socialLinks}
             </ul>
           </div>
           <div className="col-md-4">
-            <div className="title">Get In Touch</div>
+            <div className="title">{content.contact.title}</div>
             <ul className="menu">
-              <p>Got some feedback, an idea or more? Why not shoot us an email and we'll get back to you as soon as possible!</p>
-              <li><a href="mailto:ecastellas@swin.edu.au"><i className={mailFA}></i>Mail</a></li>
+              <p>{content.contact.text}</p>
+              <li><a href={content.contact.link.href}><i className={cx(content.contact.link.FAClasses)}></i>{content.contact.link.text}</a></li>
             </ul>
           </div>
         </Row>
         <div className="bottom">
           <ul>
-            <li><Link to="/privacy">Privacy</Link></li>
+            <li><Link to={content.bottom.link.href}>{content.bottom.link.text}</Link></li>
           </ul>
         </div>
       </SpacialFooter>

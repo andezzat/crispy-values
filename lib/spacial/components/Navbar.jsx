@@ -2,21 +2,24 @@ import React from 'react';
 import cx from 'classnames';
 
 export default class Navbar extends React.Component {
-  render() {
-    const navbarClasses = cx(
+  static defaultProps = {
+    navbarCx: cx(
       'navbar',
       'navbar-expand-lg',
       'navbar-dark',
       'bg-transparent',
-    );
-    const containerClasses = cx(
+    ),
+  };
+
+  render() {
+    const containerCx = cx(
       'container',
       'no-override',
     )
 
     return (
-      <nav className={navbarClasses} role="navigation">
-        <div className={containerClasses}>
+      <nav className={this.props.navbarCx} role="navigation">
+        <div className={containerCx}>
           {this.props.children}
         </div>
       </nav>

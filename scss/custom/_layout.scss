@@ -107,7 +107,7 @@ body {
 
     @include transition(color .2s linear);
   }
-  
+
   .dropdown-menu {
     @media(min-width: 992px) {
       border-color: #fbfbfb;
