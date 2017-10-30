@@ -4,6 +4,7 @@ import home from './home';
 import footer from './footer';
 import nav from './nav';
 import postcodes from './postcodes';
+import privacy from './privacy';
 
 module.exports = {
   profiles,
@@ -12,4 +13,5 @@ module.exports = {
   footer,
   nav,
   postcodes,
+  privacy,
 };
