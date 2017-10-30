@@ -237,14 +237,14 @@ class Test extends React.Component {
           // Got a problem with one of the maxValues
           console.log('We\'ve got a problem chief...');
           valueMappings[property] = {
-            max: maxValues[property],
+            max: value,
             valid: false
           };
         } else {
           // All good, proceed!
           valueMappings[property] = {
-            max: maxValues[property],
-            boundary: maxValues[property] / 3,
+            max: value,
+            boundary: value / survey.boundaryDivisor,
             valid: true,
           };
         }

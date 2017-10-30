@@ -3,6 +3,7 @@ import countries from './countries';
 const countryNames = countries.map((country) => country.name);
 
 module.exports = {
+  boundaryDivisor: 4,
   preStep: {
     name: 'Before We Begin',
     description: 'Please make sure you\'ve read our privacy terms and conditions before you begin your Values Footprint test.',
