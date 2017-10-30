@@ -21,13 +21,25 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
 
+    this.init = this.init.bind(this);
+
     this.state = {
       content: {},
       result: {}
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.state === 'result') {
+      window.location.reload();
+    }
+  }
+
   componentWillMount() {
+    this.init();
+  }
+
+  init() {
     const params = queryString.parse(this.props.location.search);
     var content;
     var result;
