@@ -21,10 +21,10 @@ module.exports = {
   testimonial: {
     text: `The Values Footprints test has provided some insight into what I value most in both my personal and work lives.
     It's a great tool to jumpstart the process of self-discovery and another step towards finding my true calling.`,
-    image: 'images/uifaces/9.jpg',
+    image: 'images/paul.jpg',
     author: {
-      name: 'Andrew Salib',
-      company: 'Swinburne'
+      name: 'Paul Kindler',
+      company: 'Swinburne',
     }
   },
   CTA: {

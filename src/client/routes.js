@@ -2,6 +2,7 @@ import App from './components/App.jsx';
 
 import Home from './pages/Home.jsx';
 import Test from './pages/Test.jsx';
+import Privacy from './pages/Privacy.jsx';
 import Profile from './pages/Profile.jsx';
 import NotFound from './pages/NotFound.jsx';
 
@@ -27,6 +28,10 @@ const routes = [
       {
         path: '/profile',
         component: Profile
+      },
+      {
+        path: '/privacy',
+        component: Privacy
       },
       {
         path: '*',

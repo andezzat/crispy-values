@@ -27,6 +27,8 @@ class Header extends React.Component {
       'bg-transparent': true,
     });
 
+    const logo = route === '/' || route === '/home' ? 'images/logo_white.png' : 'images/logo_black.png';
+
     const navLinks = content.links.map((link, i) => {
       const linkClasses = link.classes.slice();
       linkClasses.unshift('nav-link');
@@ -54,6 +56,9 @@ class Header extends React.Component {
     return (
       <div className="header">
         <Navbar navbarCx={navbarCx}>
+          <Link to='/home' className="navbar-brand">
+            <img src={logo} className={cx('d-lg-inline', 'd-none', 'w-25', 'mr-2')} />
+          </Link>
           <button className="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
             <span className="navbar-toggler-icon" />
           </button>

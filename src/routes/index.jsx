@@ -22,7 +22,7 @@ router.get('*', (req, res) => {
       </StaticRouter>
     </CookiesProvider>
   );
-  res.render('index', {title: 'Values Footprints', data: false, content});
+  res.render('index', { title: 'Values Footprint', data: false, content });
 });
 
 module.exports = router;

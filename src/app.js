@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cookiesMiddleware = require('universal-cookie-express');
 var sassMiddleware = require('node-sass-middleware');
+var favicon = require('serve-favicon');
 
 var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
@@ -35,6 +36,7 @@ app.use(sassMiddleware({
   indentedSyntax: false, // true = .sass and false = .scss
   sourceMap: true
 }));
+app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Creating DB Connection

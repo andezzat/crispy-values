@@ -25,6 +25,7 @@ class Test extends React.Component {
   constructor(props, context) {
     super(props, context);
 
+    this.shuffleArray = this.shuffleArray.bind(this);
     this.enableButton = this.enableButton.bind(this);
     this.disableButton = this.disableButton.bind(this);
     this.updateSteps = this.updateSteps.bind(this);
@@ -34,12 +35,14 @@ class Test extends React.Component {
 
     const initialState = {
       steps: [],
+      collectionDetails: [],
+      stepDetails: [],
       canSubmit: false,
       currentStep: 0,
       progress: 0
     };
 
-    var stepNumber = 0;
+    let stepNumber = 0;
     survey.formCollections.forEach((collection, i) => {
       collection.steps.forEach((step, j) => {
         initialState.steps.push({
@@ -61,6 +64,31 @@ class Test extends React.Component {
           });
         });
         stepNumber++;
+      });
+    });
+
+    survey.formCollections.forEach((collection, i) => {
+      var firstStep;
+      if (i === 0) {
+        firstStep = 1;
+      } else {
+        firstStep = initialState.collectionDetails[i - 1].lastStep + 1;
+      }
+
+      initialState.collectionDetails.push({
+        name: collection.name,
+        description: collection.description,
+        firstStep,
+        lastStep: firstStep + collection.steps.length - 1,
+      });
+    });
+
+    survey.formCollections.forEach((collection, i) => {
+      collection.steps.forEach((step, j) => {
+        if (step.randomize) {
+          this.shuffleArray(step.fields);
+        }
+        initialState.stepDetails.push(step);
       });
     });
 
@@ -90,6 +118,17 @@ class Test extends React.Component {
       return isValid;
     });
   };
+
+  shuffleArray(array) {
+    let i = array.length - 1;
+    for (i > 0; i--;) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }
 
   isStepValid(stepNumber) {
     const step = this.state.steps[stepNumber - 1];
@@ -198,14 +237,14 @@ class Test extends React.Component {
           // Got a problem with one of the maxValues
           console.log('We\'ve got a problem chief...');
           valueMappings[property] = {
-            max: maxValues[property],
+            max: value,
             valid: false
           };
         } else {
           // All good, proceed!
           valueMappings[property] = {
-            max: maxValues[property],
-            boundary: maxValues[property] / 3,
+            max: value,
+            boundary: value / survey.boundaryDivisor,
             valid: true,
           };
         }
@@ -352,6 +391,8 @@ class Test extends React.Component {
   };
 
   render() {
+    const { collectionDetails, stepDetails } = this.state;
+
     const submitBtnCx = cx({
       'btn': true,
       'btn-success': true,
@@ -367,30 +408,6 @@ class Test extends React.Component {
       'container',
       'survey',
     );
-
-    const collectionDetails = [];
-    survey.formCollections.forEach((collection, i) => {
-      var firstStep;
-      if (i === 0) {
-        firstStep = 1;
-      } else {
-        firstStep = collectionDetails[i - 1].lastStep + 1;
-      }
-
-      collectionDetails.push({
-        name: collection.name,
-        description: collection.description,
-        firstStep,
-        lastStep: firstStep + collection.steps.length - 1,
-      });
-    });
-
-    const stepDetails = [];
-    survey.formCollections.forEach((collection, i) => {
-      collection.steps.forEach((step, j) => {
-        stepDetails.push(step);
-      });
-    });
 
     return (
       <div>
@@ -437,10 +454,7 @@ class Test extends React.Component {
                       {survey.preStep.text}
                     </p>
                     <hr />
-                    <Row justifyContent="around">
-                      <button
-                        href={survey.preStep.buttons.privacy.href}
-                        className={cx(survey.preStep.buttons.privacy.classes)}>{survey.preStep.buttons.privacy.name}</button>
+                    <Row justifyContent="center">
                       <button
                         onClick={() => { this.goToStep(survey.preStep.buttons.start.goToStep) }}
                         className={cx(survey.preStep.buttons.start.classes)}>{survey.preStep.buttons.start.name}</button>

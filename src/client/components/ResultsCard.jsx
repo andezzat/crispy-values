@@ -50,7 +50,7 @@ export default class ResultsCard extends React.Component {
         <Row justifyContent="around">
           <div className="col-md-8">
             <Link
-              to={{ pathname: '/profile', search: '?name=' + profileName.toLowerCase() }}
+              to={{ pathname: '/profile', search: '?name=' + profileName.toLowerCase(), state: 'result' }}
               className={cx('btn-shadow', 'btn-shadow-sm', 'btn-shadow-primary', 'mb-3', 'mt-2')}>
               Visit Profile
             </Link>
