@@ -67,5 +67,9 @@ This project utilises `Formsy-React` which is a great library for building React
 ### Database
 This project uses `Tedious`, Microsoft's SQL Server driver for Node.js environments.
 
+#### Configuration
+An example of a Database config for Tedious to use to connect to an instance of SQL Server can be found in `config/database_example.js`.
+Make sure to copy this file as `database.js` and modify it so the settings suit the Production database. There's currently no setup for a local DB instance, but that can also be easily done.
+
 #### Form Submission
 Forms submitted via the Test are sent through a POST request made to the web server (Express), which processes this request by using Tedious to insert a new row into the SQL Server database according to the `database.js` config file in `/config/`.
