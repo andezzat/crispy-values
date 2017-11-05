@@ -18,31 +18,44 @@ module.exports = {
   },
   formCollections: [
     {
-      name: 'Your Details',
-      description: 'We need to collect some personal information about you before we begin. We promise we won\'t divulge any of your details for any marketing purposes.',
+      name: 'Before We Begin',
+      description: 'Please fill in your details below. Fields marked with a * are mandatory.',
       type: 'details',
       steps: [
         {
           randomize: false,
           fields: [
             {
-              name: 'Reference',
-              label: 'Reference Code',
-              type: 'text',
+              name: 'Country',
+              label: 'Country',
+              type: 'dropdown',
               validations: {
+                name: 'isIn'
               },
-              validationError: '',
-              required: false
+              validationError: 'Please select a country.',
+              required: true,
+              options: countryNames
             },
             {
-              name: 'Email',
-              label: 'Email',
+              name: 'Postcode',
+              label: 'Postcode',
               type: 'text',
               validations: {
-                name: 'isEmail'
+                name: 'isPostcode'
               },
-              validationError: 'Please enter a valid Email Address.',
-              required: false
+              validationError: 'Please enter a valid Postcode.',
+              required: true
+            },
+            {
+              name: 'Industry',
+              label: 'Industry',
+              type: 'dropdown',
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose from the options above.',
+              required: true,
+              options: [ 'Agriculture, Forestry and Fishing', 'Mining', 'Manufacturing', 'Electricity, Gas and Water Supply', 'Construction', 'Wholesale Trade', 'Retail Trade', 'Accomodation, Cafes and Restaurants', 'Transport and Storage', 'Communication Services', 'Finance and Insurance', 'Property and Business Services', 'Government Administration and Defence', 'Education', 'Health and Community Services', 'Cultural and Recreational Services', 'Personal and Other Services', 'Other', 'Unemployed' ]
             },
             {
               name: 'Age',
@@ -56,27 +69,6 @@ module.exports = {
               required: true
             },
             {
-              name: 'Postcode',
-              label: 'Postcode',
-              type: 'text',
-              validations: {
-                name: 'isPostcode'
-              },
-              validationError: 'Please enter a valid Postcode.',
-              required: true
-            },
-            {
-              name: 'Country',
-              label: 'Country',
-              type: 'dropdown',
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please select a country.',
-              required: true,
-              options: countryNames
-            },
-            {
               name: 'Gender',
               label: 'Gender',
               type: 'dropdown',
@@ -88,15 +80,24 @@ module.exports = {
               options: [ 'Male', 'Female', 'Other' ]
             },
             {
-              name: 'Industry',
-              label: 'Industry',
-              type: 'dropdown',
+              name: 'Email',
+              label: 'Email',
+              type: 'text',
               validations: {
-                name: 'isIn'
+                name: 'isEmail'
               },
-              validationError: 'Please choose from the options above.',
-              required: true,
-              options: [ 'Agriculture, Forestry and Fishing', 'Mining', 'Manufacturing', 'Electricity, Gas and Water Supply', 'Construction', 'Wholesale Trade', 'Retail Trade', 'Accomodation, Cafes and Restaurants', 'Transport and Storage', 'Communication Services', 'Finance and Insurance', 'Property and Business Services', 'Government Administration and Defence', 'Education', 'Health and Community Services', 'Cultural and Recreational Services', 'Personal and Other Services', 'Other', 'Unemployed' ]
+              validationError: 'Please enter a valid Email Address.',
+              required: false
+            },
+            {
+              name: 'Reference',
+              label: 'Reference Code',
+              description: 'Please provide your reference code if applicable, otherwise, please leave blank.',
+              type: 'text',
+              validations: {
+              },
+              validationError: '',
+              required: false
             },
           ],
         },
