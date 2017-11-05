@@ -1,11 +1,12 @@
 import countries from './countries';
 
+// Extracts country names only for each country.
 const countryNames = countries.map((country) => country.name);
 
 module.exports = {
   boundaryDivisor: 4,
   preStep: {
-    name: 'Before We Begin',
+    title: 'Before We Begin',
     description: 'Please make sure you\'ve read our privacy terms and conditions before you begin your Values Footprint test.',
     text: 'You can find our privacy statement at the bottom of the page, by starting this test you agree to our terms and conditions.',
     buttons: {
@@ -18,7 +19,7 @@ module.exports = {
   },
   formCollections: [
     {
-      name: 'Before We Begin',
+      title: 'Before We Begin',
       description: 'Please fill in your details below. Fields marked with a * are mandatory.',
       type: 'details',
       steps: [
@@ -104,7 +105,7 @@ module.exports = {
       ],
     },
     {
-      name: 'Which is more true?',
+      title: 'Which is more true?',
       description: 'Select the statement that is more true for you.',
       type: 'questionnaire',
       steps: [
@@ -296,7 +297,7 @@ module.exports = {
       ],
     },
     {
-      name: 'What do you value?',
+      title: 'What do you value?',
       description: 'Choose the option that best reflects how much you esteem each personal attribute or value below.',
       type: 'questionnaire',
       steps: [
