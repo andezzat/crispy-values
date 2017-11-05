@@ -31,7 +31,6 @@ class Test extends React.Component {
     this.updateSteps = this.updateSteps.bind(this);
     this.isStepValid = this.isStepValid.bind(this);
     this.goToStep = this.goToStep.bind(this);
-    this.handleError = this.handleError.bind(this);
     this.submit = this.submit.bind(this);
 
     const initialState = {
@@ -196,12 +195,6 @@ class Test extends React.Component {
     });
   };
 
-  handleError(err) {
-    this.props.history.push({
-      pathname: '/error'
-    });
-  }
-
   submit() {
     this.disableButton();
     $(findDOMNode(this.refs.modal)).modal('show');
@@ -242,7 +235,11 @@ class Test extends React.Component {
         const value = maxValues[property];
         if (value === NaN || value === null || value === 0) {
           // Got a problem with one of the maxValues
-          this.handleError('One of the max values is ', value);
+          console.log('We\'ve got a problem chief...');
+          valueMappings[property] = {
+            max: value,
+            valid: false
+          };
         } else {
           // All good, proceed!
           valueMappings[property] = {
@@ -257,7 +254,7 @@ class Test extends React.Component {
     for (var property in valueMappings) {
       if (valueMappings.hasOwnProperty(property)) {
         if (valueMappings[property].valid === false) {
-          this.handleError('One of the max values is ', value);
+          // fail
         }
       }
     }
@@ -356,6 +353,13 @@ class Test extends React.Component {
       method: 'POST',
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json())
+    .then((json) => {
+      if (json.error) {
+        console.log('We gots a problem!');
+        console.log(json.error);
+      }
     });
 
     // Insert each value's name and its score inside an object into values array
@@ -473,7 +477,6 @@ class Test extends React.Component {
                                   onUpdate={this.updateSteps}
                                   name={field.name}
                                   labelFor={field.name}
-                                  description={field.description}
                                   labelText={field.label}
                                   value={this.state.steps[i].fields[j].value}
                                   validations={field.validations.values ? field.validations.name + ':' + JSON.stringify(field.validations.values) : field.validations.name}
@@ -492,7 +495,6 @@ class Test extends React.Component {
                                   onUpdate={this.updateSteps}
                                   name={field.name}
                                   labelFor={field.name}
-                                  description={field.description}
                                   labelText={field.label}
                                   value={this.state.steps[i].fields[j].value}
                                   validations={field.validations.name + ':' + JSON.stringify(field.options)}

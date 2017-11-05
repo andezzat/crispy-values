@@ -4,7 +4,6 @@ import Home from './pages/Home.jsx';
 import Test from './pages/Test.jsx';
 import Privacy from './pages/Privacy.jsx';
 import Profile from './pages/Profile.jsx';
-import Error from './pages/Error.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 // React Router routes
@@ -33,10 +32,6 @@ const routes = [
       {
         path: '/privacy',
         component: Privacy
-      },
-      {
-        path: '/error',
-        component: Error
       },
       {
         path: '*',

@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import cx from 'classnames';
 
-import Row from '../../../lib/bootstrap/components/Row.jsx';
 import Navbar from '../../../lib/spacial/components/Navbar.jsx';
 
 import { nav as content } from '../../../data/';
@@ -28,7 +27,7 @@ class Header extends React.Component {
       'bg-transparent': true,
     });
 
-    const logo = 'images/logo.png';
+    const logo = route === '/' || route === '/home' ? 'images/logo_white.png' : 'images/logo_black.png';
 
     const navLinks = content.links.map((link, i) => {
       const linkClasses = link.classes.slice();
@@ -58,8 +57,7 @@ class Header extends React.Component {
       <div className="header">
         <Navbar navbarCx={navbarCx}>
           <Link to='/home' className="navbar-brand">
-            <img src={logo} className={cx('d-lg-inline', 'd-none', 'mr-2')} />
-            Values Footprint
+            <img src={logo} className={cx('d-lg-inline', 'd-none', 'w-25', 'mr-2')} />
           </Link>
           <button className="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
             <span className="navbar-toggler-icon" />

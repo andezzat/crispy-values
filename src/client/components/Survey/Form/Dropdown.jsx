@@ -73,7 +73,7 @@ class Dropdown extends React.Component {
 
     return (
       <div className={fieldCx}>
-        <label htmlFor={this.props.labelFor}>{this.props.labelText}{this.props.required && ' *' || ' (optional)'}</label>
+        <label htmlFor={this.props.labelFor}>{this.props.labelText}</label>
         <select className={inputCx} onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.getValue()}>
           {this.props.options.map((opt, key) => {
             return (
@@ -81,7 +81,7 @@ class Dropdown extends React.Component {
             );
           })}
         </select>
-        {!this.props.description && <small className={cx('form-text', 'text-muted')}>{this.props.description}</small>}
+        {!this.props.required && <small className={cx('form-text', 'text-muted')}>Optional</small>}
         <div className="invalid-feedback">{errorMessage}</div>
       </div>
     );

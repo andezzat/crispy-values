@@ -125,7 +125,6 @@ class Profile extends React.Component {
                   </div>
                   {data && data.profileName !== content.name.toLowerCase() &&
                   <div className="block">
-                    <hr />
                     <div className="title">Your Result</div>
                     <ResultsCard profileName={data.profileName} values={data.values} valueMappings={data.valueMappings} />
                   </div>

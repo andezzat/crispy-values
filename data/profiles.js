@@ -137,7 +137,7 @@ module.exports = [
       They value justice, equality, and security.They tend to enjoy quieter environments and helping others.`,
       professionalMatch: `You may feel more satisfied and engaged working at a company that prioritizes protecting the environment, fighting for human rights or animal rights, or working for justice causes.
       You will also appreciate companies that respect you as an individual and allow you degrees of autonomy and freedom, and use systems such as results-only-work-environments, flexibile working hours, and remote working.`,
-      possibleJobs: ["Sustainability consultant","Advocacy campainer","International development worker","Human rights/Environmental lawyer","Purpose-driven entrepreneur","Educator/Teacher","Nurse/Nurse Practitioner","Researcher","Fundraiser Psychologist","Writer","Film-maker"]
+      possibleJobs: ["Sustainability consultant","Advocacy campainer","International development worker","Human rights/Environmental lawyer","Purpose-driven entrepreneur"," Educator/Teacher","Nurse/Nurse Practitioner","Researcher","Fundraiser Psychologist","Writer","Film-maker"]
   },
     {
       id: 9,

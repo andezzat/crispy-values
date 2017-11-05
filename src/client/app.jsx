@@ -6,7 +6,6 @@ import { renderRoutes } from 'react-router-config';
 
 import { CookiesProvider } from 'react-cookie';
 
-import ScrollToTop from './components/ScrollToTop.jsx';
 import routes from './routes';
 
 
@@ -15,9 +14,7 @@ const AppRouter = () => {
   return (
     <CookiesProvider>
       <BrowserRouter>
-        <ScrollToTop>
-          {renderRoutes(routes)}
-        </ScrollToTop>
+        {renderRoutes(routes)}
       </BrowserRouter>
     </CookiesProvider>
   )
