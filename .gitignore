@@ -63,6 +63,7 @@ public/stylesheets/styles.css
 
 # Sensitive data files
 config/database.js
+config/ssl.js
 
 # DS Store files
 **/.ds_store

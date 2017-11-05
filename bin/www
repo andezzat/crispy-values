@@ -12,10 +12,6 @@ var fs = require('fs');
 
 // SSL cert prod config
 var sslConfig = require('../config/').ssl;
-var sslOptions = {
-  key: fs.readFileSync(sslConfig.key),
-  cert: fs.readFileSync(sslConfig.cert),
-};
 
 /**
  * Get port from environment and store in Express.
@@ -32,6 +28,10 @@ var server = http.createServer(app);
 
 // HTTPS listening on port 3343 with SSL certificate only in production
 if (process.env.NODE_ENV === 'production') {
+  var sslOptions = {
+    key: fs.readFileSync(sslConfig.key),
+    cert: fs.readFileSync(sslConfig.cert),
+  };
   https.createServer(sslOptions, app).listen(3443);
 }
 
