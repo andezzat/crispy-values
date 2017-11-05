@@ -85,6 +85,11 @@ export default class Home extends React.Component {
             {profileItems}
           </Row>
         </AgencyPortfolio>
+        <AgencyIntro id="about">
+          <h3>{content.about.title}</h3>
+          <hr />
+          <p>{content.about.text}</p>
+        </AgencyIntro>
         <AgencyTestimonial id="homeTestimonial">
           <div className="quote">
             <span className="quote-mark">“</span>
