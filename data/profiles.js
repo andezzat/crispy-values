@@ -5,7 +5,6 @@ module.exports = [
       title: 'The Nautilus',
       subtitle: 'Philosophy of Inherent Worth',
       image: 'img-intrinsic',
-      icon: '',
       description: `You see the inherent worth in things.
       You believe that beings have value simply because they exist.
       For example, you might say that nature has a right to exist for nature's sake, regardless of the other benefits it may provide to other beings, including people.

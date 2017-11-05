@@ -77,7 +77,7 @@ class Test extends React.Component {
       }
 
       initialState.collectionDetails.push({
-        name: collection.name,
+        title: collection.title,
         description: collection.description,
         firstStep,
         lastStep: firstStep + collection.steps.length - 1,
@@ -419,14 +419,14 @@ class Test extends React.Component {
         <div className="agency-start-project-intro">
         {this.state.currentStep === 0 &&
         <div className="container">
-          <h3>{survey.preStep.name}</h3>
+          <h3>{survey.preStep.title}</h3>
           <p>{survey.preStep.description}</p>
         </div>}
         {collectionDetails.map((collection, i) => {
           return (
             this.state.currentStep >= collection.firstStep && this.state.currentStep <= collection.lastStep &&
             <div key={i} className="container">
-              <h3>{collection.name}</h3>
+              <h3>{collection.title}</h3>
               <p>{collection.description}</p>
             </div>
           );

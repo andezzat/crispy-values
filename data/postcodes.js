@@ -1,3 +1,5 @@
+// These postcodes do not include PO boxes.
+
 module.exports = [
   {
     from: 2000,

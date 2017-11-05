@@ -10,6 +10,7 @@ var cookiesMiddleware = require('universal-cookie-express');
 var sassMiddleware = require('node-sass-middleware');
 var compression = require('compression');
 var favicon = require('serve-favicon');
+var helmet = require('helmet');
 
 var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
@@ -37,6 +38,7 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(compression());
+app.use(helmet());
 app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 // Morgan logging requests

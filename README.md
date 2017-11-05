@@ -25,6 +25,9 @@ The entry point for styles is `/src/scss/theme.scss`. Any SASS files imported in
 This project was initially created using the Express application generator. The default entry point for applications scaffolded via the tool is `/bin/www`.
 The `www` entry file requires the app with all its configuration from `/src/app.js`.
 
+#### SSL & HTTPS
+HTTPS is configured to run in production only. When it does, it will import the SSL certificate and key using the config provided in `/config/ssl.js`. There's an `ssl_example.js` file to show what a typical `ssl.js` file is meant to look like. Duplicate this file and create your own config based on the certificate at hand. The production config is not included for security reasons.
+
 #### App.js
 `/src/app.js` is the bread and butter of the Express.js server. It tells it what middleware to use and sets the static assets folder to `/public/`.
 It imports the routes from `/src/routes/`.
