@@ -1,5 +1,6 @@
 require('babel-register')
 var express = require('express');
+var morgan = require('morgan');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -7,12 +8,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cookiesMiddleware = require('universal-cookie-express');
 var sassMiddleware = require('node-sass-middleware');
+var compression = require('compression');
 var favicon = require('serve-favicon');
 
 var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES;
 
+var logger = require('../lib/logger');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var dbconfig = require('../config/').database.config.production;
@@ -23,9 +26,6 @@ var app = express();
 app.set('views', path.join(__dirname, '..', 'views'));
 app.set('view engine', 'pug');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -36,8 +36,20 @@ app.use(sassMiddleware({
   indentedSyntax: false, // true = .sass and false = .scss
   sourceMap: true
 }));
+app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, '..', 'public')));
+// Morgan logging requests
+app.use(morgan('combined', {
+  skip: function (req, res) {
+    return res.statusCode < 400;
+  }, stream: process.stderr
+}));
+app.use(morgan('combined', {
+  skip: function (req, res) {
+    return res.statusCode >= 400;
+  }, stream: process.stdout
+}));
 
 // Creating DB Connection
 var connection = new Connection(dbconfig);
@@ -53,7 +65,6 @@ const Insert = (data, callback) => {
       if (err) {
         callback(err);
       } else {
-        console.log(rowCount + ' row(s) updated');
         callback(null, rowCount, ID);
       }
   });
@@ -81,19 +92,19 @@ const Insert = (data, callback) => {
 };
 
 connection.on('connect', (err) => {
-  console.log('Connecting...');
+  logger.info('Connecting...');
   if (err) {
-    console.log(err);
+    logger.error(err);
   } else {
-    console.log('Connected');
+    logger.info('Connected');
   }
 });
 connection.on('error', (err) => {
-  console.log(err);
+  logger.error(err);
   connection.close();
 });
 connection.on('end', () => {
-  console.log('Connection closed.');
+  logger.info('Connection closed.');
 });
 
 // Listen to POST requests on /results
@@ -101,14 +112,16 @@ connection.on('end', () => {
 // We use Tedious (SQL Server Driver) to perform DB inserts
 app.post('/results', function(req, res) {
   var data = req.body;
-  console.log('POST received');
+  logger.info('POST received');
   Insert(data, (err, rowCount, insertedID) => {
     if (err) {
+      logger.error('DB Insert failed with error: ', err);
       res.status(500).send({
           succes: false,
           error: err
         });
     } else {
+      logger.info('DB Insert succeeded with row count: ', rowCount);
       res.send({
         success: true,
         rowCount,

@@ -12,6 +12,7 @@
     "babel-register": "^6.26.0",
     "body-parser": "~1.17.1",
     "classnames": "^2.2.5",
+    "compression": "^1.7.1",
     "cookie-parser": "~1.4.3",
     "css-loader": "^0.28.5",
     "debug": "~2.6.3",
@@ -19,7 +20,7 @@
     "formsy-react": "^0.19.5",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.2.1",
-    "morgan": "~1.8.1",
+    "morgan": "^1.8.2",
     "node-sass": "^4.5.3",
     "node-sass-middleware": "0.9.8",
     "nodemon": "^1.11.0",
@@ -38,7 +39,8 @@
     "serve-favicon": "^2.4.5",
     "tedious": "^2.0.0",
     "universal-cookie-express": "^2.1.0",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "winston": "^2.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
