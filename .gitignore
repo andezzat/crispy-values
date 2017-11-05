@@ -61,5 +61,8 @@ typings/
 public/javascripts/app.js
 public/stylesheets/styles.css
 
+# Sensitive data files
+config/database.js
+
 # DS Store files
 **/.ds_store

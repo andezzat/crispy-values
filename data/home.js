@@ -15,6 +15,19 @@ module.exports = {
     or your values footprint might get you reflecting on what others care about and help you frame your kickstarter campaign or partnership in a new light.
     Take the free test now.`,
   },
+  about: {
+    title: 'About',
+    text: `Values Footprint is a free and simple 5-10 minute tool that helps people at all stages of life get a snapshot of their values.
+    Values represent the beliefs we hold dear, the things we care about and helps us understand the way in which we see the world and what matters most to us.
+    The Values Footprint Test is based on the research of psychologist Milton Rokeach in 1973 and has been adapted with some additional questions and interpretation based on the PhD research of Dr. Erin Castellas.
+    Dr. Castellas is a research fellow at the Centre for Social Impact, Swinburne.
+    As a university teacher and researcher focusing on sustainability and hybrid organizations, such as social enterprises and impact investors, 
+    Dr. Castellas found that many young people were seeking resources to find the companies and industries that aligned with their values.
+    They wanted to know where to work, what jobs might be possible and how to find a job that felt like it mattered.
+    Additionally, many companies that she was working with were trying to understand how values influence the way in which their organizations define what is valuable.
+    Dr. Castellas decided to launch this simple free tool to help young people get a quick snapshot of their values and is currently working with companies to develop a suite of tools to help understand how values and value intersect.
+    We hope you find your values profile a fun and interesting way to kickstart your thinking about your next career move, your purchasing habits, or how you might partner with or appeal to others who may see the world differently to you.`
+  },
   portfolio: {
     title: 'The Values Profiles'
   },

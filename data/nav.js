@@ -7,6 +7,14 @@ module.exports = {
       classes: []
     },
     {
+      text: 'About',
+      href: '#about',
+      type: 'anchor',
+      classes: [
+        'scroll'
+      ]
+    },
+    {
       text: 'Contact',
       href: '#footer',
       type: 'anchor',
