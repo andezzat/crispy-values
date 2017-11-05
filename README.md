@@ -25,6 +25,13 @@ The entry point for styles is `/src/scss/theme.scss`. Any SASS files imported in
 This project was initially created using the Express application generator. The default entry point for applications scaffolded via the tool is `/bin/www`.
 The `www` entry file requires the app with all its configuration from `/src/app.js`.
 
+#### Logging
+Morgan is used to log errors and messages into separate log files based on HTTP response. Unsuccessful responses will be logged into error file.
+Winston is used to manually log info as well.
+
+#### Compression
+Express compression middleware is in use to utilize gzip compression.
+
 #### SSL & HTTPS
 HTTPS is configured to run in production only. When it does, it will import the SSL certificate and key using the config provided in `/config/ssl.js`. There's an `ssl_example.js` file to show what a typical `ssl.js` file is meant to look like. Duplicate this file and create your own config based on the certificate at hand. The production config is not included for security reasons.
 
