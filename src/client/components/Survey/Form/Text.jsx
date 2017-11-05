@@ -81,10 +81,10 @@ class Text extends React.Component {
 
     return (
       <div className={fieldCx}>
-        <label htmlFor={this.props.labelFor}>{this.props.labelText}</label>
+        <label htmlFor={this.props.labelFor}>{this.props.labelText}{this.props.required && ' *' || ' (optional)'}</label>
         <input className={inputCx} type="text" onBlur={this.handleBlur} onFocus={this.handleFocus} onChange={this.changeValue} value={this.props.getValue()} />
         <div className="invalid-feedback">{errorMessage}</div>
-        {!this.props.required && <small className={cx('form-text', 'text-muted')}>Optional</small>}
+        {this.props.description && <small className={cx('form-text', 'text-muted')}>{this.props.description}</small>}
       </div>
     );
   };
