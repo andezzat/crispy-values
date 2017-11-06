@@ -7,11 +7,7 @@
 var app = require('../src/app');
 var debug = require('debug')('crispy-values:server');
 var http = require('http');
-var https = require('https');
-var fs = require('fs');
 
-// Load Winston logger
-var logger = require('../lib/logger');
 
 /**
  * Get port from environment and store in Express.
@@ -25,7 +21,6 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
 
 /**
  * Listen on provided port, on all network interfaces.
