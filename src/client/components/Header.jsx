@@ -56,9 +56,9 @@ class Header extends React.Component {
 
     return (
       <div className="header">
-        <Navbar navbarCx={navbarCx}>
-          <Link to='/home' className="navbar-brand">
-            <img src={logo} className={cx('d-lg-inline', 'd-none', 'mr-2')} />
+        <Navbar navbarCx={navbarCx} id="nav">
+          <Link to='/home' className="navbar-brand" id="nav-brand">
+            <img src={logo} className={cx('d-lg-inline', 'd-none')} />
             Values Footprint
           </Link>
           <button className="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">

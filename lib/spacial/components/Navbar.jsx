@@ -18,7 +18,7 @@ export default class Navbar extends React.Component {
     )
 
     return (
-      <nav className={this.props.navbarCx} role="navigation">
+      <nav className={this.props.navbarCx} role="navigation" id={this.props.id}>
         <div className={containerCx}>
           {this.props.children}
         </div>

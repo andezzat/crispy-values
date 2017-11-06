@@ -14,7 +14,7 @@ var fs = require('fs');
 var logger = require('../lib/logger');
 
 // SSL cert prod config
-var sslConfig = require('../config/').ssl;
+var sslConfig = require('../config/').ssl.production;
 
 /**
  * Get port from environment and store in Express.
