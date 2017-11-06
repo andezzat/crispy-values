@@ -29,7 +29,7 @@ module.exports = {
   testimonial: {
     text: `We created the Values Footprint to give people a simple free tool to get some insight into their values.
     It's a great tool to jumpstart the process of self-discovery and another step towards finding your true calling.`,
-    image: 'images/paul.jpg',
+    image: 'images/profile photo 2015.jpg',
     author: {
       name: 'Dr.Erin Castellas',
       company: 'Centre for Social Impact',
