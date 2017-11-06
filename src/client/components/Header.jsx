@@ -25,7 +25,7 @@ class Header extends React.Component {
       'navbar-expand-lg': true,
       'navbar-dark': route === '/' || route === '/home',
       'navbar-light': route !== '/' && route !== '/home',
-      'bg-transparent': true,
+      'bg-transparent': route === '/' || route === '/home',
     });
 
     const logo = 'images/logo.png';

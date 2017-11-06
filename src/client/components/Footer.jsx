@@ -42,7 +42,13 @@ export default class Footer extends React.Component {
         </Row>
         <div className="bottom">
           <ul>
-            <li><Link to={content.bottom.link.href}>{content.bottom.link.text}</Link></li>
+            {content.bottom.links.map((link, i) => {
+              return (
+                <li key={i}>
+                  <Link to={link.href}>{link.text}</Link>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </SpacialFooter>
