@@ -24,6 +24,14 @@ module.exports = {
         ]
       },
       {
+        text: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/erincastellas/',
+        FAClasses: [
+          'fa',
+          'fa-linkedin-square'
+        ]
+      },
+      {
         text: 'Twitter',
         href: 'http://www.twitter.com/valuesfootprint',
         FAClasses: [
