@@ -13,9 +13,6 @@ var fs = require('fs');
 // Load Winston logger
 var logger = require('../lib/logger');
 
-// SSL cert prod config
-var sslConfig = require('../config/').ssl.production;
-
 /**
  * Get port from environment and store in Express.
  */
@@ -29,18 +26,6 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
-// HTTPS listening on port 3343 with SSL certificate only in production
-if (process.env.NODE_ENV === 'production') {
-  try {
-    var sslOptions = {
-      key: fs.readFileSync(sslConfig.key),
-      cert: fs.readFileSync(sslConfig.cert),
-    };
-    https.createServer(sslOptions, app).listen(3443);
-  } catch (err) {
-    logger.error('Caught an error while loading SSL certificate & starting HTTPS server: ', err);
-  }
-}
 
 /**
  * Listen on provided port, on all network interfaces.
