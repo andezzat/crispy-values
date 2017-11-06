@@ -54,9 +54,15 @@ module.exports = {
     }
   },
   bottom: {
-    link: {
-      text: 'privacy',
-      href: '/privacy'
-    }
+    links: [
+      {
+        text: 'Privacy',
+        href: '/privacy'
+      },
+      {
+        text: 'Terms of Use',
+        href: '/terms'
+      }
+    ]
   }
 };
