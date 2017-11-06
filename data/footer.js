@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         text: 'LinkedIn',
-        href: 'https://www.linkedin.com/in/erincastellas/',
+        href: 'https://www.linkedin.com/company/values-footprint/',
         FAClasses: [
           'fa',
           'fa-linkedin-square'
