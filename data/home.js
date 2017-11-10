@@ -46,5 +46,11 @@ module.exports = {
         'btn-pill-success'
       ]
     }
+  },
+  partners: {
+    heading: 'In partnership with',
+    list: [
+      { image: 'images/partners/CSI.jpg' }
+    ]
   }
 };

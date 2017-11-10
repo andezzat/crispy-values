@@ -10,6 +10,7 @@ import AgencyIntro from '../../../lib/spacial/components/AgencyIntro.jsx';
 import AgencyPortfolio from '../../../lib/spacial/components/AgencyPortfolio.jsx';
 import AgencyTestimonial from '../../../lib/spacial/components/AgencyTestimonial.jsx';
 import PhotographyCTA from '../../../lib/spacial/components/PhotographyCTA.jsx';
+import Clients from '../../../lib/spacial/components/Clients.jsx';
 
 import { profiles } from '../../../data/';
 import { home as content } from '../../../data/';
@@ -110,6 +111,7 @@ export default class Home extends React.Component {
             <Link to={content.CTA.link.href} className={CTAButtonCx}>{content.CTA.link.text}</Link>
           </section>
         </PhotographyCTA>
+        <Clients heading={content.partners.heading} items={content.partners.list} />
       </div>
     );
   }
