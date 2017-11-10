@@ -17,6 +17,7 @@ import Radio from '../components/Survey/Form/Radio.jsx'
 
 import Row from '../../../lib/bootstrap/components/Row.jsx';
 
+
 class Test extends React.Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
@@ -176,6 +177,7 @@ class Test extends React.Component {
   };
 
   goToStep(stepNumber) {
+    window.scrollTo(0, 0);
     this.setState({
       ...this.state,
       currentStep: stepNumber,
