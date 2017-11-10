@@ -62,7 +62,7 @@ const Insert = (data, callback) => {
   var ID;
 
   request = new Request(
-    'INSERT results (intAge, vchGender, vchIndustry, vchCountry, intPostcode, vchEmail, vchResultProfile, vchResultJSON, intResultIntrinsic, intResultInstrumental, intResultSelf, intResultOther, vchRefCode) OUTPUT INSERTED.intResultID VALUES (@Age, @Gender, @Industry, @Country, @Postcode, @Email, @Profile, @Result, @Intrinsic, @Instrumental, @Self, @Other, @Reference)',
+    'INSERT results (dtDateTimeSubmitted, intAge, vchGender, vchIndustry, vchCountry, intPostcode, vchEmail, vchResultProfile, vchResultJSON, intResultIntrinsic, intResultInstrumental, intResultSelf, intResultOther, vchRefCode) OUTPUT INSERTED.intResultID VALUES (@DateTimeSubmitted, @Age, @Gender, @Industry, @Country, @Postcode, @Email, @Profile, @Result, @Intrinsic, @Instrumental, @Self, @Other, @Reference)',
     function (err, rowCount) {
       if (err) {
         callback(err);
@@ -70,6 +70,7 @@ const Insert = (data, callback) => {
         callback(null, rowCount, ID);
       }
   });
+  request.addParameter('DateTimeSubmitted', TYPES.DateTime, new Date(data.dateTimeSubmitted));
   request.addParameter('Age', TYPES.Int, data.age);
   request.addParameter('Gender', TYPES.VarChar, data.gender);
   request.addParameter('Industry', TYPES.VarChar, data.industry);

@@ -6,6 +6,7 @@ import Formsy from 'formsy-react';
 import cx from 'classnames';
 import 'whatwg-fetch';
 import { withCookies, Cookies } from 'react-cookie';
+import moment from 'moment';
 
 import { Line } from 'react-progressbar.js'
 
@@ -334,9 +335,12 @@ class Test extends React.Component {
       }
     }
 
+    const dateTimeSubmitted = moment().format('YYYY-MM-DD HH:mm:ss');
+
     const data = {
       valueMappings,
       profileName,
+      dateTimeSubmitted
     };
 
     // Chucks all user information fields from first step into data object;

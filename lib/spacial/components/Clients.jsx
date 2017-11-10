@@ -20,7 +20,7 @@ export default class Clients extends Component {
           <Row justifyContent="center">
             {this.props.items.map((item, i) => {
               return (
-                <div className={cx('col-12', 'col-md-3', 'col-sm-6')}>
+                <div key={i} className={cx('col-12', 'col-md-3', 'col-sm-6')}>
                   <img className={cx('img-fluid', 'mb-4')} src={item.image} />
                 </div>
               )
