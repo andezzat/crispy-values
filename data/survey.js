@@ -106,7 +106,7 @@ module.exports = {
     },
     {
       title: 'Which is more true?',
-      description: 'Select the statement that is more true for you.',
+      description: 'Select the statement that is more true for you from each pair of options below.',
       type: 'questionnaire',
       steps: [
         {

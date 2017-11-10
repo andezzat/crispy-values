@@ -21,7 +21,7 @@ module.exports = {
     Values represent the beliefs we hold dear, the things we care about and helps us understand the way in which we see the world and what matters most to us.
     The Values Footprint Test is based on the research of psychologist Milton Rokeach in 1973 and has been adapted with some additional questions and interpretation based on the research of a study team at the Centre for Social Impact, Swinburne.
     The research team decided to launch this simple free tool to help people get a quick snapshot of their values and is currently working with companies to develop a suite of values tools.
-    We hope you find your values profile a fun and interesting way to kickstart your thinking about your next career move, your purchasing habits, or how you might partner with or appeal to others who may see the world differently to you.`
+    We hope you find your values profile a fun and interesting way to kickstart your thinking about your next career move, your purchasing habits, or how you might partner with or appeal to others who see the world differently to you.`
   },
   portfolio: {
     title: 'The Values Profiles'
