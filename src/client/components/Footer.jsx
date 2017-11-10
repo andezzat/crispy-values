@@ -14,7 +14,7 @@ export default class Footer extends React.Component {
       <li key={i}><Link to={link.href}>{link.text}</Link></li>
     ));
     const socialLinks = content.social.links.map((link, i) => (
-      <li key={i}><a href={link.href}><i className={cx(link.FAClasses)} />{link.text}</a></li>
+      <li key={i}><a target="_blank" href={link.href}><i className={cx(link.FAClasses)} />{link.text}</a></li>
     ));
 
     return (
