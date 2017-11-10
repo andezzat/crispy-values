@@ -29,17 +29,6 @@ module.exports = {
       ]
     },
     {
-      heading: 'Cookies',
-      text: [
-        `A cookie is a file containing an identifier (a string of letters and numbers) that is sent by a web server to a web browser and is stored by the browser.
-        The identifier is then sent back to the server each time the browser requests a page from the server.
-        This enables the web server to identify and track the web browser.`,
-        `We use "persistent" cookies on the website.
-        Persistent cookies will remain stored on your computer until deleted, or until they reach a specified expiry date.`,
-        `We will use persistent cookies to enable our website to recognise you (as distinct from other users) when you visit and keep track of your values test results.`
-      ]
-    },
-    {
       heading: 'Using Your Personal Information',
       text: [
         `Personal information submitted to us via this website will be used for the purposes specified in this privacy policy or in relevant parts of the website.
@@ -167,7 +156,7 @@ module.exports = {
     {
       heading: 'Ethics Statements',
       text: [
-        `If you have any questions about this project, please contact the research team at csiswin@swin.edu.au or by phone on (03) 9214 4689. 
+        `If you have any questions about this project, please contact the research team at csiswin@swin.edu.au or by phone on (03) 9214 4689.
         If you have concerns about the ethical conduct of this project, please contact Swinburne’s Research Ethics Officer on 03 9214 5218 or resethics@swin.edu.au.
         This project is led by researchers at the Centre for Social Impact, Swinburne. Swinburne Ethics Approval Number 2017/xxx`
       ]
