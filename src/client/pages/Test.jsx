@@ -535,7 +535,7 @@ class Test extends React.Component {
                             : <button
                                 className={cx({
                                   'btn': true,
-                                  'btn-primary': true,
+                                  'btn-success': true,
                                   'disabled': !this.state.steps[stepNumber - 1].valid})}
                                 type="button"
                                 disabled={!this.state.steps[stepNumber - 1].valid}
