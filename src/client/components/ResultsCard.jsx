@@ -7,7 +7,7 @@ import { Line } from 'react-progressbar.js'
 import Row from '../../../lib/bootstrap/components/Row.jsx';
 
 
-import { profiles } from '../../../data/';
+import { profileContent } from '../../../data/';
 
 export default class ResultsCard extends React.Component {
 
@@ -16,7 +16,7 @@ export default class ResultsCard extends React.Component {
     const image = '/images/avatars/' + profileName + '_avatar.png';
     // const image = 'http://via.placeholder.com/100x100';
 
-    const profile = profiles.find((profile) => {
+    const profile = profileContent.profiles.find((profile) => {
       return profile.name.toLowerCase() === profileName.toLowerCase();
     });
 
