@@ -1,4 +1,4 @@
-import profiles from './profiles';
+import profileContent from './profiles';
 import survey from './survey';
 import home from './home';
 import footer from './footer';
@@ -8,7 +8,7 @@ import privacy from './privacy';
 import terms from './terms';
 
 module.exports = {
-  profiles,
+  profileContent,
   survey,
   home,
   footer,

@@ -7,8 +7,16 @@
   }
 }
 
-.progress {
+.stepNumber {
   margin-top: 30px;
+
+  h5 {
+    margin-bottom: 0;
+  }
+}
+
+.progress {
+  margin-top: 15px;
   padding: 0;
 
   div {

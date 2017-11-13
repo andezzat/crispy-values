@@ -12,7 +12,7 @@ import AgencyTestimonial from '../../../lib/spacial/components/AgencyTestimonial
 import PhotographyCTA from '../../../lib/spacial/components/PhotographyCTA.jsx';
 import Clients from '../../../lib/spacial/components/Clients.jsx';
 
-import { profiles } from '../../../data/';
+import { profileContent } from '../../../data/';
 import { home as content } from '../../../data/';
 
 
@@ -42,7 +42,7 @@ export default class Home extends React.Component {
       'col-md-6',
     );
 
-    const profileItems = profiles.map((p, key) => {
+    const profileItems = profileContent.profiles.map((p, key) => {
       var picCx = cx(
         'pic',
         'values-avatar',

@@ -11,7 +11,7 @@ import { Line } from 'react-progressbar.js'
 import Row from '../../../lib/bootstrap/components/Row.jsx';
 import ResultsCard from '../components/ResultsCard.jsx';
 
-import { profiles } from '../../../data/';
+import { profileContent } from '../../../data/';
 
 class Profile extends React.Component {
   static propTypes = {
@@ -45,7 +45,7 @@ class Profile extends React.Component {
     var result;
 
     if (params.name) {
-      content = profiles.find((profile) => {
+      content = profileContent.profiles.find((profile) => {
         return profile.name.toLowerCase() === params.name.toLowerCase();
       });
     }
@@ -94,6 +94,11 @@ class Profile extends React.Component {
                       return <li key={i}>{job}</li>
                     })}
                   </ul>
+                  {data && data.profileName === content.name.toLowerCase() &&
+                  <div>
+                    <h2>Where do I go from here?</h2>
+                    <p>{profileContent.finalPrompt}</p>
+                  </div>}
                 </div>
               </div>
               <div className="col-md-4">
