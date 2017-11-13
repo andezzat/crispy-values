@@ -25,24 +25,23 @@ class Profile extends React.Component {
 
     this.state = {
       content: {},
-      result: {}
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.location.state === 'result') {
-      window.location.reload();
+    // Checks if params are different, if so then kicks off init again but with new props
+    if (nextProps.location.search !== this.props.location.search) {
+      this.init(nextProps);
     }
   }
 
   componentWillMount() {
-    this.init();
+    this.init(this.props);
   }
 
-  init() {
-    const params = queryString.parse(this.props.location.search);
+  init(props) {
+    const params = queryString.parse(props.location.search);
     var content;
-    var result;
 
     if (params.name) {
       content = profileContent.profiles.find((profile) => {
@@ -53,11 +52,11 @@ class Profile extends React.Component {
     this.setState({
       ...this.state,
       content,
-      result
     });
   }
 
   render() {
+    console.log('Rendering...');
     const { cookies } = this.props;
     const data = cookies.get('result') || null;
 
