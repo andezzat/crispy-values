@@ -438,6 +438,12 @@ class Test extends React.Component {
           );
         })}
         </div>
+        <div className={cx('container', 'stepNumber')}>
+          <Row justifyContent="center">
+            {this.state.currentStep > 0 &&
+            <h4>Step {this.state.currentStep} of {this.state.steps.length}</h4>}
+          </Row>
+        </div>
         <div className={cx('container', 'progress')}>
           <Line
             progress={this.state.progress}
