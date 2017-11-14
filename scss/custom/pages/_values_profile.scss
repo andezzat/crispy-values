@@ -1,3 +1,18 @@
-.resultImage {
-  background-color: rgba(236, 229, 208, 0.85)
+#profile {
+  .img-fluid {
+    margin-top: 30px;
+    height: 200px;
+    width: auto;
+  }
+  #resultsCard {
+    border: 1px solid #f7f7f7;
+
+    .avatarImage {
+      background-color: rgba(236, 229, 208, 0.85)
+    }
+
+    a {
+      margin-bottom: 15px;
+    }
+  }
 }

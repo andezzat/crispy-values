@@ -9,7 +9,7 @@ import { withCookies, Cookies } from 'react-cookie';
 import { Line } from 'react-progressbar.js'
 
 import Row from '../../../lib/bootstrap/components/Row.jsx';
-import ResultsCard from '../components/ResultsCard.jsx';
+import ProfileSidebar from '../components/ProfileSidebar.jsx';
 
 import { profileContent } from '../../../data/';
 
@@ -67,14 +67,49 @@ class Profile extends React.Component {
       return <Redirect to="/home" />
     }
 
-    const image = '/images/avatars/' + content.name.toLowerCase() + '_avatar.png';
+    const avatarURL = '/images/avatars/' + content.name.toLowerCase() + '_avatar.png';
+
+
+    const sideBarProps = {};
+
+    if (data) {
+      const isMyProfile = data.profileName === content.name.toLowerCase();
+
+      sideBarProps.title = 'Your Result';
+      sideBarProps.values = data.values;
+      sideBarProps.valueMappings = data.valueMappings;
+
+      if (!isMyProfile) {
+        sideBarProps.image = '/images/avatars/' + data.profileName + '_avatar.png';
+        sideBarProps.profileName = data.profileName;
+        sideBarProps.button = {
+          text: 'Visit Profile',
+          props: {
+            to: { pathname: '/profile', search: '?name=' + data.profileName.toLowerCase(), state: 'result' },
+            className: cx('btn-shadow', 'btn-shadow-sm', 'btn-shadow-primary', 'mb-3', 'mt-2')
+          }
+        }
+      }
+
+    } else {
+      sideBarProps.title = 'No Results Yet';
+      sideBarProps.text = 'Once you take the test, your results will appear here.';
+      sideBarProps.button = {
+        text: 'Take The Test',
+        props: {
+          className: cx('btn', 'btn-outline-primary'),
+          to: '/test'
+        }
+      }
+    }
 
     return (
-      <div>
+      <div id="profile">
         <div className="customer-story-header">
           <div className="container">
             <h2>{content.title}</h2>
             <p>{content.subtitle}</p>
+            <img className="img-fluid" src={avatarURL} />
           </div>
         </div>
         <div className="customer-story-content">
@@ -101,40 +136,7 @@ class Profile extends React.Component {
                 </div>
               </div>
               <div className="col-md-4">
-                <div className="sidebar">
-                  <div className="block">
-                    <img className="img-fluid" src={image} />
-                    {data && data.profileName === content.name.toLowerCase() &&
-                    data.values.map((value, i) => {
-                      return (
-                        <div key={i}>
-                          <p>{value.name}</p>
-                          <Line
-                            key={i}
-                            progress={value.score / data.valueMappings[value.name.toLowerCase()].max}
-                            initialAnimate={true}
-                            containerClassName={'.progressBar'}
-                            options={{
-                              strokeWidth: 2,
-                              easing: 'easeInOut',
-                              duration: 1400,
-                              color: '#FFEA82',
-                              trailWidth: 1,
-                              trailColor: '#eee'
-                            }}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                  {data && data.profileName !== content.name.toLowerCase() &&
-                  <div className="block">
-                    <hr />
-                    <div className="title">Your Result</div>
-                    <ResultsCard profileName={data.profileName} values={data.values} valueMappings={data.valueMappings} />
-                  </div>
-                  }
-                </div>
+                <ProfileSidebar {...sideBarProps} />
               </div>
             </Row>
           </div>

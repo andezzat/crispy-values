@@ -34,7 +34,7 @@ export default class Privacy extends React.Component {
                         <h2>{section.heading}</h2>
                         }
                         {section.text.map((text, i) =>
-                        <p>{text}</p>)}
+                        <p key={i}>{text}</p>)}
                         {section.list &&
                         <ul>
                         {section.list.map((item, i) =>

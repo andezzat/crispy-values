@@ -3,8 +3,17 @@
 }
 
 #homePhotographyCTA {
-  background: url('#{$imagesPath}/backgrounds/mountain.jpg') no-repeat center center;
-  padding-top: 90px;
+  background-color: #F9F8F8;
+  padding-top: 0;
+
+  .background {
+    height: inherit;
+    background: url('#{$imagesPath}/backgrounds/mountain.jpg') no-repeat center center;
+  }
+
+  .container {
+    padding-top: 90px;
+  }
 
   h3 {
     text-align: center;

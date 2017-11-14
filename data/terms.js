@@ -3,102 +3,207 @@ module.exports = {
   subtitle: 'Our terms of use are outlined below, please read them carefully.',
   sections: [
     {
-      heading: 'We Value Your Privacy',
       text: [
-        `Swinburne University of Technology (Swinburne) through the VALUES FOOTPRINT study team, acknowledges and respects the privacy of individuals.
-        Given the nature of the online service provided on the VALUES FOOTPRINT website, you may have provided, or be asked to provide,
-        ‘identifying information’ (i.e. information that is unique to you or your organisation, and identifies you or your organisation),
-        as well as information that may be considered confidential or sensitive (i.e. information that is not necessarily unique to you or your organisation,
-        but which you could reasonably expect to be managed respectfully). This policy outlines what information is recorded on the VALUES FOOTPRINT website;
-        the purpose of collecting this information; how the information is used and protected,
-        and your rights and responsibilities with respect to the security of the personal information you provide, as a user of the VALUES FOOTPRINT.`
+        `Services provided on this website, titled “VALUES FOOTPRINT”, are provided by the Centre for Social Impact, Swinburne University of Technology (“Swinburne”).
+        Please read the Terms of Use carefully, as registering for an account on this site or taking the "VALUES TEST" indicates that you agree to abide by these conditions.
+        If you do not wish to be bound by the Terms of Use, you are not permitted to register for, or use, the VALUES FOOTPRINT service.`
       ]
     },
     {
-      heading: 'What Information Do We Collect?',
+      heading: '1 Acceptance of Terms of Use',
       text: [
-        `Information is provided to VALUES FOOTPRINT from users of the site, through the completion of an online questionnaire.`,
-        `The online questionnaire requires all users to provide demographic information, such as age and gender.
-        Personally identifying information, such as email address and promotion code (relating a particular group study) are optional.
-        All subsequent information regarding site use, such as log in times and dates and responses to online surveys is matched to the demographic information input by the user.`,
-        `The following information is electronically recorded against the demographic details of VALUES FOOTPRINT users: your responses to the VALUES FOOTPRINT questionnaire.`,
-        `Users are also asked to optionally provide a valid email address.
-        The purpose of collecting this information is so that you can be contacted in relation to a group study if you have chosen to participate in one.`,
-        `In addition to the information that users provide through their registration and use of the VALUES FOOTPRINT website,
-        users may contact the researchers via the email address: valuesfootprint@gmail.com. By doing so,
-        the research team member will receive your email address and any personal information you provide in your email correspondence.`
+        `Each time you use or cause access to the VALUES FOOTPRINT website, you agree to be bound by the site’s Terms of Use.
+        If you use or access a particular service on or through this website, you will also be subject to any rules or guidelines applicable to that service.
+        Please note if the service or website is a third party site, Swinburne has no control over that site.`
       ]
     },
     {
-      heading: 'Why Do We Collect Your Information?',
+      heading: '2 Services',
+    },
+    {
+      heading: '2.1 Website Contents',
       text: [
-        `As a provider of an online service, the VALUES FOOTPRINT website administrators do not request users to provide identifying, sensitive or confidential information.`,
-        `Although the user is asked to optionally provide an email address,
-        this information is not shared or used for any purposes outside of those described in the VALUES FOOTPRINT website Terms of use.`,
-        `The data collected by the VALUES FOOTPRINT website will be de-identified, collated,
-        and reported in group format in any publications or presentations arising from this research.`
+        `The services on the VALUES FOOTPRINT website include an online survey which enables users to enter data on their values, and receive a simple report.
+        The VALUES FOOTPRINT is based on a published scale developed by Milton Rokeach in 1973 and adapted by a researcher at the Centre for Social Impact, Swinburne, Dr. Erin Castellas.
+        The VALUES FOOTPRINT basic account is provided free of charge to users.`
       ]
     },
     {
-      heading: 'How Do We Protect Your Information?',
+      heading: '2.2 Limitations of Services',
       text: [
-        `The VALUES FOOTPRINT website study team adhere to the principles outlined in Commonwealth legislation regarding the protection and security of personal information.
-        According to these guidelines, the personally identifiable information that is recorded on the VALUES FOOTPRINT site is used only for the purpose stipulated at the time that the information is collected,
-        and cannot be revealed, disclosed, sold, distributed, rented, licensed, shared or otherwise passed on to any third party,
-        unless: (1) we have your express permission to do so; (2) where required by law to provide information in response to a subpoena or warrant,
-        or (3) in cases where the potential risk of harm, or threat to the safety of a consumer or another, requires such disclosure for the purpose of minimising or negating that risk.`,
+        `While there are benefits to this service being available online, it is also acknowledged that there are limitations to the services provided on the VALUES FOOTPRINT website.
+        The services available on the VALUES FOOTPRINT website are not intended to replace face-to-face or other traditional forms of support or advice you may receive.
+        Therefore, if at any time you believe that the VALUES FOOTPRINT does not fully meet or address your needs, or if other concerns arise, you should seek the services of an appropriate professional.`,
+        `The services on the VALUES FOOTPRINT website will not be appropriate if:`
+      ],
+      list: [
+        'You do not want the data you enter to be stored in the VALUES FOOTPRINT database.',
+        'You need professional advice or support.'
+      ]
+    },
+    {
+      text: [
+        'In these cases, you should seek the advice of a senior manager of your enterprise, or the services of an appropriate professional.'
+      ]
+    },
+    {
+      heading: '2.3 Services Provided in Australia',
+      text: [
+        `The VALUES FOOTPRINT website is designed and delivered in accordance with Australian guidelines, and it is not implied or intended that the service complies with the laws or standards of other jurisdictions.`
+      ]
+    },
+    {
+      heading: '3 Research',
+      text: [
+        `The VALUES FOOTPRINT website forms the central component of a research project aiming to help individuals and companies understand how values inform personal and professional strategic decisions.
+        Research conducted around this website involves comparing users’ data on their demographics, values profiles,
+        and supplementary tools that may track engagement or productivity.
+        This includes exploring how the reported data compares across age, gender, location and industry,
+        as well as examining how reported data for a particular group (denoted in the ‘promotional code’ for group studies) may relate to perceptions or engagement with that group or organization.`,
+        `This research will be used to inform the development of publishable research outputs, including but not limited to peer-reviewed journal publications and public presentations of findings and their implications for creating more values based tools.
+        Publications and reports produced as a result of using VALUES FOOTPRINT data will either be made available for download through a link on the VALUES FOOTPRINT website,
+        or further details provided where a publisher requires pay-for-access.`
+      ]
+    },
+    {
+      heading: '4 Modification of Discontinuance',
+      text: [
+        `Swinburne exclusively reserves the right to, and may at any time and without notice and any liability, modify or discontinue this website and its services, whether temporarily or permanently.`
+      ]
+    },
+    {
+      heading: '5 Security and Confidentiality',
+      text: [
         `In order to protect the privacy of consumers, the VALUES FOOTPRINT website uses and implements professional and industry standards for the security and protection of personal information.
         Current strategies that ensure the highest standards of data security include:`
       ],
       list: [
         `The site is hosted in Australia in a dedicated VDC housed within an ISO27001 accredited data centre. Our VDC employs strict access controls and best practice network layer security`,
         `Our application has been designed to validate all access and data inputs to protect both the application and database against malicious attacks`,
-        `When using the VALUES FOOTPRINT, users connect to our site via HTTPS, which is a more secure version of the standard HTTP protocol.
-        Our site and the server it resides on are identified and authenticated by SSL certificates in order to use HTTPS,
-        which means users can be assured they are always communicating with the real VALUES FOOTPRINT website.`,
+        `When using the VALUES FOOTPRINT, users connect to our site via HTTPS connections, which are more secure versions of the standard http protocol. Our site and the server it resides on are identified and authenticated by SSL certificates in order to use HTTPS, which means users can be assured they are always communicating with the real VALUES FOOTPRINT site.`,
         `All personally identifiable data is encrypted before it is sent to the database, and this data is stored on a secure database`,
         `All methods of data transport are secured via SSL`,
         `Access to data through our application is governed by tightly defined role based access protocols`
       ]
     },
     {
-      heading: 'Cookies',
       text: [
-        `The VALUES FOOTPRINT website temporarily stores “cookies” on your computer during your visit.
-        These cookies communicate to secure servers, to authenticate access to the website for the duration of your session, and are set to expire when the browsing session ends.
-        The cookies do not collect any information about you, or how you are using your computer, and only serve to ensure that your session authentication has been established.`
+        `It is noted that the provision of services through this website is subject to security risks inherent in any internet service.
+        While the VALUES FOOTPRINT study team endeavours to ensure that your personal information is secure,
+        it is not possible to safeguard against all possible breaches of security.
+        You are advised to ensure that the computer terminal from which you send email and messages is secure, and to ensure that you log out of the VALUES FOOTPRINT website after you have finished a session.
+        The transmission of all information is at your own risk.`
       ]
     },
     {
-      heading: 'Your Rights and Responsibilities',
+      heading: '5.1 Privacy and Confidentiality',
       text: [
-        `Under the terms of current legislation, you have the right to access, or alter,
-        any information concerning yourself that is recorded on the VALUES FOOTPRINT site.
-        We are only able to access this information if you have provided personally identifiable information, such as an email address.
-        You may request access to this information by emailing valuesfootprint@gmail.com or by clicking the Contact link at the bottom of the home page.
-        If you feel that your privacy has been breached, the contact details for the University’s Privacy Officer are provided below.`,
-        `In order to further protect your privacy, the VALUES FOOTPRINT team suggest consumers follow these guidelines when using the site, or communicating personal information with us:`
+        `The VALUES FOOTPRINT website can be accessed by the public. When you use the website, you are offered the option to provide your email address.
+        After you log in to the site, you will be asked to complete an online questionnaire about your values.
+        Responses to the questionnaire will be stored against your location, gender, age and industry and your email and promotional code if provided.`,
+        `The information that we collect from you as part of this research project will be stored securely at Swinburne for a minimum period of seven years.
+        This includes identifying information such as names or email addresses, which you have provided in order to create and access your user account.
+        Users who have provided an email address with their questionnaire can at any time request to access and securely delete their records,
+        including data entered produced in the VALUES FOOTPRINT, by contacting the VALUES FOOTPRINT team in writing at valuesfootprint@gmail.com.`,
+        `By creating an account and using the VALUES FOOTPRINT website,
+        you are indicating consent to have your questionnaire responses stored in our secure database and used for the following relevant purposes:`
       ],
       list: [
-        `Use your browser’s private browsing capability if you are concerned about other people looking at your internet history`,
-        `Remember to log out after each session`
-      ]
-    },
-    {
-      heading: 'Further Information',
-      text: [
-        `If you have any questions, issues, or concerns, or wish to lodge a complaint regarding the collection, use, storage,
-        or disclosure of your personal information on the VALUES FOOTPRINT site, please contact the University’s Privacy Officer. Contact details are as follows:`
-      ],
-      list: [
-        `Name: Mr Kornel Koffsovitz`,
-        `Phone: +61 3 9214 5515`,
-        `Email: kkoffsovitz@swin.edu.au`
+        `The data you enter into the questionnaire will be used to generate a report for you, your ‘values profile’.`,
+        `Aggregated information from all questionnaire responses will be analysed to provide general insights about values, age, gender, location and industry.`,
+        `Insights based on aggregated questionnaire responses may be published or communicated, but no individual organisation or user information will be identified in any public communications without the express permission of the relevant organisation and user.`,
+        `With the data collected by VALUES FOOTPRINT, the Swinburne research team will produce: Research reports on the findings from analysed VALUES FOOTPRINT data.`
       ]
     },
     {
       text: [
-        `Last updated: 6th of November, 2017.`
+        `In accordance with the Australian Privacy Principles,
+        you have the right to access the information collected and stored by the researchers about you.
+        You also have the right to request that any information with which you disagree, be corrected.
+        Please contact the VALUES FOOTPRINT research team by emailing valuesfootprint@gmail.com if you would like to access your information.
+        Further information about the ways in which the privacy of your information is secured can be found on the Privacy Policy Statement for this site.`
+      ]
+    },
+    {
+      heading: '5.2 Limits of Confidentiality',
+      text: [
+        `The VALUES FOOTPRINT study team confirms that the information you provide in emails to the team,
+        or in response to online questionnaires, will not be revealed, disclosed, sold, distributed, rented, licensed,
+        shared or otherwise passed on to any third party, unless: (1) we have your express permission to do so;
+        (2) where required by law to provide information in response to a subpoena or warrant,
+        or (3) in cases where the potential risk of harm, or threat to the safety of a consumer or another,
+        requires such disclosure for the purpose of minimising or negating that risk.`
+      ]
+    },
+    {
+      heading: '5.3 Communication of Information to Others',
+      text: [
+        `Where information is used for the purposes of research and publication,
+        the ‘Policy on the Conduct of Research’ will be strictly adhered to.
+        If used for research or publication purposes,
+        your information will be analysed in a de-identifiable form and disseminated results will not contain material capable of identifying you.`
+      ]
+    },
+    {
+      heading: '5.4 Feedback',
+      text: [
+        `Technical difficulties should be reported to the VALUES FOOTPRINT study team, Swinburne,
+        by finding the Feedback link at the bottom of this page.
+        Alternatively, you may also provide feedback via email to: valuesfootprint@gmail.com`
+      ]
+    },
+    {
+      heading: '6 Your Responsibilites'
+    },
+    {
+      heading: '6.1 Age',
+      text: [
+        `Access and use of the VALUES FOOTPRINT website is only permitted to persons 16 years or older.`
+      ]
+    },
+    {
+      heading: '6.2 Registration',
+      text: [
+        `All users of the VALUES FOOTPRINT website must provide basic user demographic information,
+        including age, gender, location and industry, and agree to provide truthful information when requested.
+        When taking the questionnaire,
+        you are required to acknowledge that you have read, understood, and agree to these Terms of Use.`
+      ]
+    },
+    {
+      heading: '6.3 Confidentiality of Your Data',
+      text: [
+        `You are responsible for maintaining the confidentiality of any data you download from the site onto your computer.`
+      ]
+    },
+    {
+      heading: '7 Investigation by the VALUES FOOTPRINT team',
+      text: [
+        `The VALUES FOOTPRINT study team may take steps, as necessary, to investigate any violation of these Terms of Use,
+        including the recording, distribution, or publication of any site material or communications,
+        and any misuse or unauthorised access to site material that occurs.`,
+        `Swinburne reserves the right to prevent your further use of the VALUES FOOTPRINT website if you are found to have contravened these Terms of Use.`
+      ]
+    },
+    {
+      heading: '8 Copyright and Intellectual Property',
+      text: [
+        `Material contained on the VALUES FOOTPRINT website is the copyright of Swinburne University of Technology
+        (except where otherwise indicated) or is used with permission or under licence of the copyright owner.
+        You may download, print and reproduce your values profiles that you create in the VALUES FOOTPRINT using your own data.
+        All other rights are reserved.
+        Requests for further permission to use this material should be directed to: valuesfootprint@gmail.com`
+      ]
+    },
+    {
+      heading: '9 No Liability',
+      text: [
+        `One of the key purposes of the VALUES FOOTPRINT website is to provide you with an online form which enables you to enter data on your values,
+        and receive a simple report based on the information you enter. Any benefit derived from your use of the website is entirely dependent on you.
+        Swinburne makes no representations or warranties in relation to your use of the website, or the potential benefits or outcomes that may result.
+        Swinburne will not be liable for any loss or damage suffered or incurred in connection with your use of the website.`,
+        `Please read the Terms of Use carefully. If you agree to the Terms of Use you may use the VALUES FOOTPRINT website.
+        If you do not wish to be bound by the Terms of Use, you are not permitted to use the services on this website.`
       ]
     }
   ]

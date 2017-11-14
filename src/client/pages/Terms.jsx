@@ -28,13 +28,15 @@ export default class Terms extends React.Component {
               <div className="col-md-12">
                 <div className="customer-story-body">
                   {terms.sections.map((section, i) => {
+                    console.log('Section: ', section.heading, ' | text: ', section.text);
                     return (
                       <div key={i}>
                         {section.heading &&
                         <h2>{section.heading}</h2>
                         }
-                        {section.text.map((text, i) =>
-                        <p>{text}</p>)}
+                        {section.text &&
+                        section.text.map((text, i) =>
+                        <p key={i}>{text}</p>)}
                         {section.list &&
                         <ul>
                         {section.list.map((item, i) =>

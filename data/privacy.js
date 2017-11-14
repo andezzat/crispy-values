@@ -3,162 +3,102 @@ module.exports = {
   subtitle: 'Our privacy policy is outlined below, please read it carefully.',
   sections: [
     {
+      heading: 'We Value Your Privacy',
       text: [
-        `We are committed to safeguarding the privacy of our website visitors and this policy sets out how we will treat your personal information. Where we process personal data we shall do so in accordance with the provisions of the Privacy Act 1988.`,
-        `Our website uses cookies. By using our website and agreeing to this policy, you consent to our use of cookies in accordance with the terms of this policy.`
+        `Swinburne University of Technology (Swinburne) through the VALUES FOOTPRINT study team, acknowledges and respects the privacy of individuals.
+        Given the nature of the online service provided on the VALUES FOOTPRINT website, you may have provided, or be asked to provide,
+        ‘identifying information’ (i.e. information that is unique to you or your organisation, and identifies you or your organisation),
+        as well as information that may be considered confidential or sensitive (i.e. information that is not necessarily unique to you or your organisation,
+        but which you could reasonably expect to be managed respectfully). This policy outlines what information is recorded on the VALUES FOOTPRINT website;
+        the purpose of collecting this information; how the information is used and protected,
+        and your rights and responsibilities with respect to the security of the personal information you provide, as a user of the VALUES FOOTPRINT.`
       ]
     },
     {
-      heading: 'What information do we collect?',
+      heading: 'What Information Do We Collect?',
       text: [
-        `We may collect, store and use the following kinds of personal information:`
+        `Information is provided to VALUES FOOTPRINT from users of the site, through the completion of an online questionnaire.`,
+        `The online questionnaire requires all users to provide demographic information, such as age and gender.
+        Personally identifying information, such as email address and promotion code (relating a particular group study) are optional.
+        All subsequent information regarding site use, such as log in times and dates and responses to online surveys is matched to the demographic information input by the user.`,
+        `The following information is electronically recorded against the demographic details of VALUES FOOTPRINT users: your responses to the VALUES FOOTPRINT questionnaire.`,
+        `Users are also asked to optionally provide a valid email address.
+        The purpose of collecting this information is so that you can be contacted in relation to a group study if you have chosen to participate in one.`,
+        `In addition to the information that users provide through their registration and use of the VALUES FOOTPRINT website,
+        users may contact the researchers via the email address: valuesfootprint@gmail.com. By doing so,
+        the research team member will receive your email address and any personal information you provide in your email correspondence.`
+      ]
+    },
+    {
+      heading: 'Why Do We Collect Your Information?',
+      text: [
+        `As a provider of an online service, the VALUES FOOTPRINT website administrators do not request users to provide identifying, sensitive or confidential information.`,
+        `Although the user is asked to optionally provide an email address,
+        this information is not shared or used for any purposes outside of those described in the VALUES FOOTPRINT website Terms of use.`,
+        `The data collected by the VALUES FOOTPRINT website will be de-identified, collated,
+        and reported in group format in any publications or presentations arising from this research.`
+      ]
+    },
+    {
+      heading: 'How Do We Protect Your Information?',
+      text: [
+        `The VALUES FOOTPRINT website study team adhere to the principles outlined in Commonwealth legislation regarding the protection and security of personal information.
+        According to these guidelines, the personally identifiable information that is recorded on the VALUES FOOTPRINT site is used only for the purpose stipulated at the time that the information is collected,
+        and cannot be revealed, disclosed, sold, distributed, rented, licensed, shared or otherwise passed on to any third party,
+        unless: (1) we have your express permission to do so; (2) where required by law to provide information in response to a subpoena or warrant,
+        or (3) in cases where the potential risk of harm, or threat to the safety of a consumer or another, requires such disclosure for the purpose of minimising or negating that risk.`,
+        `In order to protect the privacy of consumers, the VALUES FOOTPRINT website uses and implements professional and industry standards for the security and protection of personal information.
+        Current strategies that ensure the highest standards of data security include:`
       ],
       list: [
-        `Information about your computer and about your visits and use of this website
-        (including your IP address, geographical location, browser type and version, operating system, referral source, length of visit, page views, website navigation);`,
-        `Information that you provide to us for the purpose of registering with us
-        (including name, age, date of birth, address, contact number, email, username and password);`,
-        `Information that you provide to us for the purpose of subscribing to our website services, email notifications and/or newsletters; and`,
-        `Any other information that you choose to send to us.`
+        `The site is hosted in Australia in a dedicated VDC housed within an ISO27001 accredited data centre. Our VDC employs strict access controls and best practice network layer security`,
+        `Our application has been designed to validate all access and data inputs to protect both the application and database against malicious attacks`,
+        `When using the VALUES FOOTPRINT, users connect to our site via HTTPS, which is a more secure version of the standard HTTP protocol.
+        Our site and the server it resides on are identified and authenticated by SSL certificates in order to use HTTPS,
+        which means users can be assured they are always communicating with the real VALUES FOOTPRINT website.`,
+        `All personally identifiable data is encrypted before it is sent to the database, and this data is stored on a secure database`,
+        `All methods of data transport are secured via SSL`,
+        `Access to data through our application is governed by tightly defined role based access protocols`
       ]
     },
     {
+      heading: 'Cookies',
       text: [
-        `Before you disclose to us the personal information of another person, you must obtain that person's consent to both the disclosure and the processing of that personal data in accordance with the terms of this privacy policy.
-        Where you disclose such personal information of third parties you warrant that you have obtained consent to the processing and storing of such information.`
+        `The VALUES FOOTPRINT website temporarily stores “cookies” on your computer during your visit.
+        These cookies communicate to secure servers, to authenticate access to the website for the duration of your session, and are set to expire when the browsing session ends.
+        The cookies do not collect any information about you, or how you are using your computer, and only serve to ensure that your session authentication has been established.`
       ]
     },
     {
-      heading: 'Using Your Personal Information',
+      heading: 'Your Rights and Responsibilities',
       text: [
-        `Personal information submitted to us via this website will be used for the purposes specified in this privacy policy or in relevant parts of the website.
-        We collect data through Amazon Web Services and use SSL encryption technology. We may use your personal information to:`
+        `Under the terms of current legislation, you have the right to access, or alter,
+        any information concerning yourself that is recorded on the VALUES FOOTPRINT site.
+        We are only able to access this information if you have provided personally identifiable information, such as an email address.
+        You may request access to this information by emailing valuesfootprint@gmail.com or by clicking the Contact link at the bottom of the home page.
+        If you feel that your privacy has been breached, the contact details for the University’s Privacy Officer are provided below.`,
+        `In order to further protect your privacy, the VALUES FOOTPRINT team suggest consumers follow these guidelines when using the site, or communicating personal information with us:`
       ],
       list: [
-        'Administer the website',
-        'Improve your browsing experience by personalising the website',
-        'Enable your use of the services available on the website including free tests and profiles',
-        'Provide you with the Products and other services requested via the website',
-        'Send you general (non-marketing) commercial communications',
-        'Send you email notifications which you have specifically requested',
-        `Send you our newsletter and other marketing communications relating to our business which we think may be of interest to you, by post or, where you have specifically agreed to this,
-        by email or similar technology (and you can inform us at any time if you no longer require marketing communications)`,
-        `Provide third parties with statistical information about our users –
-        but this information will not be used to identify any individual user;`,
-        'Deal with enquiries and complaints made by or about you relating to the website',
-        'Keep the website secure',
-        'Conduct analysis and research to improve our services',
-        `Generate and display aggregate data regarding your habits,
-        attitudes or other preferences that you choose to share with us (e.g. in our mini-test or research sections)`,
-        `Verify compliance with the terms and conditions governing the use of the website`
+        `Use your browser’s private browsing capability if you are concerned about other people looking at your internet history`,
+        `Remember to log out after each session`
       ]
     },
     {
+      heading: 'Further Information',
       text: [
-        `We will not, without your express consent,
-        provide your personal information to any third parties for the purpose of direct marketing.`
-      ]
-    },
-    {
-      heading: 'Disclosures',
-      text: [
-        `Through your use of our website you agree that you give your explicit consent for us to disclose your personal data to any of our
-        researchers, employees, officers, agents, suppliers, funders or subcontractors insofar as reasonably necessary for the purposes set out in this privacy policy.`,
-        `We may disclose your personal data to any member of our group of companies
-        (this means our subsidiaries, our ultimate holding company and all its subsidiaries) insofar as reasonably necessary for the purposes set out in this privacy policy.`,
-        `In addition, we may disclose your personal information:`
+        `If you have any questions, issues, or concerns, or wish to lodge a complaint regarding the collection, use, storage,
+        or disclosure of your personal information on the VALUES FOOTPRINT site, please contact the University’s Privacy Officer. Contact details are as follows:`
       ],
       list: [
-        'To the extent that we are required to do so by law',
-        'In connection with any ongoing or prospective legal proceedings',
-        `In order to establish, exercise or defend our legal rights
-        (including providing information to others for the purposes of fraud prevention and carrying out checks with credit reference agencies to reduce credit risk)`,
-        `To the purchaser (or prospective purchaser) of any business or asset that we are (or are contemplating) selling`,
-        `To any person who we reasonably believe may apply to a court or other competent authority for disclosure of that personal information where, in our reasonable opinion, such
-        court or authority would be reasonably likely to order disclosure of that personal information`
+        `Name: Mr Kornel Koffsovitz`,
+        `Phone: +61 3 9214 5515`,
+        `Email: kkoffsovitz@swin.edu.au`
       ]
     },
     {
       text: [
-        'Except as provided in this privacy policy, we will not provide your information to third parties.'
-      ]
-    },
-    {
-      heading: 'International Data Transfers',
-      text: [
-        `Information that we collect may be stored and processed in and transferred between any of the countries in which we operate
-        in order to enable us to use the information in accordance with this privacy policy.`,
-        `Information which you provide may be transferred to countries (including the United States)
-        which do not have data protection laws equivalent to those in force in Australia.`,
-        `In addition, personal information that you submit for publication on the website in applicable areas will be published on the internet and may be available,
-        via the internet, around the world. We cannot prevent the use or misuse of such information by others.`,
-        `You expressly agree to such transfers of personal information.`
-      ]
-    },
-    {
-      heading: 'Security of Your Personal Information',
-      text: [
-        `We will take reasonable technical and organisational precautions to prevent the loss, misuse or alteration of your personal information.`,
-        `We will store all the personal information you provide on our secure (password and firewall-protected) servers.`,
-        `You acknowledge that the transmission of information over the internet is inherently insecure, and we cannot guarantee the security of data sent over the internet.`,
-        `If you have a username and password, you are responsible for keeping your password and other login details confidential.
-        We will not ask you for your password (except when you log in to the website).`
-      ]
-    },
-    {
-      heading: 'Policy Ammendments',
-      text: [
-        `We may update this privacy policy from time to time by posting a new version on our website.
-        You should check this page occasionally to ensure you are happy with any changes.`
-      ]
-    },
-    {
-      heading: 'Your Rights',
-      text: [
-        `You may instruct us to provide you with any personal information we hold about you.
-        Provision of such information will be subject to:`
-      ],
-      list: [
-        `The payment of a fee (currently fixed at AUD$20); and`,
-        `(b) the supply of appropriate evidence of your identity
-        (for this purpose, we will usually accept a photocopy of your passport certified by a solicitor or bank plus an original copy of a utility bill showing your current address).`
-      ]
-    },
-    {
-      text: [
-        `We may withhold such personal information to the extent permitted by law.`,
-        `You may instruct us not to process your personal information for marketing purposes, by sending an email to us.
-        In practice, you will usually either expressly agree in advance to our use of your personal information for marketing purposes,
-        or we will provide you with an opportunity to opt out of the use of your personal information for marketing purposes.`
-      ]
-    },
-    {
-      heading: 'Third Party Websites',
-      text: [
-        `The website may contain links to other websites.
-        We are not responsible for the privacy policies or practices of third party websites.`
-      ]
-    },
-    {
-      heading: 'Updating Information',
-      text: [
-        `Please let us know if the personal information which we hold about you needs to be corrected or updated.`
-      ]
-    },
-    {
-      heading: 'Contact',
-      text: [
-        `If you have any questions about this privacy policy or our treatment of your personal information,
-        please write to us by email to ecastellas@swin.edu.au or by post to Values Footprint,
-        Attn: Erin Castellas, Centre for Social Impact, Swinburne, Faculty of Business & Law I Swinburne University of Technology, PO Box 218, Mail H23, Cnr John and Wakefield Streets, Hawthorn VIC 3122 Australia.`
-      ]
-    },
-    {
-      heading: 'Ethics Statements',
-      text: [
-        `If you have any questions about this project, please contact the research team at csiswin@swin.edu.au or by phone on (03) 9214 4689.
-        If you have concerns about the ethical conduct of this project, please contact Swinburne’s Research Ethics Officer on 03 9214 5218 or resethics@swin.edu.au.
-        This project is led by researchers at the Centre for Social Impact, Swinburne. Swinburne Ethics Approval Number 2017/xxx`
+        `Last updated: 6th of November, 2017.`
       ]
     }
   ]

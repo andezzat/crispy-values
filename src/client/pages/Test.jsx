@@ -380,7 +380,10 @@ class Test extends React.Component {
       values,
       valueMappings
     });
-    cookies.set('result', resultCookie);
+    cookies.remove('result');
+    cookies.set('result', resultCookie, {
+      expires: moment().add('14', 'days').toDate(),
+    });
 
     // Hide modal
     $(findDOMNode(this.refs.modal)).modal('hide');

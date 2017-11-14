@@ -105,11 +105,9 @@ export default class Home extends React.Component {
           </div>
         </AgencyTestimonial>
         <PhotographyCTA id="homePhotographyCTA">
-          <section className="container">
-            <h3>{content.CTA.title}</h3>
-            <p>{content.CTA.text}</p>
-            <Link to={content.CTA.link.href} className={CTAButtonCx}>{content.CTA.link.text}</Link>
-          </section>
+          <h3>{content.CTA.title}</h3>
+          <p>{content.CTA.text}</p>
+          <Link to={content.CTA.link.href} className={CTAButtonCx}>{content.CTA.link.text}</Link>
         </PhotographyCTA>
         <Clients heading={content.partners.heading} items={content.partners.list} />
       </div>
