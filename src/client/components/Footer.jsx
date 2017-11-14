@@ -43,11 +43,19 @@ export default class Footer extends React.Component {
         <div className="bottom">
           <ul>
             {content.bottom.links.map((link, i) => {
-              return (
-                <li key={i}>
-                  <Link to={link.href}>{link.text}</Link>
-                </li>
-              )
+              if (link.href.includes('http')) {
+                return (
+                  <li key={i}>
+                    <a href={link.href}>{link.text}</a>
+                  </li>
+                );
+              } else {
+                return (
+                  <li key={i}>
+                    <Link to={link.href}>{link.text}</Link>
+                  </li>
+                );
+              }
             })}
           </ul>
         </div>

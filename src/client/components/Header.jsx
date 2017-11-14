@@ -7,8 +7,6 @@ import Navbar from '../../../lib/spacial/components/Navbar.jsx';
 
 import { nav as content } from '../../../data/';
 
-// const routerComponent = withRouter(props => <Header {...props} />);
-
 class Header extends React.Component {
   render() {
     const navItemsClasses = cx(
@@ -33,25 +31,29 @@ class Header extends React.Component {
     const navLinks = content.links.map((link, i) => {
       const linkClasses = link.classes.slice();
       linkClasses.unshift('nav-link');
-      return (
-        <li
-          key={i}
-          className="nav-item">
-          {
-            link.type === 'link'
-            ? <Link
-                to={link.href}
-                className={cx(linkClasses)}>
-                {link.text}
-              </Link>
-            : <a
-                href={link.href}
-                className={cx(linkClasses)}>
-                {link.text}
-              </a>
-          }
-        </li>
-      )
+      if (!link.showOn || link.showOn && link.showOn.includes(route)) {
+        return (
+          <li
+            key={i}
+            className="nav-item">
+            {
+              link.type === 'link'
+              ? <Link
+                  to={link.href}
+                  className={cx(linkClasses)}>
+                  {link.text}
+                </Link>
+              : <a
+                  href={link.href}
+                  className={cx(linkClasses)}>
+                  {link.text}
+                </a>
+            }
+          </li>
+        )
+      } else {
+        return null;
+      }
     });
 
     return (
@@ -75,5 +77,5 @@ class Header extends React.Component {
   }
 }
 
-// withRouter allows Header to contain router information such as current route
+// withRouter allows Header to access router information such as current route
 export default withRouter(Header);

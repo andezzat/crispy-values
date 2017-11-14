@@ -62,7 +62,7 @@ module.exports =
         For example, you may find that you appreciate the model of cooperatively owned companies that provides benefits to members.
         Or you may enjoy a company that serves its local community.
         You will also appreciate companies that create balanced opportunities for individual and team-oriented work.`,
-        possibleJobs: ["Nurse or Nurse Practitioner","General Practitioner","Social worker"," Educator/Teacher","Environmental or Civil Engineer","Financial Advisor","Community Outreach Manager","Community Organizer","Investor Relations Manager","Event Coordinator"]
+        possibleJobs: ["Nurse or Nurse Practitioner","General Practitioner","Social worker","Educator/Teacher","Environmental or Civil Engineer","Financial Advisor","Community Outreach Manager","Community Organizer","Investor Relations Manager","Event Coordinator"]
       },
       {
         id: 4,

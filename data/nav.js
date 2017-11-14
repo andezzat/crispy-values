@@ -10,6 +10,10 @@ module.exports = {
       text: 'About',
       href: '#about',
       type: 'anchor',
+      showOn: [
+        '/',
+        '/home'
+      ],
       classes: [
         'scroll'
       ]
