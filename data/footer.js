@@ -62,6 +62,10 @@ module.exports = {
       {
         text: 'Terms of Use',
         href: '/terms'
+      },
+      {
+        text: 'Feedback',
+        href: 'https://goo.gl/forms/cOFu9wvG15vKlluS2'
       }
     ]
   }
