@@ -48,7 +48,7 @@ export default class ProfileSidebar extends React.Component {
               })}
               {button &&
               <Row justifyContent="around">
-                <div className="col-md-8">
+                <div className="col-md-12">
                   <Link {...button.props}>
                     {button.text}
                   </Link>
