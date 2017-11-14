@@ -24,7 +24,9 @@ class Profile extends React.Component {
     this.init = this.init.bind(this);
 
     this.state = {
+      data: {},
       content: {},
+      resultTitle: '',
     };
   }
 
@@ -49,18 +51,27 @@ class Profile extends React.Component {
       });
     }
 
+    const data = this.props.cookies.get('result') || null;
+    let resultTitle;
+
+    if (data) {
+      resultTitle = profileContent.profiles.find((profile) => {
+        return profile.name.toLowerCase() === data.profileName.toLowerCase();
+      }).title;
+    }
+
     this.setState({
       ...this.state,
+      data,
       content,
+      resultTitle,
     });
   }
 
   render() {
-    console.log('Rendering...');
-    const { cookies } = this.props;
-    const data = cookies.get('result') || null;
-
     const content = this.state.content;
+    const data = this.state.data;
+    const resultTitle = this.state.resultTitle;
 
     // If no content is matched (or no name param provided) then redirect to home
     if (!content) {
@@ -81,12 +92,12 @@ class Profile extends React.Component {
 
       if (!isMyProfile) {
         sideBarProps.image = '/images/avatars/' + data.profileName + '_avatar.png';
-        sideBarProps.profileName = data.profileName;
+        sideBarProps.profileName = resultTitle;
         sideBarProps.button = {
           text: 'Visit Profile',
           props: {
             to: { pathname: '/profile', search: '?name=' + data.profileName.toLowerCase(), state: 'result' },
-            className: cx('btn-shadow', 'btn-shadow-sm', 'btn-shadow-primary', 'mb-3', 'mt-2')
+            className: cx('btn-shadow', 'btn-shadow-sm', 'btn-shadow-primary', 'mb-2', 'mt-4')
           }
         }
       }
@@ -97,7 +108,7 @@ class Profile extends React.Component {
       sideBarProps.button = {
         text: 'Take The Test',
         props: {
-          className: cx('btn', 'btn-outline-primary'),
+          className: cx('btn', 'btn-outline-primary', 'mt-2'),
           to: '/test'
         }
       }

@@ -17,7 +17,8 @@ export default class ProfileSidebar extends React.Component {
         <div className="block">
           <div className="title">{title}</div>
           <div className={cx('card', 'border-light', 'mb-3', 'text-center')} id="resultsCard">
-            <img className={cx('card-img-top', 'avatarImage')} src={image} />
+            {image &&
+            <img className={cx('card-img-top', 'avatarImage')} src={image} />}
             <div className="card-body">
               {text &&
               <p>{text}</p>}
@@ -27,7 +28,7 @@ export default class ProfileSidebar extends React.Component {
               values.map((value, i) => {
                 return (
                   <div key={i}>
-                    <p>{value.name}</p>
+                    <p className={i === 0 && 'mt-0'}>{value.name}</p>
                     <Line
                       key={i}
                       progress={value.score / valueMappings[value.name.toLowerCase()].max}
@@ -47,7 +48,7 @@ export default class ProfileSidebar extends React.Component {
               })}
               {button &&
               <Row justifyContent="around">
-                <div className="col-md-8">
+                <div className="col-md-12">
                   <Link {...button.props}>
                     {button.text}
                   </Link>
