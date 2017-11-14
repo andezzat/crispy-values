@@ -31,7 +31,7 @@ module.exports = {
     It's a great tool to jumpstart the process of self-discovery and another step towards finding your true calling.`,
     image: 'images/profile photo 2015.jpg',
     author: {
-      name: 'Dr.Erin Castellas',
+      name: 'Dr. Erin Castellas',
       company: 'Centre for Social Impact',
     }
   },
