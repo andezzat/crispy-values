@@ -46,7 +46,7 @@ export default class Footer extends React.Component {
               if (link.href.includes('http')) {
                 return (
                   <li key={i}>
-                    <a href={link.href}>{link.text}</a>
+                    <a href={link.href} target="_blank">{link.text}</a>
                   </li>
                 );
               } else {
