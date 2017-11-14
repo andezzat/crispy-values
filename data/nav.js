@@ -11,6 +11,7 @@ module.exports = {
       href: '#about',
       type: 'anchor',
       showOn: [
+        '/',
         '/home'
       ],
       classes: [
