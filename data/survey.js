@@ -5,6 +5,23 @@ const countryNames = countries.map((country) => country.name);
 
 module.exports = {
   boundaryDivisor: 4,
+  questionnaireFieldTypes: {
+    radio: {
+      multiplier: 2
+    },
+    slider: {
+      labels: {
+        0: 'Not important',
+        1: 'Less important',
+        2: 'So-so',
+        3: 'Important',
+        4: 'Very important'
+      },
+      options: [
+        0, 1, 2, 3, 4, 5, 6
+      ]
+    }
+  },
   preStep: {
     title: 'Before We Begin',
     description: 'Please make sure you\'ve read our privacy policy & terms of use before you begin your Values Footprint test.',
