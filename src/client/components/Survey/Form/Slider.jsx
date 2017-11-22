@@ -45,7 +45,6 @@ class Slider extends React.Component {
   };
 
   render() {
-
     return (
       <fieldset className="form-group">
         <label htmlFor={this.props.labelFor}>{this.props.labelText}{this.props.required && ' *' || ' (optional)'}</label>
@@ -65,6 +64,7 @@ class Slider extends React.Component {
           )
         })}
         </Row>
+        <div className="invalid-feedback">{this.props.validationError}</div>
         <hr />
       </fieldset>
     );
