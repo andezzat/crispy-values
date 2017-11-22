@@ -15,6 +15,7 @@ import { survey, postcodes } from '../../../data/';
 import Text from '../components/Survey/Form/Text.jsx';
 import Dropdown from '../components/Survey/Form/Dropdown.jsx';
 import Radio from '../components/Survey/Form/Radio.jsx'
+import Slider from '../components/Survey/Form/Slider.jsx'
 
 import Row from '../../../lib/bootstrap/components/Row.jsx';
 
@@ -285,7 +286,7 @@ class Test extends React.Component {
           if (field.type === 'radio') {
             for (var property in field.values) {
               if (field.values.hasOwnProperty(property) && result.hasOwnProperty(property)) {
-                const scoreToAdd = field.values[property] * 2; // Radio questions are always * 2
+                const scoreToAdd = field.values[property] * survey.questionnaireFieldTypes.radio.multiplier;
                 result[property] += scoreToAdd;
               }
             }
@@ -530,6 +531,15 @@ class Test extends React.Component {
                                   validations={field.validations.name + ':' + JSON.stringify(validValues)}
                                   validationError={field.validationError}
                                   required={field.required}
+                                />
+                              )
+                            } else if (field.type === 'slider') {
+                              const sliderType = survey.questionnaireFieldTypes.slider;
+                              return (
+                                <Slider
+                                  key={j}
+                                  id={j}
+                                  name={j.toString()}
                                 />
                               )
                             }
