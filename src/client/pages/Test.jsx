@@ -535,11 +535,28 @@ class Test extends React.Component {
                               )
                             } else if (field.type === 'slider') {
                               const sliderType = survey.questionnaireFieldTypes.slider;
+                              let value = parseInt(this.state.steps[i].fields[j].value);
+
+                              if (!value) {
+                                value = 0;
+                              }
+
                               return (
                                 <Slider
                                   key={j}
                                   id={j}
+                                  stepNumber={stepNumber}
+                                  onUpdate={this.updateSteps}
                                   name={j.toString()}
+                                  min={sliderType.options[0]}
+                                  max={sliderType.options[sliderType.options.length - 1]}
+                                  labelText={field.label}
+                                  labelFor={field.name}
+                                  labels={sliderType.labels}
+                                  value={value}
+                                  validations={field.validations.name + ':' + JSON.stringify(sliderType.options)}
+                                  validationError={field.validationError}
+                                  required={field.required}
                                 />
                               )
                             }
