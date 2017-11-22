@@ -10,15 +10,12 @@ module.exports = {
       multiplier: 2
     },
     slider: {
-      labels: {
-        0: 'Not important',
-        1: 'Less important',
-        2: 'So-so',
-        3: 'Important',
-        4: 'Very important'
-      },
+      labels: [
+        'Unimportant',
+        'Very important'
+      ],
       options: [
-        0, 1, 2, 3, 4, 5, 6
+        0, 1, 2, 3, 4, 5
       ]
     }
   },
