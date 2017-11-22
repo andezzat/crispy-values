@@ -63,7 +63,7 @@ class Test extends React.Component {
             indexes: [ i, j, k ],
             stepNumber,
             value: field.type === 'slider' ? 0 : '',
-            values: collection.type === 'questionnaire' && field.type === 'dropdown' ? field.values : {},
+            values: collection.type === 'questionnaire' && field.type === 'slider' ? field.values : {},
             valid: false,
             required: field.required,
           });
@@ -239,8 +239,8 @@ class Test extends React.Component {
     const maxValues = {};
 
     // Calculates max score possible for a user to obtain for each value
-    for (var property in allValues[0]) {
-      if (allValues[0].hasOwnProperty(property)) {
+    for (var property in allValues[0].values) {
+      if (allValues[0].values.hasOwnProperty(property)) {
         maxValues[property] = allValues.reduce((acc, val) => {
           return acc + (val.values[property] * val.maxMultiplier) // Multiplying each value score by the corresponding max multiplier
         }, 0);
@@ -297,7 +297,7 @@ class Test extends React.Component {
           } else if (field.type === 'slider') {
             for (var property in field.values) {
               if (field.values.hasOwnProperty(property) && result.hasOwnProperty(property)) {
-                const multiplier = sliderType.find((opt) => opt === field.value);
+                const multiplier = sliderType.options.find((opt) => opt === field.value);
                 const scoreToAdd = field.values[property] * multiplier;
                 result[property] += scoreToAdd;
               }
