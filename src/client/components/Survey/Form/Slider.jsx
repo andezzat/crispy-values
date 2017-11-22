@@ -47,7 +47,7 @@ class Slider extends React.Component {
   render() {
     return (
       <fieldset className="form-group">
-        <label htmlFor={this.props.labelFor}>{this.props.labelText}{this.props.required && ' *' || ' (optional)'}</label>
+        <label htmlFor={this.props.labelFor}>{this.props.labelText}</label>
         <div className="sliderContainer">
           <Slide
             dots
