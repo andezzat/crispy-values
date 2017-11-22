@@ -14,7 +14,7 @@ export default class Row extends React.Component {
     });
 
     return (
-      <div className={classes}>
+      <div className={classes} id={this.props.id}>
         {this.props.children}
       </div>
     );
