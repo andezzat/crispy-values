@@ -11,6 +11,8 @@ class Slider extends React.Component {
   constructor(props, context) {
     super(props, context);
 
+    this.changeValue = this.changeValue.bind(this);
+
     this.state = {
       value: 3,
     }
