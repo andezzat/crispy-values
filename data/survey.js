@@ -4,7 +4,7 @@ import countries from './countries';
 const countryNames = countries.map((country) => country.name);
 
 module.exports = {
-  boundaryDivisor: 2,
+  boundaryDivisor: 3,
   questionnaireFieldTypes: {
     radio: {
       multiplier: 2
