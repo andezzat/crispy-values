@@ -8,7 +8,7 @@ module.exports =
   This might be particularly useful as you’re thinking through a career change or a big life decision.
   We also hope to build more content and more tools over time as we work with more individuals and more companies to refine our research.
   If you are keen to understand more about how your organization can work with us to link values and value,
-  please contact us (find our contacty details at the bottom of the page) and we’re happy to talk to you about how we help companies understand customer and employee engagement with our growing suite of values tools.`,
+  please contact us (find our contact details at the bottom of the page) and we’re happy to talk to you about how we help companies understand customer and employee engagement with our growing suite of values tools.`,
   profiles: [
       {
         id: 1,
