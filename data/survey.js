@@ -4,7 +4,21 @@ import countries from './countries';
 const countryNames = countries.map((country) => country.name);
 
 module.exports = {
-  boundaryDivisor: 4,
+  boundaryDivisor: 3,
+  questionnaireFieldTypes: {
+    radio: {
+      multiplier: 2
+    },
+    slider: {
+      labels: [
+        'Unimportant',
+        'Very important'
+      ],
+      options: [
+        0, 1, 2, 3, 4, 5
+      ]
+    }
+  },
   preStep: {
     title: 'Before We Begin',
     description: 'Please make sure you\'ve read our privacy policy & terms of use before you begin your Values Footprint test.',
@@ -305,10 +319,10 @@ module.exports = {
           randomize: true,
           fields: [
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'A comfortable life (a prosperous life)',
               name: 'comfortableLife',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -318,18 +332,13 @@ module.exports = {
                 instrumental: 0,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'An exciting life (a stimulating, active life)',
               name: 'excitingLife',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -339,18 +348,13 @@ module.exports = {
                 instrumental: 0,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'A sense of accomplishment (lasting contribution)',
               name: 'accomplishment',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -360,18 +364,13 @@ module.exports = {
                 instrumental: 0,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'A world at peace (free of war and conflict)',
               name: 'worldPeace',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -381,18 +380,13 @@ module.exports = {
                 instrumental: 0,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'A world of beauty (beauty of nature and the arts)',
               name: 'wordlBeauty',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -402,18 +396,13 @@ module.exports = {
                 instrumental: 0,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Equality (brotherhood, equal opportunity for all)',
               name: 'equality',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -423,18 +412,13 @@ module.exports = {
                 instrumental: 0,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Family security (taking care of loved ones)',
               name: 'familySecurity',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -444,18 +428,13 @@ module.exports = {
                 instrumental: 0,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Freedom (independence, free choice)',
               name: 'freedom',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -465,18 +444,13 @@ module.exports = {
                 instrumental: 0,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Happiness (contentedness)',
               name: 'happiness',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -486,12 +460,7 @@ module.exports = {
                 instrumental: 0,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             }
           ]
         },
@@ -499,10 +468,10 @@ module.exports = {
           randomize: true,
           fields: [
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Inner harmony (freedom from inner conflict)',
               name: 'innerHarmony',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -512,18 +481,13 @@ module.exports = {
                 instrumental: 0,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Mature love (sexual and spiritual intimacy)',
               name: 'matureLove',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -533,18 +497,13 @@ module.exports = {
                 instrumental: 0,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'National security (protection from attack)',
               name: 'nationalSecurity',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -554,18 +513,13 @@ module.exports = {
                 instrumental: 0,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Pleasure (an enjoyable, leisurely life)',
               name: 'equality',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -575,18 +529,13 @@ module.exports = {
                 instrumental: 0,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Saved (eternal life)',
               name: 'saved',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -596,18 +545,13 @@ module.exports = {
                 instrumental: 0,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Self-respect (self-esteem)',
               name: 'self-respect',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -617,18 +561,13 @@ module.exports = {
                 instrumental: 0,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Social recognition (respect, admiration)',
               name: 'socialRecognition',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -638,18 +577,13 @@ module.exports = {
                 instrumental: 0,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'True friendship (close companionship)',
               name: 'trueFriendship',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -659,18 +593,13 @@ module.exports = {
                 instrumental: 0,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Wisdom (a mature understanding of life)',
               name: 'wisdom',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -680,12 +609,7 @@ module.exports = {
                 instrumental: 0,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             }
           ]
         },
@@ -693,10 +617,10 @@ module.exports = {
           randomize: true,
           fields: [
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Ambitious (hard-working, aspiring)',
               name: 'ambitious',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -706,18 +630,13 @@ module.exports = {
                 instrumental: 1,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Broadminded (open-minded)',
               name: 'broadminded',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -727,18 +646,13 @@ module.exports = {
                 instrumental: 1,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Capable (competent, effective)',
               name: 'capable',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -748,18 +662,13 @@ module.exports = {
                 instrumental: 1,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Cheerful (lighthearted, joyful)',
               name: 'cheerful',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -769,18 +678,13 @@ module.exports = {
                 instrumental: 1,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Clean (neat, tidy)',
               name: 'clean',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -790,18 +694,13 @@ module.exports = {
                 instrumental: 1,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Courageous (standing up for your beliefs)',
               name: 'courageous',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -811,18 +710,13 @@ module.exports = {
                 instrumental: 1,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Forgiving (wiling to pardon others)',
               name: 'forgiving',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -832,18 +726,13 @@ module.exports = {
                 instrumental: 1,
                 self: 0,
                 other: 2
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Helpful (working for the welfare of others)',
               name: 'helpful',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -853,18 +742,13 @@ module.exports = {
                 instrumental: 1,
                 self: 0,
                 other: 2
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Honest (sincere, truthful)',
               name: 'honest',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -874,12 +758,7 @@ module.exports = {
                 instrumental: 1,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             }
           ]
         },
@@ -887,10 +766,10 @@ module.exports = {
           randomize: true,
           fields: [
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Imaginative (daring, creative)',
               name: 'imaginative',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -900,18 +779,13 @@ module.exports = {
                 instrumental: 1,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Independent (self-reliant, self-sufficient)',
               name: 'independent',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -921,18 +795,13 @@ module.exports = {
                 instrumental: 1,
                 self: 2,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Intellectual (intelligent, reflective)',
               name: 'intellectual',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -942,18 +811,13 @@ module.exports = {
                 instrumental: 1,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Logical (consistent, rational)',
               name: 'logical',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -963,18 +827,13 @@ module.exports = {
                 instrumental: 1,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Loving (affectionate, tender)',
               name: 'loving',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -984,18 +843,13 @@ module.exports = {
                 instrumental: 1,
                 self: 0,
                 other: 1
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Obedient (dutiful, respectful)',
               name: 'obedient',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -1005,18 +859,13 @@ module.exports = {
                 instrumental: 1,
                 self: 0,
                 other: 2
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Polite (courteous, well-mannered)',
               name: 'polite',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -1026,18 +875,13 @@ module.exports = {
                 instrumental: 1,
                 self: 0,
                 other: 2
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Responsible (dependable, reliable)',
               name: 'responsible',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -1047,18 +891,13 @@ module.exports = {
                 instrumental: 1,
                 self: 0,
                 other: 2
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             },
             {
-              type: 'dropdown',
+              type: 'slider',
               label: 'Self-controlled (restrained, self-disciplined)',
               name: 'self-controlled',
-              required: true,
+              required: false,
               validations: {
                 name: 'isIn'
               },
@@ -1068,12 +907,7 @@ module.exports = {
                 instrumental: 1,
                 self: 1,
                 other: 0
-              },
-              options: [
-                'Not at all',
-                'A little',
-                'A lot'
-              ]
+              }
             }
           ]
         }
