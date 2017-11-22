@@ -49,8 +49,9 @@ class Test extends React.Component {
     let stepNumber = 0;
     survey.formCollections.forEach((collection, i) => {
       collection.steps.forEach((step, j) => {
+        const valid = step.fields.every((field) => !field.required);
         initialState.steps.push({
-          valid: false,
+          valid,
           collectionType: collection.type,
           fields: [],
         });
@@ -61,7 +62,7 @@ class Test extends React.Component {
             type: field.type,
             indexes: [ i, j, k ],
             stepNumber,
-            value: '',
+            value: field.type === 'slider' ? 0 : '',
             values: collection.type === 'questionnaire' && field.type === 'dropdown' ? field.values : {},
             valid: false,
             required: field.required,
@@ -215,13 +216,22 @@ class Test extends React.Component {
 
     const allValues = [];
 
+    const sliderType = survey.questionnaireFieldTypes.slider;
+    const radioType = survey.questionnaireFieldTypes.radio;
+
     collections.forEach((col) => {
       col.steps.forEach((step) => {
-        const dropdownFields = step.fields.filter((field) => field.type === 'dropdown');
+        const sliderFields = step.fields.filter((field) => field.type === 'slider');
         const radioFields = step.fields.filter((field) => field.type === 'radio');
-        dropdownFields.forEach((field) => allValues.push(field.values));
+        sliderFields.forEach((field) => allValues.push({
+          maxMultiplier: sliderType.options[sliderType.options.length - 1],
+          values: field.values
+        }));
         radioFields.forEach((field) => {
-          field.options.forEach((opt) => allValues.push(opt.values));
+          field.options.forEach((opt) => allValues.push({
+            maxMultiplier: radioType.multiplier,
+            values: opt.values
+          }));
         });
       });
     });
@@ -232,7 +242,7 @@ class Test extends React.Component {
     for (var property in allValues[0]) {
       if (allValues[0].hasOwnProperty(property)) {
         maxValues[property] = allValues.reduce((acc, val) => {
-          return acc + (val[property] * 2)
+          return acc + (val.values[property] * val.maxMultiplier) // Multiplying each value score by the corresponding max multiplier
         }, 0);
       }
     }
@@ -273,12 +283,6 @@ class Test extends React.Component {
       other: 0
     };
 
-    const dropdownMappings = [
-      { value: 'Not at all', multiplier: 0 },
-      { value: 'A little', multiplier: 1 },
-      { value: 'A lot', multiplier: 2 }
-    ];
-
     // Calculates final score for each value based on form from this.state.steps
     this.state.steps.forEach((step) => {
       if (step.collectionType === 'questionnaire') {
@@ -290,10 +294,10 @@ class Test extends React.Component {
                 result[property] += scoreToAdd;
               }
             }
-          } else if (field.type === 'dropdown') {
+          } else if (field.type === 'slider') {
             for (var property in field.values) {
               if (field.values.hasOwnProperty(property) && result.hasOwnProperty(property)) {
-                const multiplier = dropdownMappings.find((mapping) => mapping.value === field.value).multiplier;
+                const multiplier = sliderType.find((opt) => opt === field.value);
                 const scoreToAdd = field.values[property] * multiplier;
                 result[property] += scoreToAdd;
               }
@@ -535,12 +539,6 @@ class Test extends React.Component {
                               )
                             } else if (field.type === 'slider') {
                               const sliderType = survey.questionnaireFieldTypes.slider;
-                              let value = parseInt(this.state.steps[i].fields[j].value);
-
-                              if (!value) {
-                                value = 0;
-                              }
-
                               return (
                                 <Slider
                                   key={j}
@@ -553,7 +551,7 @@ class Test extends React.Component {
                                   labelText={field.label}
                                   labelFor={field.name}
                                   labels={sliderType.labels}
-                                  value={value}
+                                  value={this.state.steps[i].fields[j].value}
                                   validations={field.validations.name + ':' + JSON.stringify(sliderType.options)}
                                   validationError={field.validationError}
                                   required={field.required}
