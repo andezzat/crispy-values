@@ -127,11 +127,11 @@ module.exports =
         You are likely a strong believer in benevolence.`,
         report: `People with this value profile tend to be empathic and sensitive to the needs of others.
         They can easily appreciate and respect other people and other beings.
-        They value things of beauty, peace, and love.They tend to enjoy the feeling of helping others.`,
+        They value things of beauty, peace, & love and enjoy helping others.`,
         professionalMatch: `You may feel more satisfied and engaged working at a company that prioritizes protecting the environment, fighting for human rights or animal rights, or working for justice causes.
         You will also appreciate companies that allow you to connect one-on-one with others.
         You may also appreciate working in a smaller organisation or team that feels more intimate.`,
-        possibleJobs: ["Sustainability consultant","Advocacy campainer","International development worker","Human rights/Environmental lawyer","Purpose-driven entrepreneur","Doctor","Educator/Teacher","Nurse/Nurse Practitioner","Fundraiser","Grant-maker","Psychologist"]
+        possibleJobs: ["Sustainability consultant","Advocacy campaigner","International development worker","Human rights/Environmental lawyer","Purpose-driven entrepreneur","Doctor","Educator/Teacher","Nurse/Nurse Practitioner","Fundraiser","Grant-maker","Psychologist"]
       },
       {
         id: 8,
