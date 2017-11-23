@@ -7,6 +7,18 @@ module.exports = {
       classes: []
     },
     {
+      text: 'Profiles',
+      href: '#homeValues',
+      type: 'anchor',
+      showOn: [
+        '/',
+        '/home'
+      ],
+      classes: [
+        'scroll'
+      ]
+    },
+    {
       text: 'About',
       href: '#about',
       type: 'anchor',
