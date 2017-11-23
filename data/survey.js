@@ -671,7 +671,7 @@ module.exports = {
                 },
                 {
                   description: 'Helpful (working for the welfare of others)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -701,7 +701,7 @@ module.exports = {
                 },
                 {
                   description: 'Responsible (dependable, reliable)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -731,7 +731,7 @@ module.exports = {
                 },
                 {
                   description: 'Honest (sincere, truthful)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -761,7 +761,7 @@ module.exports = {
                 },
                 {
                   description: 'Polite (courteous, well-mannered)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -791,7 +791,7 @@ module.exports = {
                 },
                 {
                   description: 'Family security (taking care of loved ones)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -821,7 +821,7 @@ module.exports = {
                 },
                 {
                   description: 'A world of beauty (beauty of nature and the arts)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -851,7 +851,7 @@ module.exports = {
                 },
                 {
                   description: 'A world at peace (free of war and conflict)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -886,7 +886,7 @@ module.exports = {
                 },
                 {
                   description: 'Forgiving (wiling to pardon others)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -916,7 +916,7 @@ module.exports = {
                 },
                 {
                   description: 'Equality (brotherhood, equal opportunity for all)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -946,7 +946,7 @@ module.exports = {
                 },
                 {
                   description: 'National security (protection from attack)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -976,7 +976,7 @@ module.exports = {
                 },
                 {
                   description: 'Broadminded (open-minded)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -1006,7 +1006,7 @@ module.exports = {
                 },
                 {
                   description: 'Social recognition (respect, admiration)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -1036,7 +1036,7 @@ module.exports = {
                 },
                 {
                   description: 'Mature love (sexual and spiritual intimacy)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
                     instrumental: 0,
@@ -1066,10 +1066,10 @@ module.exports = {
                 },
                 {
                   description: 'Obedient (dutiful, respectful)',
-                  value: 'instrumental',
+                  value: 'other',
                   values: {
                     intrinsic: 0,
-                    instrumental: 0,
+                    other: 0,
                     self: 0,
                     other: 1,
                   },
