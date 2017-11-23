@@ -120,11 +120,11 @@ module.exports = {
     },
     {
       title: 'Which is more true?',
-      description: 'Select the statement that is more true for you from each pair of options below.',
+      description: 'In each pair, select the value that you identify with the most (the one that feels more important to you).',
       type: 'questionnaire',
       steps: [
         {
-          randomize: false,
+          randomize: true,
           fields: [
             {
               type: 'radio',
@@ -308,610 +308,777 @@ module.exports = {
             },
           ],
         },
-      ],
-    },
-    {
-      title: 'What do you value?',
-      description: 'Choose the option that best reflects how much you esteem each personal attribute or value below.',
-      type: 'questionnaire',
-      steps: [
         {
           randomize: true,
           fields: [
             {
-              type: 'slider',
-              label: 'A comfortable life (a prosperous life)',
-              name: 'comfortableLife',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'A comfortable life (a prosperous life)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Responsible (dependable, reliable)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'An exciting life (a stimulating, active life)',
-              name: 'excitingLife',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'An exciting life (a stimulating, active life)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Self-controlled (restrained, self-disciplined)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'A sense of accomplishment (lasting contribution)',
-              name: 'accomplishment',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'A sense of accomplishment (lasting contribution)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Capable (competent, effective)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'A world at peace (free of war and conflict)',
-              name: 'worldPeace',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 0,
-                other: 1
-              }
+              options: [
+                {
+                  description: 'Freedom (independence, free choice)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Obedient (dutiful, respectful)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'A world of beauty (beauty of nature and the arts)',
-              name: 'wordlBeauty',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 0,
-                other: 1
-              }
+              options: [
+                {
+                  description: 'Happiness (contentedness)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Cheerful (lighthearted, joyful)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Equality (brotherhood, equal opportunity for all)',
-              name: 'equality',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 0,
-                other: 1
-              }
+              options: [
+                {
+                  description: 'Inner harmony (freedom from inner conflict)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Imaginative (daring, creative)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
-            {
-              type: 'slider',
-              label: 'Family security (taking care of loved ones)',
-              name: 'familySecurity',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 0,
-                other: 1
-              }
-            },
-            {
-              type: 'slider',
-              label: 'Freedom (independence, free choice)',
-              name: 'freedom',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 1,
-                other: 0
-              }
-            },
-            {
-              type: 'slider',
-              label: 'Happiness (contentedness)',
-              name: 'happiness',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 1,
-                other: 0
-              }
-            }
           ]
         },
         {
           randomize: true,
           fields: [
             {
-              type: 'slider',
-              label: 'Inner harmony (freedom from inner conflict)',
-              name: 'innerHarmony',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'Mature love (sexual and spiritual intimacy)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Loving (affectionate, tender)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Mature love (sexual and spiritual intimacy)',
-              name: 'matureLove',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 0,
-                other: 1
-              }
+              options: [
+                {
+                  description: 'Pleasure (an enjoyable, leisurely life)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Logical (consistent, rational)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'National security (protection from attack)',
-              name: 'nationalSecurity',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 0,
-                other: 1
-              }
+              options: [
+                {
+                  description: 'Social recognition (respect, admiration)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Courageous (standing up for your beliefs)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Pleasure (an enjoyable, leisurely life)',
-              name: 'equality',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'True friendship (close companionship)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Independent (self-reliant, self-sufficient)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Saved (eternal life)',
-              name: 'saved',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'Wisdom (a mature understanding of life)',
+                  value: 'intrinsic',
+                  values: {
+                    intrinsic: 1,
+                    instrumental: 0,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Intellectual (intelligent, reflective)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 1,
+                    self: 0,
+                    other: 0,
+                  },
+                },
+              ],
             },
-            {
-              type: 'slider',
-              label: 'Self-respect (self-esteem)',
-              name: 'self-respect',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 1,
-                other: 0
-              }
-            },
-            {
-              type: 'slider',
-              label: 'Social recognition (respect, admiration)',
-              name: 'socialRecognition',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 0,
-                other: 1
-              }
-            },
-            {
-              type: 'slider',
-              label: 'True friendship (close companionship)',
-              name: 'trueFriendship',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 0,
-                other: 1
-              }
-            },
-            {
-              type: 'slider',
-              label: 'Wisdom (a mature understanding of life)',
-              name: 'wisdom',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 1,
-                instrumental: 0,
-                self: 1,
-                other: 0
-              }
-            }
           ]
         },
         {
           randomize: true,
           fields: [
             {
-              type: 'slider',
-              label: 'Ambitious (hard-working, aspiring)',
-              name: 'ambitious',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'A comfortable life (a prosperous life)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Helpful (working for the welfare of others)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Broadminded (open-minded)',
-              name: 'broadminded',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 0,
-                other: 1
-              }
+              options: [
+                {
+                  description: 'An exciting life (a stimulating, active life)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Responsible (dependable, reliable)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Capable (competent, effective)',
-              name: 'capable',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'Capable (competent, effective)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Honest (sincere, truthful)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Cheerful (lighthearted, joyful)',
-              name: 'cheerful',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'Clean (neat, tidy)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Polite (courteous, well-mannered)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Clean (neat, tidy)',
-              name: 'clean',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'Freedom (independence, free choice)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Family security (taking care of loved ones)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Courageous (standing up for your beliefs)',
-              name: 'courageous',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'Imaginative (daring, creative)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'A world of beauty (beauty of nature and the arts)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Forgiving (wiling to pardon others)',
-              name: 'forgiving',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 0,
-                other: 2
-              }
+              options: [
+                {
+                  description: 'Inner harmony (freedom from inner conflict)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'A world at peace (free of war and conflict)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
-            {
-              type: 'slider',
-              label: 'Helpful (working for the welfare of others)',
-              name: 'helpful',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 0,
-                other: 2
-              }
-            },
-            {
-              type: 'slider',
-              label: 'Honest (sincere, truthful)',
-              name: 'honest',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 0,
-                other: 1
-              }
-            }
           ]
         },
         {
           randomize: true,
           fields: [
             {
-              type: 'slider',
-              label: 'Imaginative (daring, creative)',
-              name: 'imaginative',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'Logical (consistent, rational)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Forgiving (wiling to pardon others)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Independent (self-reliant, self-sufficient)',
-              name: 'independent',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 2,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'Pleasure (an enjoyable, leisurely life)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Equality (brotherhood, equal opportunity for all)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Intellectual (intelligent, reflective)',
-              name: 'intellectual',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'Saved (eternal life)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'National security (protection from attack)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Logical (consistent, rational)',
-              name: 'logical',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 1,
-                other: 0
-              }
+              options: [
+                {
+                  description: 'Self-controlled (restrained, self-disciplined)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Broadminded (open-minded)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Loving (affectionate, tender)',
-              name: 'loving',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 0,
-                other: 1
-              }
+              options: [
+                {
+                  description: 'Self-respect (self-esteem)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Social recognition (respect, admiration)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Obedient (dutiful, respectful)',
-              name: 'obedient',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 0,
-                other: 2
-              }
+              options: [
+                {
+                  description: 'Wisdom (a mature understanding of life)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Mature love (sexual and spiritual intimacy)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
             {
-              type: 'slider',
-              label: 'Polite (courteous, well-mannered)',
-              name: 'polite',
-              required: false,
+              type: 'radio',
+              required: true,
               validations: {
                 name: 'isIn'
               },
               validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 0,
-                other: 2
-              }
+              options: [
+                {
+                  description: 'Independent (self-reliant, self-sufficient)',
+                  value: 'self',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 1,
+                    other: 0,
+                  },
+                },
+                {
+                  description: 'Obedient (dutiful, respectful)',
+                  value: 'instrumental',
+                  values: {
+                    intrinsic: 0,
+                    instrumental: 0,
+                    self: 0,
+                    other: 1,
+                  },
+                },
+              ],
             },
-            {
-              type: 'slider',
-              label: 'Responsible (dependable, reliable)',
-              name: 'responsible',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 0,
-                other: 2
-              }
-            },
-            {
-              type: 'slider',
-              label: 'Self-controlled (restrained, self-disciplined)',
-              name: 'self-controlled',
-              required: false,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              values: {
-                intrinsic: 0,
-                instrumental: 1,
-                self: 1,
-                other: 0
-              }
-            }
           ]
         }
-      ]
-    }
+      ],
+    },
   ],
 };
