@@ -8,7 +8,7 @@ module.exports =
   This might be particularly useful as you’re thinking through a career change or a big life decision.
   We also hope to build more content and more tools over time as we work with more individuals and more companies to refine our research.
   If you are keen to understand more about how your organization can work with us to link values and value,
-  please contact us (find our contacty details at the bottom of the page) and we’re happy to talk to you about how we help companies understand customer and employee engagement with our growing suite of values tools.`,
+  please contact us (find our contact details at the bottom of the page) and we’re happy to talk to you about how we help companies understand customer and employee engagement with our growing suite of values tools.`,
   profiles: [
       {
         id: 1,
@@ -127,11 +127,11 @@ module.exports =
         You are likely a strong believer in benevolence.`,
         report: `People with this value profile tend to be empathic and sensitive to the needs of others.
         They can easily appreciate and respect other people and other beings.
-        They value things of beauty, peace, and love.They tend to enjoy the feeling of helping others.`,
+        They value things of beauty, peace, & love and enjoy helping others.`,
         professionalMatch: `You may feel more satisfied and engaged working at a company that prioritizes protecting the environment, fighting for human rights or animal rights, or working for justice causes.
         You will also appreciate companies that allow you to connect one-on-one with others.
         You may also appreciate working in a smaller organisation or team that feels more intimate.`,
-        possibleJobs: ["Sustainability consultant","Advocacy campainer","International development worker","Human rights/Environmental lawyer","Purpose-driven entrepreneur","Doctor","Educator/Teacher","Nurse/Nurse Practitioner","Fundraiser","Grant-maker","Psychologist"]
+        possibleJobs: ["Sustainability consultant","Advocacy campaigner","International development worker","Human rights/Environmental lawyer","Purpose-driven entrepreneur","Doctor","Educator/Teacher","Nurse/Nurse Practitioner","Fundraiser","Grant-maker","Psychologist"]
       },
       {
         id: 8,
