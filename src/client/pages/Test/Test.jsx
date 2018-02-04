@@ -1,6 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { instanceOf } from 'prop-types';
 import Formsy from 'formsy-react';
 import cx from 'classnames';
@@ -35,6 +35,8 @@ class Test extends React.Component {
     this.enableButton = this.enableButton.bind(this);
     this.disableButton = this.disableButton.bind(this);
     this.updateSteps = this.updateSteps.bind(this);
+    this.areAffectedFieldsValid = this.areAffectedFieldsValid.bind(this);
+    this.validateAffectedFields = this.validateAffectedFields.bind(this);
     this.isStepValid = this.isStepValid.bind(this);
     this.goToStep = this.goToStep.bind(this);
     this.handleError = this.handleError.bind(this);
@@ -57,9 +59,39 @@ class Test extends React.Component {
       }
     });
 
-    const valid = stepValidation.every((value) => { return value });
+    const valid = stepValidation.every(value => value);
+
     return valid;
   };
+
+  areAffectedFieldsValid(field, step) {
+    if (field.affects.length < 1) return true;
+
+    var affectedFields = field.affects.map((name) => {
+      return step.fields.find(f => f.name === name);
+    });
+
+    affectedFields = affectedFields.filter((affectedField) => {
+      return affectedField.required || affectedField.value;
+    });
+
+    const areValid = affectedFields.map(field => this.refs[field.id].isValid());
+
+    return areValid.every(field => field);
+  }
+
+  validateAffectedFields(stepNumber, field) {
+    const steps = this.state.steps.slice();
+    const step = steps[stepNumber - 1];
+    if(!this.areAffectedFieldsValid(field, step)) {
+      step.valid = false;
+
+      this.setState({
+        ...this.state,
+        steps
+      });
+    };
+  }
 
   updateSteps(stepNumber, updatedField) {
     const newSteps = this.state.steps.slice();
@@ -82,12 +114,13 @@ class Test extends React.Component {
         newField.values = option.values;
       }
     }
+
     newStep.valid = this.isStepValid(stepNumber);
 
     this.setState({
       ...this.state,
       steps: newSteps,
-    });
+    }, () => this.validateAffectedFields(stepNumber, newField));
   };
 
   goToStep(stepNumber) {
@@ -272,8 +305,6 @@ class Test extends React.Component {
 
     const POSTURL = process.env.NODE_ENV === 'production' ? 'https://www.valuesfootprint.com/results' : 'http://localhost:3000/results';
 
-    debugger;
-
     const { cookies } = this.props;
 
     // fetch(POSTURL, {
@@ -348,6 +379,10 @@ class Test extends React.Component {
         <div className="container">
           <h3>{survey.preStep.title}</h3>
           <p>{survey.preStep.description}</p>
+          <p>
+            <Link to='/privacy'>Privacy Policy</Link> & <Link to='/terms'>Terms of Use</Link>
+          </p>
+
         </div>}
         {collectionDetails.map((collection, i) => {
           return (
@@ -402,6 +437,7 @@ class Test extends React.Component {
                                 <Text
                                   key={j}
                                   id={j}
+                                  ref={j}
                                   stepNumber={stepNumber}
                                   onUpdate={this.updateSteps}
                                   name={field.name}
@@ -421,6 +457,7 @@ class Test extends React.Component {
                                 <Dropdown
                                   key={j}
                                   id={j}
+                                  ref={j}
                                   stepNumber={stepNumber}
                                   onUpdate={this.updateSteps}
                                   name={field.name}
@@ -440,6 +477,7 @@ class Test extends React.Component {
                                 <Radio
                                   key={j}
                                   id={j}
+                                  ref={j}
                                   stepNumber={stepNumber}
                                   onUpdate={this.updateSteps}
                                   name={j.toString()}
@@ -456,6 +494,7 @@ class Test extends React.Component {
                                 <Slider
                                   key={j}
                                   id={j}
+                                  ref={j}
                                   stepNumber={stepNumber}
                                   onUpdate={this.updateSteps}
                                   name={j.toString()}

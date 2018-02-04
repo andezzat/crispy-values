@@ -49,6 +49,7 @@ const stateHelper = {
             value: field.type === 'slider' ? 0 : '',
             values: collection.type === 'questionnaire' && field.type === 'slider' ? field.values : {},
             valid: false,
+            affects: field.affects || [],
             required: field.required,
           });
         });
