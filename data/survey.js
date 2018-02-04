@@ -126,7 +126,9 @@ module.exports = {
     },
     {
       title: 'Which is more true?',
-      description: 'In each pair, select the value that you identify with the most (the one that feels more important to you).',
+      description: `In each pair, please select the value that you identify with (the one that feels more important to you).
+      Some pairs represent values where both can ring true for you or neither can ring true for you,
+      but please select the one that you relate to the most.`,
       type: 'questionnaire',
       steps: [
         {
@@ -201,7 +203,7 @@ module.exports = {
               validationError: 'Please choose one of the options.',
               options: [
                 {
-                  description: 'I see money as financial wealth',
+                  description: 'I see money as means to accumulate financial wealth (assets)',
                   value: 'intrinsic',
                   values: {
                     intrinsic: 1,
@@ -922,36 +924,6 @@ module.exports = {
                 },
                 {
                   description: 'Equality (brotherhood, equal opportunity for all)',
-                  value: 'other',
-                  values: {
-                    intrinsic: 0,
-                    instrumental: 0,
-                    self: 0,
-                    other: 1,
-                  },
-                },
-              ],
-            },
-            {
-              type: 'radio',
-              required: true,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              options: [
-                {
-                  description: 'Saved (eternal life)',
-                  value: 'self',
-                  values: {
-                    intrinsic: 0,
-                    instrumental: 0,
-                    self: 1,
-                    other: 0,
-                  },
-                },
-                {
-                  description: 'National security (protection from attack)',
                   value: 'other',
                   values: {
                     intrinsic: 0,

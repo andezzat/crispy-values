@@ -378,7 +378,7 @@ class Test extends React.Component {
         {this.state.currentStep === 0 &&
         <div className="container">
           <h3>{survey.preStep.title}</h3>
-          <p>{survey.preStep.description}</p>
+          <p><b>{collection.description}</b></p>
           <p>
             <Link to='/privacy'>Privacy Policy</Link> & <Link to='/terms'>Terms of Use</Link>
           </p>
@@ -389,7 +389,7 @@ class Test extends React.Component {
             this.state.currentStep >= collection.firstStep && this.state.currentStep <= collection.lastStep &&
             <div key={i} className="container">
               <h3>{collection.title}</h3>
-              <p>{collection.description}</p>
+              <p><b>{collection.description}</b></p>
             </div>
           );
         })}
