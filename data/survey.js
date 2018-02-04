@@ -1,7 +1,7 @@
 import countries from './countries';
 
 // Extracts country names only for each country.
-const countryNames = countries.map((country) => country.name);
+const countryNames = countries.map(country => country.name);
 
 module.exports = {
   boundaryDivisor: 4,
@@ -22,7 +22,11 @@ module.exports = {
   preStep: {
     title: 'Before We Begin',
     description: 'Please make sure you\'ve read our privacy policy & terms of use before you begin your Values Footprint test.',
-    text: 'You can find the privacy policy & terms of use at the bottom of the page, by starting this test you agree to our terms and conditions.',
+    text: `Similar to personality profiles, your values footprint can reveal something about who you are and how you see the world.
+    It can be a fun building block to help you think about how your values align with others as you go about your daily life.
+    It may help you think about whether a new job opportunity is a good fit,
+    or your values footprint might get you reflecting on what others care about and help you frame your kickstarter campaign or partnership in a new light.
+    Take the free test now.`,
     buttons: {
       start: {
         name: 'Start',
@@ -40,38 +44,6 @@ module.exports = {
         {
           randomize: false,
           fields: [
-            {
-              name: 'Country',
-              label: 'Country',
-              type: 'dropdown',
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please select a country.',
-              required: true,
-              options: countryNames
-            },
-            {
-              name: 'Postcode',
-              label: 'Postcode',
-              type: 'text',
-              validations: {
-                name: 'isPostcode'
-              },
-              validationError: 'Please enter a valid Postcode.',
-              required: true
-            },
-            {
-              name: 'Industry',
-              label: 'Industry',
-              type: 'dropdown',
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose from the options above.',
-              required: true,
-              options: [ 'Agriculture, Forestry and Fishing', 'Mining', 'Manufacturing', 'Electricity, Gas and Water Supply', 'Construction', 'Wholesale Trade', 'Retail Trade', 'Accomodation, Cafes and Restaurants', 'Transport and Storage', 'Communication Services', 'Finance and Insurance', 'Property and Business Services', 'Government Administration and Defence', 'Education', 'Health and Community Services', 'Cultural and Recreational Services', 'Personal and Other Services', 'Other', 'Unemployed' ]
-            },
             {
               name: 'Age',
               label: 'Age',
@@ -95,8 +67,42 @@ module.exports = {
               options: [ 'Male', 'Female', 'Other' ]
             },
             {
+              name: 'Industry',
+              label: 'Industry',
+              type: 'dropdown',
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose from the options above.',
+              required: true,
+              options: [ 'Agriculture, Forestry and Fishing', 'Mining', 'Manufacturing', 'Electricity, Gas and Water Supply', 'Construction', 'Wholesale Trade', 'Retail Trade', 'Accomodation, Cafes and Restaurants', 'Transport and Storage', 'Communication Services', 'Finance and Insurance', 'Property and Business Services', 'Government Administration and Defence', 'Education', 'Health and Community Services', 'Cultural and Recreational Services', 'Personal and Other Services', 'Other', 'Unemployed' ]
+            },
+            {
+              name: 'Country',
+              label: 'Country',
+              type: 'dropdown',
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please select a country.',
+              required: true,
+              affects: [ 'Postcode' ],
+              options: countryNames
+            },
+            {
+              name: 'Postcode',
+              label: 'Postcode',
+              type: 'text',
+              validations: {
+                name: 'isPostcode'
+              },
+              validationError: 'Please enter a valid Postcode.',
+              required: false
+            },
+            {
               name: 'Email',
               label: 'Email',
+              description: 'You may want to provide this if you are part of a group study and would like to be contacted for a follow up.',
               type: 'text',
               validations: {
                 name: 'isEmail'
