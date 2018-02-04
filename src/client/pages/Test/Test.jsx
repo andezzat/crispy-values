@@ -307,11 +307,11 @@ class Test extends React.Component {
 
     const { cookies } = this.props;
 
-    // fetch(POSTURL, {
-    //   method: 'POST',
-    //   body: JSON.stringify(data),
-    //   headers: { 'Content-Type': 'application/json' }
-    // });
+    fetch(POSTURL, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    });
 
     // Insert each value's name and its score inside an object into values array
     // This makes it easy to map into React markup
