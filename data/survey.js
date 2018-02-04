@@ -1,7 +1,7 @@
 import countries from './countries';
 
 // Extracts country names only for each country.
-const countryNames = countries.map((country) => country.name);
+const countryNames = countries.map(country => country.name);
 
 module.exports = {
   boundaryDivisor: 4,
@@ -22,7 +22,11 @@ module.exports = {
   preStep: {
     title: 'Before We Begin',
     description: 'Please make sure you\'ve read our privacy policy & terms of use before you begin your Values Footprint test.',
-    text: 'You can find the privacy policy & terms of use at the bottom of the page, by starting this test you agree to our terms and conditions.',
+    text: `Similar to personality profiles, your values footprint can reveal something about who you are and how you see the world.
+    It can be a fun building block to help you think about how your values align with others as you go about your daily life.
+    It may help you think about whether a new job opportunity is a good fit,
+    or your values footprint might get you reflecting on what others care about and help you frame your kickstarter campaign or partnership in a new light.
+    Take the free test now.`,
     buttons: {
       start: {
         name: 'Start',
@@ -40,38 +44,6 @@ module.exports = {
         {
           randomize: false,
           fields: [
-            {
-              name: 'Country',
-              label: 'Country',
-              type: 'dropdown',
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please select a country.',
-              required: true,
-              options: countryNames
-            },
-            {
-              name: 'Postcode',
-              label: 'Postcode',
-              type: 'text',
-              validations: {
-                name: 'isPostcode'
-              },
-              validationError: 'Please enter a valid Postcode.',
-              required: true
-            },
-            {
-              name: 'Industry',
-              label: 'Industry',
-              type: 'dropdown',
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose from the options above.',
-              required: true,
-              options: [ 'Agriculture, Forestry and Fishing', 'Mining', 'Manufacturing', 'Electricity, Gas and Water Supply', 'Construction', 'Wholesale Trade', 'Retail Trade', 'Accomodation, Cafes and Restaurants', 'Transport and Storage', 'Communication Services', 'Finance and Insurance', 'Property and Business Services', 'Government Administration and Defence', 'Education', 'Health and Community Services', 'Cultural and Recreational Services', 'Personal and Other Services', 'Other', 'Unemployed' ]
-            },
             {
               name: 'Age',
               label: 'Age',
@@ -95,8 +67,42 @@ module.exports = {
               options: [ 'Male', 'Female', 'Other' ]
             },
             {
+              name: 'Industry',
+              label: 'Industry',
+              type: 'dropdown',
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please choose from the options above.',
+              required: true,
+              options: [ 'Agriculture, Forestry and Fishing', 'Mining', 'Manufacturing', 'Electricity, Gas and Water Supply', 'Construction', 'Wholesale Trade', 'Retail Trade', 'Accomodation, Cafes and Restaurants', 'Transport and Storage', 'Communication Services', 'Finance and Insurance', 'Property and Business Services', 'Government Administration and Defence', 'Education', 'Health and Community Services', 'Cultural and Recreational Services', 'Personal and Other Services', 'Other', 'Unemployed' ]
+            },
+            {
+              name: 'Country',
+              label: 'Country',
+              type: 'dropdown',
+              validations: {
+                name: 'isIn'
+              },
+              validationError: 'Please select a country.',
+              required: true,
+              affects: [ 'Postcode' ],
+              options: countryNames
+            },
+            {
+              name: 'Postcode',
+              label: 'Postcode',
+              type: 'text',
+              validations: {
+                name: 'isPostcode'
+              },
+              validationError: 'Please enter a valid Postcode.',
+              required: false
+            },
+            {
               name: 'Email',
               label: 'Email',
+              description: 'You may want to provide this if you are part of a group study and would like to be contacted for a follow up.',
               type: 'text',
               validations: {
                 name: 'isEmail'
@@ -120,7 +126,9 @@ module.exports = {
     },
     {
       title: 'Which is more true?',
-      description: 'In each pair, select the value that you identify with the most (the one that feels more important to you).',
+      description: `In each pair, please select the value that you identify with (the one that feels more important to you).
+      Some pairs represent values where both can ring true for you or neither can ring true for you,
+      but please select the one that you relate to the most.`,
       type: 'questionnaire',
       steps: [
         {
@@ -195,7 +203,7 @@ module.exports = {
               validationError: 'Please choose one of the options.',
               options: [
                 {
-                  description: 'I see money as financial wealth',
+                  description: 'I see money as means to accumulate financial wealth (assets)',
                   value: 'intrinsic',
                   values: {
                     intrinsic: 1,
@@ -916,36 +924,6 @@ module.exports = {
                 },
                 {
                   description: 'Equality (brotherhood, equal opportunity for all)',
-                  value: 'other',
-                  values: {
-                    intrinsic: 0,
-                    instrumental: 0,
-                    self: 0,
-                    other: 1,
-                  },
-                },
-              ],
-            },
-            {
-              type: 'radio',
-              required: true,
-              validations: {
-                name: 'isIn'
-              },
-              validationError: 'Please choose one of the options.',
-              options: [
-                {
-                  description: 'Saved (eternal life)',
-                  value: 'self',
-                  values: {
-                    intrinsic: 0,
-                    instrumental: 0,
-                    self: 1,
-                    other: 0,
-                  },
-                },
-                {
-                  description: 'National security (protection from attack)',
                   value: 'other',
                   values: {
                     intrinsic: 0,

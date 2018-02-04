@@ -1,6 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { instanceOf } from 'prop-types';
 import Formsy from 'formsy-react';
 import cx from 'classnames';
@@ -10,14 +10,18 @@ import moment from 'moment';
 
 import { Line } from 'react-progressbar.js'
 
-import { survey, postcodes } from '../../../data/';
+import Text from '~/src/client/components/Survey/Form/Text.jsx';
+import Dropdown from '~/src/client/components/Survey/Form/Dropdown.jsx';
+import Radio from '~/src/client/components/Survey/Form/Radio.jsx'
+import Slider from '~/src/client/components/Survey/Form/Slider.jsx'
 
-import Text from '../components/Survey/Form/Text.jsx';
-import Dropdown from '../components/Survey/Form/Dropdown.jsx';
-import Radio from '../components/Survey/Form/Radio.jsx'
-import Slider from '../components/Survey/Form/Slider.jsx'
+import Row from '~/lib/bootstrap/components/Row.jsx';
 
-import Row from '../../../lib/bootstrap/components/Row.jsx';
+// Logic
+import { stateHelper } from './Test.js';
+
+// Data
+import { survey, postcodes } from '~/data/';
 
 
 class Test extends React.Component {
@@ -28,112 +32,21 @@ class Test extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.shuffleArray = this.shuffleArray.bind(this);
     this.enableButton = this.enableButton.bind(this);
     this.disableButton = this.disableButton.bind(this);
     this.updateSteps = this.updateSteps.bind(this);
+    this.areAffectedFieldsValid = this.areAffectedFieldsValid.bind(this);
+    this.validateAffectedFields = this.validateAffectedFields.bind(this);
     this.isStepValid = this.isStepValid.bind(this);
     this.goToStep = this.goToStep.bind(this);
     this.handleError = this.handleError.bind(this);
     this.submit = this.submit.bind(this);
 
-    const initialState = {
-      steps: [],
-      collectionDetails: [],
-      stepDetails: [],
-      canSubmit: false,
-      currentStep: 0,
-      progress: 0
-    };
-
-    let stepNumber = 0;
-    survey.formCollections.forEach((collection, i) => {
-      collection.steps.forEach((step, j) => {
-        const valid = step.fields.every((field) => !field.required);
-        initialState.steps.push({
-          valid,
-          collectionType: collection.type,
-          fields: [],
-        });
-        step.fields.forEach((field, k) => {
-          initialState.steps[stepNumber].fields.push({
-            id: k,
-            name: field.name,
-            type: field.type,
-            indexes: [ i, j, k ],
-            stepNumber,
-            value: field.type === 'slider' ? 0 : '',
-            values: collection.type === 'questionnaire' && field.type === 'slider' ? field.values : {},
-            valid: false,
-            required: field.required,
-          });
-        });
-        stepNumber++;
-      });
-    });
-
-    survey.formCollections.forEach((collection, i) => {
-      var firstStep;
-      if (i === 0) {
-        firstStep = 1;
-      } else {
-        firstStep = initialState.collectionDetails[i - 1].lastStep + 1;
-      }
-
-      initialState.collectionDetails.push({
-        title: collection.title,
-        description: collection.description,
-        firstStep,
-        lastStep: firstStep + collection.steps.length - 1,
-      });
-    });
-
-    survey.formCollections.forEach((collection, i) => {
-      collection.steps.forEach((step, j) => {
-        if (step.randomize) {
-          this.shuffleArray(step.fields);
-        }
-        initialState.stepDetails.push(step);
-      });
-    });
+    const initialState = stateHelper.CreateInitialState();
 
     this.state = initialState;
-
-    // Add validation rules to Formsy
-    Formsy.addValidationRule('isBetween', (values, value, array) => {
-      return value >= array[0] && value <= array[1];
-    });
-    Formsy.addValidationRule('isIn', (values, value, array) => {
-      return array.indexOf(value) >= 0;
-    });
-    Formsy.addValidationRule('isPostcode', (values, value, array) => {
-      var isValid = false;
-      const countryField = this.state.steps[0].fields.find((field) => field.name === 'Country');
-
-      if (countryField.value === 'Australia') {
-        postcodes.forEach((range) => {
-          if (value >= range.from && value <= range.to) {
-            isValid = true;
-            return false; // Breaks out of loop
-          }
-        });
-      } else {
-        isValid = true;
-      }
-      return isValid;
-    });
+    stateHelper.AddFormsyValidationRules(Formsy, this.state);
   };
-
-  shuffleArray(array) {
-    let i = array.length - 1;
-    for (i > 0; i--;) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
-  }
 
   isStepValid(stepNumber) {
     const step = this.state.steps[stepNumber - 1];
@@ -146,9 +59,39 @@ class Test extends React.Component {
       }
     });
 
-    const valid = stepValidation.every((value) => { return value });
+    const valid = stepValidation.every(value => value);
+
     return valid;
   };
+
+  areAffectedFieldsValid(field, step) {
+    if (field.affects.length < 1) return true;
+
+    var affectedFields = field.affects.map((name) => {
+      return step.fields.find(f => f.name === name);
+    });
+
+    affectedFields = affectedFields.filter((affectedField) => {
+      return affectedField.required || affectedField.value;
+    });
+
+    const areValid = affectedFields.map(field => this.refs[field.id].isValid());
+
+    return areValid.every(field => field);
+  }
+
+  validateAffectedFields(stepNumber, field) {
+    const steps = this.state.steps.slice();
+    const step = steps[stepNumber - 1];
+    if(!this.areAffectedFieldsValid(field, step)) {
+      step.valid = false;
+
+      this.setState({
+        ...this.state,
+        steps
+      });
+    };
+  }
 
   updateSteps(stepNumber, updatedField) {
     const newSteps = this.state.steps.slice();
@@ -171,12 +114,13 @@ class Test extends React.Component {
         newField.values = option.values;
       }
     }
+
     newStep.valid = this.isStepValid(stepNumber);
 
     this.setState({
       ...this.state,
       steps: newSteps,
-    });
+    }, () => this.validateAffectedFields(stepNumber, newField));
   };
 
   goToStep(stepNumber) {
@@ -434,14 +378,18 @@ class Test extends React.Component {
         {this.state.currentStep === 0 &&
         <div className="container">
           <h3>{survey.preStep.title}</h3>
-          <p>{survey.preStep.description}</p>
+          <p><b>{collection.description}</b></p>
+          <p>
+            <Link to='/privacy'>Privacy Policy</Link> & <Link to='/terms'>Terms of Use</Link>
+          </p>
+
         </div>}
         {collectionDetails.map((collection, i) => {
           return (
             this.state.currentStep >= collection.firstStep && this.state.currentStep <= collection.lastStep &&
             <div key={i} className="container">
               <h3>{collection.title}</h3>
-              <p>{collection.description}</p>
+              <p><b>{collection.description}</b></p>
             </div>
           );
         })}
@@ -489,6 +437,7 @@ class Test extends React.Component {
                                 <Text
                                   key={j}
                                   id={j}
+                                  ref={j}
                                   stepNumber={stepNumber}
                                   onUpdate={this.updateSteps}
                                   name={field.name}
@@ -508,6 +457,7 @@ class Test extends React.Component {
                                 <Dropdown
                                   key={j}
                                   id={j}
+                                  ref={j}
                                   stepNumber={stepNumber}
                                   onUpdate={this.updateSteps}
                                   name={field.name}
@@ -527,6 +477,7 @@ class Test extends React.Component {
                                 <Radio
                                   key={j}
                                   id={j}
+                                  ref={j}
                                   stepNumber={stepNumber}
                                   onUpdate={this.updateSteps}
                                   name={j.toString()}
@@ -543,6 +494,7 @@ class Test extends React.Component {
                                 <Slider
                                   key={j}
                                   id={j}
+                                  ref={j}
                                   stepNumber={stepNumber}
                                   onUpdate={this.updateSteps}
                                   name={j.toString()}
