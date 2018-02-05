@@ -43,6 +43,7 @@ class Text extends React.Component {
     const valid = this.props.isValidValue(value);
 
     this.props.setValue(value);
+
     this.props.onUpdate(
       stepNumber,
       { id, value, valid }
@@ -74,7 +75,7 @@ class Text extends React.Component {
     const inputCx = cx({
       'form-control': true,
       'is-valid': !this.props.showError() && this.props.getValue() && this.state.blurred,
-      'is-invalid': this.props.showError() && this.state.blurred,
+      'is-invalid': this.props.showError() && this.state.blurred && (this.props.required || this.props.getValue()),
     });
 
     const errorMessage = this.props.getErrorMessage();

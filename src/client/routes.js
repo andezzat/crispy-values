@@ -1,7 +1,7 @@
 import App from './components/App.jsx';
 
 import Home from './pages/Home.jsx';
-import Test from './pages/Test.jsx';
+import Test from './pages/Test/Test.jsx';
 import Privacy from './pages/Privacy.jsx';
 import Terms from './pages/Terms.jsx';
 import Profile from './pages/Profile.jsx';
