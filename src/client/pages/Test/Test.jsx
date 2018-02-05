@@ -10,18 +10,18 @@ import moment from 'moment';
 
 import { Line } from 'react-progressbar.js'
 
-import Text from '~/src/client/components/Survey/Form/Text.jsx';
-import Dropdown from '~/src/client/components/Survey/Form/Dropdown.jsx';
-import Radio from '~/src/client/components/Survey/Form/Radio.jsx'
-import Slider from '~/src/client/components/Survey/Form/Slider.jsx'
+import Text from '../../components/Survey/Form/Text.jsx';
+import Dropdown from '../../components/Survey/Form/Dropdown.jsx';
+import Radio from '../../components/Survey/Form/Radio.jsx'
+import Slider from '../../components/Survey/Form/Slider.jsx'
 
-import Row from '~/lib/bootstrap/components/Row.jsx';
+import Row from '../../../../lib/bootstrap/components/Row.jsx';
 
 // Logic
 import { stateHelper } from './Test.js';
 
 // Data
-import { survey, postcodes } from '~/data/';
+import { survey, postcodes } from '../../../../data/';
 
 
 class Test extends React.Component {
@@ -378,7 +378,7 @@ class Test extends React.Component {
         {this.state.currentStep === 0 &&
         <div className="container">
           <h3>{survey.preStep.title}</h3>
-          <p><b>{collection.description}</b></p>
+          <p><b>{survey.preStep.description}</b></p>
           <p>
             <Link to='/privacy'>Privacy Policy</Link> & <Link to='/terms'>Terms of Use</Link>
           </p>
