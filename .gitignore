@@ -67,3 +67,6 @@ config/ssl.js
 
 # DS Store files
 **/.ds_store
+
+#PM2 Ecosystem Config
+ecosystem.config.js
