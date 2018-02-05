@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env-shell NODE_ENV=production LOG_LEVEL=info \"webpack -p --progress --config webpack.prod.js && node ./bin/www\"",
+    "start": "cross-env-shell NODE_ENV=production LOG_LEVEL=info \"node ./bin/www\"",
     "dev": "nodemon ./bin/www",
     "build:watch": "webpack --config webpack.dev.js --colors --progress --watch",
-    "build": "webpack -p --config webpack.prod.js"
+    "build": "webpack -p --progress --config webpack.prod.js"
   },
   "dependencies": {
     "babel-register": "^6.26.0",
